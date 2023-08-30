@@ -32,6 +32,9 @@
 ;; Make the cursor actually usable. [] -> |
 (setq-default cursor-type 'bar)
 
+;; Automatically maximize Vmacs.
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 ;; We gotta start with the theme maaaan. Doom-one is the absolute nicest out there.
 
 (let ((cool-file "DOOMED.vmacs"))
@@ -39,7 +42,7 @@
       (progn
         (write-region "" "" cool-file)
         (package-install 'doom-themes))
-      (print "DOOM theme already installed, nice. 8)" #'external-debugging-output)))
+    (print "DOOM theme already installed, nice. 8)" #'external-debugging-output)))
 
 (use-package doom-themes
   :ensure t
