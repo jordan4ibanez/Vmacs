@@ -9,7 +9,7 @@
 
 ;; Ensure these are enabled.
 (menu-bar-mode 1)
-(tool-bar-mode 1)
+(tool-bar-mode -1)
 (scroll-bar-mode 1)
 
 ;; Display line numbers in every buffer.
@@ -18,7 +18,12 @@
 
 ;; We gotta start with the theme maaaan. Doom-one is the absolute nicest out there.
 
-(package-install 'doom-themes)
+(let ((cool-file "DOOMED.cool"))
+  (if (not (file-exists-p cool-file))
+      (progn
+        (write-region "" "" cool-file)
+        (package-install 'doom-themes))
+      (print "Fonts already installed, nice. 8)")))
 
 (use-package doom-themes
   :ensure t
