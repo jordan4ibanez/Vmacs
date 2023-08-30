@@ -53,7 +53,8 @@
   (doom-themes-org-config))
 
 
-;; Testing sublimity - This causes weird issues
+;; Testing sublimity
+;;! This causes weird issues!
 
 ; (package-install 'sublimity)
 
