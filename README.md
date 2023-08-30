@@ -9,7 +9,8 @@ common lisp tools
 
 ~~shortcuts for enabling/disabling treemacs~~ (F5)
 
-fix ctrl+tab escaping the current project
+Hook up SLY.
+Add DrRacket SLY commands to make this thing an absolute beast.
 
 ## Package manager:
 
