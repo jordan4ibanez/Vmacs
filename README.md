@@ -10,6 +10,10 @@
 
 Fun fact: This was bootstrapped with VSCode. :D
 
+### How to install:
+Git clone this into a folder called ``.emacs.d`` in your home directory.
+Start Emacs, it'll automatically start to install.
+
 TODO:
 
 common lisp tools
