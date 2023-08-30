@@ -10,6 +10,8 @@ common lisp tools
 ~~shortcuts for enabling/disabling treemacs~~ (F5)
 
 Hook up SLY.
+OR use slime?
+
 Add DrRacket SLY commands to make this thing an absolute beast.
 
 ## Package manager:
@@ -29,3 +31,14 @@ Add DrRacket SLY commands to make this thing an absolute beast.
 [Treemacs](https://github.com/Alexander-Miller/treemacs) (Tree layout on left side)
 
 [Dashboard](https://github.com/emacs-dashboard/emacs-dashboard) (The dashboard)
+
+;; Lispy stuff!
+
+[ParEdit](https://www.emacswiki.org/emacs/ParEdit) (Lisp parenthesis balancer)
+
+In between slime and sly, whichever is easier to install
+
+
+Notes:
+
+You can run the terminal with ``ansi-term`` perhaps this can be linked to ``ctrl-~``
