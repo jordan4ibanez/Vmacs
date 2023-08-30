@@ -1,3 +1,9 @@
+;; A friendly terminal welcome. :)
+(print "Welcome to Vmacs!" #'external-debugging-output)
+
+;; I hope the user followed the directions or this ain't gonna work. :T
+(add-to-list 'load-path "~/.emacs.d/vmacs/")
+
 ;; Enable MELPA.
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -217,6 +223,26 @@
 
 (add-hook 'emacs-startup-hook 'treemacs)
 
+;; Atom style dashboard.
+
+(package-install 'dashboard)
+
+(require 'dashboard)
+(dashboard-setup-startup-hook)
+;; Or if you use use-package
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook))
+
+;; Set dashboard title.
+(setq dashboard-banner-logo-title "Welcome to Vmacs!")
+
+;; Set the banner
+(setq dashboard-startup-banner "~/.emacs.d/vmacs/vmacs-logo.txt")
+
+
+;; This just kinda showed up here so I'm not gonna touch it incase I end up using sublimity.
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
