@@ -18,12 +18,12 @@
 
 ;; We gotta start with the theme maaaan. Doom-one is the absolute nicest out there.
 
-(let ((cool-file "DOOMED.cool"))
+(let ((cool-file "DOOMED.vmacs"))
   (if (not (file-exists-p cool-file))
       (progn
         (write-region "" "" cool-file)
         (package-install 'doom-themes))
-      (print "Fonts already installed, nice. 8)")))
+      (print "DOOM theme already installed, nice. 8)" #'external-debugging-output)))
 
 (use-package doom-themes
   :ensure t
@@ -69,12 +69,12 @@
 (package-install 'all-the-icons)
 
 ; Install those dang 'ol fonts
-(let ((cool-file "fonts-installed-vlisp.cool"))
+(let ((cool-file "fonts-installed-vlisp.vmacs"))
   (if (not (file-exists-p cool-file))
       (progn
         (write-region "" "" cool-file)
         (all-the-icons-install-fonts t))
-      (print "Fonts already installed, nice. 8)")))
+      (print "Fonts already installed, nice. 8)" #'external-debugging-output)))
 
 (when (display-graphic-p)
   (require 'all-the-icons))

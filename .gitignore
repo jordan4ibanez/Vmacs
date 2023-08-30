@@ -3,7 +3,7 @@ auto-save-list/
 eln-cache/
 elpa/
 transient/
-fonts-installed-vlisp.cool
 .vscode/alive/fasl/tmp.lisp
-DOOMED.cool
+fonts-installed-vlisp.vmacs
+DOOMED.vmacs
 recentf
