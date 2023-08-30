@@ -28,6 +28,15 @@
 
 ; (sublimity-mode 1)
 
+;; Absolutely EVAPORATE ALL Emacs bindings!
+
+(package-install 'ergoemacs-mode )
+
+(setq ergoemacs-theme nil)
+(setq ergoemacs-keyboard-layout "us")
+(require 'ergoemacs-mode)
+(ergoemacs-mode 1)
+
 ;; All-the-icons!
 
 (package-install 'all-the-icons)
