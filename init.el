@@ -245,6 +245,24 @@
 (setq dashboard-startup-banner "~/.emacs.d/vmacs/vmacs-logo.txt")
 
 
+;;! Very important section!
+;;! This section is specifically designated for quality of life improvements!
+
+;; Single click folder expansion in treemacs.
+(with-eval-after-load 'treemacs
+  (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action))
+
+
+;;! This section is for additional keybindings!
+;; So this can be real nice. :)
+
+(define-key ergoemacs-user-keymap (kbd "C-a") 'my-replacement-function)
+
+
+
+
+;;! END IMPORTANT SECTION!
+
 ;; This just kinda showed up here so I'm not gonna touch it incase I end up using sublimity.
 
 (custom-set-variables
