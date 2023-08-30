@@ -248,16 +248,48 @@
 ;;! Very important section!
 ;;! This section is specifically designated for quality of life improvements!
 
+;;* Begin portion A. Credit: https://unix.stackexchange.com/questions/19874/prevent-unwanted-buffers-from-opening
+
+;; Makes *scratch* empty.
+(setq initial-scratch-message "")
+
+;; Removes *scratch* from buffer after the mode has been set.
+(defun remove-scratch-buffer ()
+  (if (get-buffer "*scratch*")
+      (kill-buffer "*scratch*")))
+(add-hook 'after-change-major-mode-hook 'remove-scratch-buffer)
+
+;; Removes *messages* from the buffer.
+(setq-default message-log-max nil)
+(kill-buffer "*Messages*")
+
+;; Removes *Completions* from buffer after you've opened a file.
+(add-hook 'minibuffer-exit-hook
+      '(lambda ()
+         (let ((buffer "*Completions*"))
+           (and (get-buffer buffer)
+                (kill-buffer buffer)))))
+
+;; Don't show *Buffer list* when opening multiple files at the same time.
+(setq inhibit-startup-buffer-menu t)
+
+;; Show only one active window when opening multiple files at the same time.
+(add-hook 'window-setup-hook 'delete-other-windows)
+
+;;* End portion A.
+
 ;; Single click folder expansion in treemacs.
 (with-eval-after-load 'treemacs
   (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action))
 
+;; Stop the delete key from being weird.
+(normal-erase-is-backspace-mode 1)
 
 ;;! This section is for additional keybindings!
 ;; So this can be real nice. :)
 
-(define-key ergoemacs-user-keymap (kbd "C-a") 'my-replacement-function)
-
+;; Show/hide Treemacs.
+(define-key ergoemacs-user-keymap (kbd "<f5>") 'treemacs)
 
 
 
