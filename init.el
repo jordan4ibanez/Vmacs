@@ -126,6 +126,8 @@
 (centaur-tabs-enable-buffer-alphabetical-reordering)
 (setq centaur-tabs-adjust-buffer-order t)
 
+
+
 ;; Stop someone from accidentally closing the dashboard.
 (defun centaur-tabs-hide-tab (x)
   "Do no to show buffer X in tabs."
@@ -302,6 +304,22 @@
 
 ;; Useful things in dashboard
 (setq dashboard-footer-messages '("<- Rightclick the sidebar to get started!"))
+
+;; Common Lisp POWER PACK WOO!
+
+;; SLY
+(package-install 'sly)
+
+;; ParEdit
+(package-install 'paredit)
+
+(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 
 ;;! Very important section!
 ;;! This section is specifically designated for quality of life improvements!
