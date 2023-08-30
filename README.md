@@ -4,8 +4,11 @@
 Fun fact: This was bootstrapped with VSCode. :D
 
 TODO:
+
 common lisp tools
-shortcuts for enabling/disabling treemacs
+
+~~shortcuts for enabling/disabling treemacs~~ (F5)
+
 fix ctrl+tab escaping the current project
 
 ## Package manager:
