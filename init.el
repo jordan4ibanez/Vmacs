@@ -85,8 +85,8 @@
         (all-the-icons-install-fonts t))
       (print "Fonts already installed, nice. 8)" #'external-debugging-output)))
 
-(when (display-graphic-p)
-  (require 'all-the-icons))
+(use-package all-the-icons
+  :if (display-graphic-p))
 ; (use-package all-the-icons
 ;   :if (display-graphic-p))
 
@@ -102,12 +102,21 @@
   ("C-<iso-lefttab>" . centaur-tabs-backward)
   ("C-<tab>" . centaur-tabs-forward))
 
+;; Make tab scrolling behave like VSCode/Pulsar.
+(setq centaur-tabs-cycle-scope 'tabs)
 (setq centaur-tabs-style "alternate")
 ;; Bigger height for 1920x1080
 (setq centaur-tabs-height 32)
 (setq centaur-tabs-set-icons t)
 (setq centaur-tabs-close-button " x ")
 
+;; Little * when modified but not saved.
+(setq centaur-tabs-set-modified-marker t)
+(setq centaur-tabs-modified-marker "*")
+
+;; Now make it automatically alphabetically order! :D
+(centaur-tabs-enable-buffer-alphabetical-reordering)
+(setq centaur-tabs-adjust-buffer-order t)
 
 ;; Treemacs
 
@@ -231,19 +240,30 @@
 (package-install 'dashboard)
 
 (require 'dashboard)
-(dashboard-setup-startup-hook)
+
 ;; Or if you use use-package
 (use-package dashboard
   :ensure t
   :config
   (dashboard-setup-startup-hook))
 
+;; Center the dashboard.
+(setq dashboard-center-content t)
+
 ;; Set dashboard title.
 (setq dashboard-banner-logo-title "Welcome to Vmacs!")
 
-;; Set the banner
+;; Set the banner.
 (setq dashboard-startup-banner "~/.emacs.d/vmacs/vmacs-logo.txt")
 
+;; Use all-the-icons.
+;; Sadly: This isn't working for some reason? Tried quite a few things!
+; (setq dashboard-icon-type 'all-the-icons)
+; (setq dashboard-set-heading-icons t)
+; (setq dashboard-set-file-icons t)
+
+;; Useful things in dashboard
+(setq dashboard-footer-messages '("<- Rightclick the sidebar to get started!"))
 
 ;;! Very important section!
 ;;! This section is specifically designated for quality of life improvements!
