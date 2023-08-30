@@ -22,6 +22,9 @@
 (line-number-mode 1)
 (global-display-line-numbers-mode 1)
 
+;; Make the cursor actually usable. [] -> |
+(setq-default cursor-type 'bar)
+
 ;; We gotta start with the theme maaaan. Doom-one is the absolute nicest out there.
 
 (let ((cool-file "DOOMED.vmacs"))
