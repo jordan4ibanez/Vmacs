@@ -111,7 +111,7 @@
   ("C-<tab>" . centaur-tabs-forward))
 
 ;; Make tab scrolling behave like VSCode/Pulsar.
-(setq centaur-tabs-cycle-scope 'tabs)
+;; (setq centaur-tabs-cycle-scope 'tabs)
 (setq centaur-tabs-style "alternate")
 ;; Bigger height for 1920x1080
 (setq centaur-tabs-height 32)
