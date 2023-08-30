@@ -22,6 +22,11 @@
 (line-number-mode 1)
 (global-display-line-numbers-mode 1)
 
+;; Stop the mouse scroll wheel from going crazy.
+(setq mouse-wheel-progressive-speed nil)
+;; Use default VSCode/Pulsar scrolling
+(setq mouse-wheel-scroll-amount '(2 ((shift) . 2) ((control) . nil))) 
+
 ;; Make the cursor actually usable. [] -> |
 (setq-default cursor-type 'bar)
 
