@@ -19,16 +19,33 @@
 
 ;; Testing sublimity
 
-;; (package-install 'sublimity)
+; (package-install 'sublimity)
 
-;; (require 'sublimity)
-;; (require 'sublimity-scroll)
-;; (require 'sublimity-map) ;; experimental
-;; (require 'sublimity-attractive)
+; (require 'sublimity)
+; (require 'sublimity-scroll)
+; (require 'sublimity-map) ;; experimental
+; (require 'sublimity-attractive)
 
 ; (sublimity-mode 1)
 
-;; Testing Centaur-tabs
+;; All-the-icons!
+
+(package-install 'all-the-icons)
+
+; Install those dang 'ol fonts
+(let ((cool-file "fonts-installed-vlisp.cool"))
+  (if (not (file-exists-p cool-file))
+      (progn
+        (write-region "" "" cool-file)
+        (all-the-icons-install-fonts t))
+      (print "Fonts already installed, nice. 8)")))
+
+(when (display-graphic-p)
+  (require 'all-the-icons))
+; (use-package all-the-icons
+;   :if (display-graphic-p))
+
+;; Centaur-tabs
 
 (package-install 'centaur-tabs)
 
@@ -44,7 +61,7 @@
 ;; Bigger height for 1920x1080
 (setq centaur-tabs-height 32)
 (setq centaur-tabs-set-icons t)
-; (setq centaur-tabs-close-button "X")
+(setq centaur-tabs-close-button " x ")
 
 
 ;; Treemacs
@@ -161,6 +178,8 @@
   :after (treemacs)
   :ensure t
   :config (treemacs-set-scope-type 'Tabs))
+
+(add-hook 'emacs-startup-hook 'treemacs)
 
 
 (custom-set-variables
