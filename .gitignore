@@ -4,3 +4,4 @@ eln-cache/
 elpa/
 transient/
 fonts-installed-vlisp.cool
+.vscode/alive/fasl/tmp.lisp
