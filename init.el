@@ -268,7 +268,9 @@
 
 ;; Common Lisp POWER PACK WOO!
 
-;;! SLIME goes here.
+;; SLIME (Vmacs REPL)
+(setq inferior-lisp-program "sbcl")
+
 
 ;; ParEdit
 (use-package paredit :ensure t)
