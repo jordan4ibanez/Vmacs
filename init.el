@@ -416,9 +416,18 @@
 ;; Make the del key behave like normal.
 (keymap-set ergoemacs-user-keymap "<delete>" 'delete-forward-char)
 
-;; Start up SLIME with F12
+;; Start up SLIME:  F12
+;;! Best for performance testing.
+;; Compile a file:  CTRL+G
+;;! Best for debugging/prototyping.
+;; Eval a function: CTRL+D
+;; Eval a file: CTRL+R
 (with-eval-after-load 'slime
-  (keymap-set ergoemacs-user-keymap "<f12>" 'slime))
+                      (progn 
+                       (keymap-set ergoemacs-user-keymap "<f12>" 'slime)
+                       (keymap-set ergoemacs-user-keymap "C-g" 'slime-compile-and-load-file)
+                       (keymap-set ergoemacs-user-keymap "C-d" 'slime-eval-defun)
+                       (keymap-set ergoemacs-user-keymap "C-r" 'slime-eval-buffer)))
 
 
 
