@@ -313,10 +313,8 @@
 (setq dashboard-startup-banner "~/.emacs.d/vmacs/vmacs-logo.txt")
 
 ;; Use all-the-icons.
-;; Sadly: This isn't working for some reason? Tried quite a few things!
-; (setq dashboard-icon-type 'all-the-icons)
-; (setq dashboard-set-heading-icons t)
-; (setq dashboard-set-file-icons t)
+(setq dashboard-icon-type 'all-the-icons)
+(setq dashboard-set-file-icons t)
 
 ;; Useful things in dashboard
 (setq dashboard-footer-messages '("<- Rightclick the sidebar to get started!"))
@@ -389,7 +387,7 @@
   "Comments or uncomments the region or the current line if there's no active region."
   (interactive)
   (let (beg end)
-    (print "hi" #'external-debugging-output)
+    (print (format "%s, end" beg end) #'external-debugging-output)
     (if (region-active-p)
         (setq beg (region-beginning) end (region-end))
       (setq beg (line-beginning-position) end (line-end-position)))
