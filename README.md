@@ -11,6 +11,10 @@
 Fun fact: This was bootstrapped with VSCode. :D
 
 ### How to install:
+It is expected that you have SBCL installed and in your system path.
+
+If you're unsure of this, try running ``sbcl`` in your terminal/command prompt.
+
 Git clone this into a folder called ``.emacs.d`` in your home directory.
 Start Emacs, it'll automatically start to install.
 
@@ -61,8 +65,6 @@ Add DrRacket SLY commands to make this thing an absolute beast.
 [highlight-parentheses](https://sr.ht/~tsdh/highlight-parentheses.el/) (Makes it easier to understand bracket scope)
 
 [rainbow-delimeters](https://github.com/Fanael/rainbow-delimiters) (Fancy rainbow brackets (disabled by default))
-
-In between slime and sly, whichever is easier to install
 
 
 ### Notes:
