@@ -16,6 +16,8 @@ Start Emacs, it'll automatically start to install.
 
 TODO:
 
+ctrl+/ to comment out region with ``'comment-region``
+
 common lisp tools
 
 ~~shortcuts for enabling/disabling treemacs~~ (F5)

@@ -35,6 +35,12 @@
 ;; Automatically maximize Vmacs.
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
+;; Set the window title. https://emacs.stackexchange.com/a/46016
+;; So all this is doing is building a string based on expressions!
+(setq frame-title-format
+      `((buffer-file-name "%b - ")
+      "Vmacs"))
+
 ;; We gotta start with the theme maaaan. Doom-one is the absolute nicest out there.
 
 (let ((cool-file "DOOMED.vmacs"))
