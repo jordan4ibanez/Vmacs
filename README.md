@@ -53,6 +53,10 @@ Add DrRacket SLY commands to make this thing an absolute beast.
 
 [ParEdit](https://www.emacswiki.org/emacs/ParEdit) (Lisp parenthesis balancer)
 
+[highlight-parentheses](https://sr.ht/~tsdh/highlight-parentheses.el/) (Makes it easier to understand bracket scope)
+
+[rainbow-delimeters](https://github.com/Fanael/rainbow-delimiters) (Fancy rainbow brackets (disabled by default))
+
 In between slime and sly, whichever is easier to install
 
 
