@@ -16,7 +16,7 @@ Start Emacs, it'll automatically start to install.
 
 TODO:
 
-ctrl+/ to comment out region with ``'comment-region``
+~~ctrl+/ to comment out region with ``'comment-region``~~ (WOOO)
 
 ~~reopen old tabs~~ (works :D)
 
