@@ -498,8 +498,22 @@
 
 
 
-
 ;;! END IMPORTANT SECTION!
+
+
+;;! Begin the drop down menu modifications!
+
+;; Make the "File" menu less confusing to new users.
+(define-key global-map [menu-bar file project-dired] nil)
+(define-key global-map [menu-bar file dired] nil)
+
+;; This replaces project dired with some actual useful utility.
+(define-key global-map
+	    [menu-bar file project-dired]
+	    '("Open Folder" . treemacs-add-project-to-workspace))
+
+
+;;! End the drop down menu modifications!
 
 ;; This gets created by Easy-Customization
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Easy-Customization.html

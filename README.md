@@ -24,7 +24,13 @@ Start Emacs, it'll automatically start to install.
 
 TODO:
 
-**STOP ESCAPE FROM TRYING TO CLOSE THE BUFFER IT'S SO IRRITATING.**
+CTRL+BACKSPACE deletes the line, not the rest of the buffer
+
+Autosave
+
+See if there is a way to remember where the buffer was scrolled when reopening files
+
+~~**STOP ESCAPE FROM TRYING TO CLOSE THE BUFFER IT'S SO IRRITATING.**~~ (fixed!)
 
 ~~ctrl+/ to comment out region with ``'comment-region``~~ (WOOO)
 
