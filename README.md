@@ -24,7 +24,7 @@ TODO:
 
 ~~shortcuts for enabling/disabling treemacs~~ (F5)
 
-fix delete key not deleting a selected region
+~~fix delete key not deleting a selected region~~ (WOOOO!)
 
 common lisp tools
 Hook up SLY.
