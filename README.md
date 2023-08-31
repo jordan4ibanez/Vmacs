@@ -18,6 +18,10 @@ TODO:
 
 ctrl+/ to comment out region with ``'comment-region``
 
+reopen old tabs
+
+paste with selection region overwrite
+
 common lisp tools
 
 ~~shortcuts for enabling/disabling treemacs~~ (F5)
