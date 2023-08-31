@@ -18,7 +18,7 @@ TODO:
 
 ctrl+/ to comment out region with ``'comment-region``
 
-reopen old tabs
+~~reopen old tabs~~ (works :D)
 
 paste with selection region overwrite
 
