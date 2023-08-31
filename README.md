@@ -75,9 +75,9 @@ In between slime and sly, whichever is easier to install
 
 - ~~Smooth scrolling is included with Emacs as of version 29.1. You don't need sublimity - just enable pixel-scroll-precision-mode.~~ (REMOVED)
 
-- Rather than installing packages with package-install, you should use use-package. (use-package my-package :ensure t) is all you need. If you set use-package-always-ensure to t, the :ensure t is not needed.
+- ~~Rather than installing packages with package-install, you should use use-package. (use-package my-package :ensure t) is all you need. If you set use-package-always-ensure to t, the :ensure t is not needed.~~
 
-- define-key is a legacy function. Use keymap-set instead.
+- ~~define-key is a legacy function. Use keymap-set instead.~~
 
 - You shouldn't kill the *Messages* buffer. It will contain useful debugging information. Besides, whenever some code sends a message, the buffer will get created again.
 
