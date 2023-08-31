@@ -26,8 +26,6 @@
 (setq mouse-wheel-progressive-speed nil)
 ;; Use default VSCode/Pulsar scrolling
 (setq mouse-wheel-scroll-amount '(2 ((shift) . 2) ((control) . nil)))
-;; Stop Vmacs from scaring the poop out of someone.
-(setq ring-bell-function 'ignore)
 
 ;; Make the cursor actually usable. [] -> |
 (setq-default cursor-type 'bar)
@@ -71,6 +69,11 @@
   (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
+
+;; Stop Vmacs from scaring the poop out of someone.
+;; Disable all bell features. (flashing, beeping)
+(setq visible-bell nil)
+(setq ring-bell-function 'ignore)
 
 
 ;; Testing sublimity
@@ -386,6 +389,7 @@
   "Comments or uncomments the region or the current line if there's no active region."
   (interactive)
   (let (beg end)
+    (print "hi" #'external-debugging-output)
     (if (region-active-p)
         (setq beg (region-beginning) end (region-end))
       (setq beg (line-beginning-position) end (line-end-position)))
