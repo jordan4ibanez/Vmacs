@@ -24,6 +24,8 @@ Start Emacs, it'll automatically start to install.
 
 TODO:
 
+**STOP ESCAPE FROM TRYING TO CLOSE THE BUFFER IT'S SO IRRITATING.**
+
 ~~ctrl+/ to comment out region with ``'comment-region``~~ (WOOO)
 
 ~~reopen old tabs~~ ~~(works :D)~~ <-but a bad idea
