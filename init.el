@@ -128,7 +128,7 @@
   :defer t
   :init
   (with-eval-after-load 'winum
-    (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
+    (keymap-set winum-keymap "M-0" #'treemacs-select-window))
   :config
   (progn
     (setq treemacs-collapse-dirs                   (if treemacs-python-executable 3 0)
@@ -350,7 +350,7 @@
 
 ;; Single click folder expansion in treemacs.
 (with-eval-after-load 'treemacs
-  (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action))
+  (keymap-set treemacs-mode-map "<mouse-1>" #'treemacs-single-click-expand-action))
 
 ;; Stop the delete key from being weird.
 ; (normal-erase-is-backspace-mode 1)
@@ -358,8 +358,10 @@
 ;;! This section is for additional keybindings!
 ;; So this can be real nice. :)
 
+
+
 ;; Show/hide Treemacs.
-(define-key ergoemacs-user-keymap (kbd "<f5>") 'treemacs)
+(keymap-set ergoemacs-user-keymap "<f5>" 'treemacs)
 
 ;; Toggle comment out.
 ;; Thank user1017523: https://stackoverflow.com/a/20064658
@@ -378,10 +380,10 @@
                   (point))))
     (comment-or-uncomment-region start end)))
 
-(define-key ergoemacs-user-keymap (kbd "C-/") 'vmacs-comment-line)
+(keymap-set ergoemacs-user-keymap "C-/" 'vmacs-comment-line)
 
 ;; Make the del key behave like normal.
-(define-key ergoemacs-user-keymap (kbd "<delete>") 'delete-forward-char)
+(keymap-set ergoemacs-user-keymap "<delete>" 'delete-forward-char)
 
 ;;! END IMPORTANT SECTION!
 (custom-set-variables
