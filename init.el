@@ -270,13 +270,6 @@
 
 (setq inferior-lisp-program "sbcl")
 
-(add-hook 'lisp-mode-hook '(lambda ()
-                                  (unless (get-process "SLIME Lisp")
-                                     (let ((oldbuff (current-buffer)))
-                                       (slime)
-                                       (switch-buffer oldbuff)))))
-
-
 
 ;; ParEdit
 (use-package paredit :ensure t)
@@ -322,9 +315,9 @@
 
 ;;* Begin portion A. Credit: https://unix.stackexchange.com/questions/19874/prevent-unwanted-buffers-from-opening
 
-(setf vmacs-enable-debugging t)
+(setf vmacs-disable-debugging nil)
 
-(if vmacs-enable-debugging (progn 
+(if vmacs-disable-debugging (progn 
   ;; Makes *scratch* empty.
   (setq initial-scratch-message "")
 
@@ -391,10 +384,14 @@
                   (point))))
     (comment-or-uncomment-region start end)))
 
-; (keymap-set ergoemacs-user-keymap "C-/" 'vmacs-comment-line)
+(keymap-set ergoemacs-user-keymap "C-/" 'vmacs-comment-line)
 
 ;; Make the del key behave like normal.
 (keymap-set ergoemacs-user-keymap "<delete>" 'delete-forward-char)
+
+;; Start up SLIME with F12
+(with-eval-after-load 'slime
+  (keymap-set ergoemacs-user-keymap "<f12>" 'slime))
 
 
 
