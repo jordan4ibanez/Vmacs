@@ -58,6 +58,8 @@ Add DrRacket SLY commands to make this thing an absolute beast.
 
 [Dashboard](https://github.com/emacs-dashboard/emacs-dashboard) (The dashboard)
 
+[CTRLF](https://github.com/radian-software/ctrlf) (The <u>**BEST**</u> search utility I could find!)
+
 ;; Lispy stuff!
 
 [ParEdit](https://www.emacswiki.org/emacs/ParEdit) (Lisp parenthesis balancer)
@@ -70,6 +72,8 @@ Add DrRacket SLY commands to make this thing an absolute beast.
 ### Notes:
 
 - You can run the terminal with ``ansi-term`` perhaps this can be linked to ``ctrl-~``
+
+- Document the key bindings. They're in the code, put them somewhere legible.
 
 ### Ican'tThinkOfAGoodName's ideas:
 

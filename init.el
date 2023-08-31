@@ -293,7 +293,21 @@
       ;; Useful things in dashboard
       (setq dashboard-footer-messages '("<- Rightclick the sidebar to get started!"))))
 
-;; Common Lisp POWER PACK WOO!
+
+;; CTRLF - BETTER SEARCHING YEAH!
+
+(use-package ctrlf :ensure t)
+(ctrlf-mode +1)
+(with-eval-after-load 'ctrlf
+                      ;;! CTRL+ENTER SEARCHES FORWARDS!
+                      (keymap-set ergoemacs-user-keymap "C-<return>" #'ctrlf-forward-default)
+                      ;;! CTRL+SHIFT+ENTER SEARCHES BACKWARDS!
+                      (keymap-set ergoemacs-user-keymap "C-S-<return>" #'ctrlf-backward-default))
+
+
+;;!!!! Common Lisp POWER PACK WOO!!!!
+
+
 
 ;; SLIME (Vmacs REPL)
 (use-package slime :ensure t)
