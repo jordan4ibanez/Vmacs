@@ -65,26 +65,26 @@ Add DrRacket SLY commands to make this thing an absolute beast.
 In between slime and sly, whichever is easier to install
 
 
-Notes:
+### Notes:
 
-You can run the terminal with ``ansi-term`` perhaps this can be linked to ``ctrl-~``
+- You can run the terminal with ``ansi-term`` perhaps this can be linked to ``ctrl-~``
 
-Ican'tThinkOfAGoodName's ideas:
+### Ican'tThinkOfAGoodName's ideas:
 
-You can remove the call to package-initialize. It's not necessary since Emacs 27.
+- You can remove the call to package-initialize. It's not necessary since Emacs 27.
 
-Smooth scrolling is included with Emacs as of version 29.1. You don't need sublimity - just enable pixel-scroll-precision-mode.
+- Smooth scrolling is included with Emacs as of version 29.1. You don't need sublimity - just enable pixel-scroll-precision-mode.
 
-Rather than installing packages with package-install, you should use use-package. (use-package my-package :ensure t) is all you need. If you set use-package-always-ensure to t, the :ensure t is not needed.
-
-
-define-key is a legacy function. Use keymap-set instead.
+- Rather than installing packages with package-install, you should use use-package. (use-package my-package :ensure t) is all you need. If you set use-package-always-ensure to t, the :ensure t is not needed.
 
 
-You shouldn't kill the Messages buffer. It will contain useful debugging information. Besides, whenever some code sends a message, the buffer will get created again.
+- define-key is a legacy function. Use keymap-set instead.
 
 
-That custom-set-variables is created by Emacs' Customize interface. https://www.gnu.org/software/emacs/manual/html_node/emacs/Easy-Customization.html
+- You shouldn't kill the Messages buffer. It will contain useful debugging information. Besides, whenever some code sends a message, the buffer will get created again.
 
 
-You can make this go in a different file by modifying the custom-file variable.
+- That custom-set-variables is created by Emacs' Customize interface. https://www.gnu.org/software/emacs/manual/html_node/emacs/Easy-Customization.html
+
+
+- You can make this go in a different file by modifying the custom-file variable.
