@@ -336,25 +336,28 @@
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 
 
-;; Enable parenthesis visualization.
+;; Enable parenthesis visualization. Modes stack.
 (defvar vmacs-fancy-parentheses-highlight-mode 1)
 
-(cond ((= vmacs-fancy-parentheses-highlight-mode 1)
-      ;; Mode 1 Shadow mode. RED, trails out to darker shades of red further out of scope.
-        (progn 
-         (print "Parentheses shadow mode enabled." #'external-debugging-output)
-         (package-install 'highlight-parentheses)
-         (require 'highlight-parentheses)
-         (define-globalized-minor-mode global-highlight-parentheses-mode highlight-parentheses-mode
-            (lambda nil (highlight-parentheses-mode t)))
-         (global-highlight-parentheses-mode t))
+;; Mode 1 Shadow mode. RED, trails out to darker shades of red further out of scope.
+(if (>= vmacs-fancy-parentheses-highlight-mode 1)
+  (progn 
+    (print "Parentheses shadow mode enabled." #'external-debugging-output)
+    (package-install 'highlight-parentheses)
+    (require 'highlight-parentheses)
+    (define-globalized-minor-mode global-highlight-parentheses-mode highlight-parentheses-mode
+      (lambda nil (highlight-parentheses-mode t)))
+    (global-highlight-parentheses-mode t)))
         
-      ;; Mode 2, RAINBOWS WOOOO. https://youtu.be/6CR5x3BAelk?t=3
-       (= vmacs-fancy-parentheses-highlight-mode 2)
-        (print "SHOOLKAJF" #'external-debugging-output)
+;; Mode 2, RAINBOWS WOOOO. https://youtu.be/6CR5x3BAelk?t=3
+(if (>= vmacs-fancy-parentheses-highlight-mode 2)
+  (progn
+    (print "Parentheses rainbow mode enabled" #'external-debugging-output)
+    (package-install 'rainbow-delimiters)
+    (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)))
 
-      ;; All other cases. Mode 0, disabled.
-      t (print "Parentheses mode disabled." #'external-debugging-output)))
+;; All other cases. Mode 0, disabled.
+(if (<= vmacs-fancy-parentheses-highlight-mode 0) (print "Parentheses mode disabled." #'external-debugging-output))
 
 ; (show-paren-mode 1)
 ; (setq show-paren-when-point-inside-paren 1)
