@@ -407,7 +407,8 @@
 
 (define-key ergoemacs-user-keymap (kbd "C-/") 'vmacs-comment-line)
 
-
+;; Make the del key behave like normal.
+(define-key ergoemacs-user-keymap (kbd "<delete>") 'delete-forward-char)
 
 ;;! END IMPORTANT SECTION!
 (custom-set-variables
