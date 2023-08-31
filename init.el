@@ -409,9 +409,17 @@
   "Print number of lines and characters in the region."
   (interactive "r")
   (message "Region has %d lines, %d characters"
-       (count-lines start end) (- end start)))
+       (count-lines start end) (- end start))
+  (comment-or-uncomment-region start end))
 
-(define-key ergoemacs-user-keymap (kbd "C-/") 'count-lines-region)
+(require 'simple)
+
+(defun debug-the-thing (a b)
+  (interactive "r")
+  ; (message (format "%S %S" a b))
+  (message (format "start: %S" (line-number-at-pos a))))
+
+(define-key ergoemacs-user-keymap (kbd "C-/") 'debug-the-thing)
 
 
 
