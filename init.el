@@ -265,31 +265,34 @@
 
 ;; Atom style dashboard.
 
+;; Enabled by default.
+(defvar enable-vmacs-dashboard t)
+
+(if (eq enable-vmacs-dashboard t)
+    (progn 
+     (require 'dashboard)
+
+      (use-package dashboard
+        :ensure t
+        :config
+        (dashboard-setup-startup-hook))
+
+      ;; Center the dashboard.
+      (setq dashboard-center-content t)
+
+      ;; Set dashboard title.
+      (setq dashboard-banner-logo-title "Welcome to Vmacs!")
+
+      ;; Set the banner.
+      (setq dashboard-startup-banner "~/.emacs.d/vmacs/vmacs-logo.txt")
+
+      ;; Use all-the-icons.
+      (setq dashboard-icon-type 'all-the-icons)
+      (setq dashboard-set-file-icons t)
+
+      ;; Useful things in dashboard
+      (setq dashboard-footer-messages '("<- Rightclick the sidebar to get started!"))))
 (package-install 'dashboard)
-
-(require 'dashboard)
-
-;; Or if you use use-package
-(use-package dashboard
-  :ensure t
-  :config
-  (dashboard-setup-startup-hook))
-
-;; Center the dashboard.
-(setq dashboard-center-content t)
-
-;; Set dashboard title.
-(setq dashboard-banner-logo-title "Welcome to Vmacs!")
-
-;; Set the banner.
-(setq dashboard-startup-banner "~/.emacs.d/vmacs/vmacs-logo.txt")
-
-;; Use all-the-icons.
-(setq dashboard-icon-type 'all-the-icons)
-(setq dashboard-set-file-icons t)
-
-;; Useful things in dashboard
-(setq dashboard-footer-messages '("<- Rightclick the sidebar to get started!"))
 
 ;; Common Lisp POWER PACK WOO!
 
