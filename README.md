@@ -68,6 +68,8 @@ Maybe some sort of linting?
 
 [corfu.el](https://github.com/minad/corfu) (Autocomplete - Set to INSTANT by default.)
 
+[diff-hl](https://github.com/dgutov/diff-hl) (Shows uncommitted lines in the gutter)
+
 ;; Lispy stuff!
 
 [ParEdit](https://www.emacswiki.org/emacs/ParEdit) (Lisp parenthesis balancer)

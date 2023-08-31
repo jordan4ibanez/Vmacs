@@ -308,6 +308,12 @@
 
 ;;!!!! Common Lisp POWER PACK WOO!!!!
 
+;; diff-hl (shows unmerged line changes)
+(use-package diff-hl :ensure t)
+
+(diff-hl-flydiff-mode)
+(global-diff-hl-mode)
+
 
 ;; corfu (autocomplete)
 (use-package corfu :ensure t)
