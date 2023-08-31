@@ -390,36 +390,24 @@
 ;; Show/hide Treemacs.
 (define-key ergoemacs-user-keymap (kbd "<f5>") 'treemacs)
 
-;; Toggle comment out. https://stackoverflow.com/a/9697222
-;; FIXME: This needs to only take line numbers into consideration
-(defun comment-or-uncomment-region-or-line ()
-  "Comments or uncomments the region or the current line if there's no active region."
+;; Toggle comment out.
+;; Thank user1017523: https://stackoverflow.com/a/20064658
+(defun vmacs-comment-line ()
   (interactive)
-  (let (beg end)
-    ; (print (format "%s, end" beg end) #'external-debugging-output)
-    (if (region-active-p)
-        ; (print "hi there" #'external-debugging-output)
-        (setq beg (region-beginning) end (region-end))
-        (message (format "blah %s" (line-number-at-pos region-beginning) #'external-debugging-output))
-        ; (print (format "%s" (count-lines (region-beginning) (region-end))) #'external-debugging-output)
-        (setq beg (line-beginning-position) end (line-end-position)))
-    (comment-or-uncomment-region beg end)))
+  (let ((start (line-beginning-position))
+        (end (line-end-position)))
+    (when (or (not transient-mark-mode) (region-active-p))
+      (setq start (save-excursion
+                    (goto-char (region-beginning))
+                    (beginning-of-line)
+                    (point))
+            end (save-excursion
+                  (goto-char (region-end))
+                  (end-of-line)
+                  (point))))
+    (comment-or-uncomment-region start end)))
 
-(defun count-lines-region (start end)
-  "Print number of lines and characters in the region."
-  (interactive "r")
-  (message "Region has %d lines, %d characters"
-       (count-lines start end) (- end start))
-  (comment-or-uncomment-region start end))
-
-(require 'simple)
-
-(defun debug-the-thing (a b)
-  (interactive "r")
-  ; (message (format "%S %S" a b))
-  (message (format "start: %S" (line-number-at-pos a))))
-
-(define-key ergoemacs-user-keymap (kbd "C-/") 'debug-the-thing)
+(define-key ergoemacs-user-keymap (kbd "C-/") 'vmacs-comment-line)
 
 
 
