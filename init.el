@@ -146,37 +146,6 @@
 (defun centaur-tabs-buffer-groups ()
   (list (cond (t "vmacs"))))
 
-
-;; Stop someone from accidentally closing the dashboard.
-(defun centaur-tabs-hide-tab (x)
-  "Do no to show buffer X in tabs."
-  (let ((name (format "%s" x)))
-    (or
-     ;; Current window is not dedicated window.
-     (window-dedicated-p (selected-window))
-
-     ;; Buffer name not match below blacklist.
-     (string-prefix-p "*epc" name)
-     (string-prefix-p "*helm" name)
-     (string-prefix-p "*Helm" name)
-     (string-prefix-p "*Compile-Log*" name)
-     (string-prefix-p "*lsp" name)
-     (string-prefix-p "*company" name)
-     (string-prefix-p "*Flycheck" name)
-     (string-prefix-p "*tramp" name)
-     (string-prefix-p " *Mini" name)
-     (string-prefix-p "*help" name)
-     (string-prefix-p "*straight" name)
-     (string-prefix-p " *temp" name)
-     (string-prefix-p "*Help" name)
-     (string-prefix-p "*mybuf" name)
-     (string-prefix-p "*dashboard*" name)
-
-     ;; Is not magit buffer.
-     (and (string-prefix-p "magit" name)
-          (not (file-name-extension name)))
-     )))
-
 ;; Treemacs
 
 (package-install 'treemacs)
@@ -400,9 +369,10 @@
 ;;* End portion A.
 
 ;; Automatically re-open last session.
-; (desktop-save-mode 1)
-; (savehist-mode 1) 
-; (setq bookmark-save-flag t)
+(desktop-save-mode 1)
+;; I dunno if there's are necessary but it's working so I don't want to touch it.
+(savehist-mode 1) 
+(setq bookmark-save-flag t)
 
 ;; Single click folder expansion in treemacs.
 (with-eval-after-load 'treemacs
