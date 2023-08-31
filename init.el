@@ -412,16 +412,14 @@
 
 
 ;;! END IMPORTANT SECTION!
-
-;; This just kinda showed up here so I'm not gonna touch it incase I end up using sublimity.
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(delete-selection-mode nil)
- '(package-selected-packages '(sublimity)))
+ '(delete-selection-mode t)
+ '(package-selected-packages
+   '(treemacs treemacs-tab-bar treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired sublimity sly rainbow-delimiters paredit highlight-parentheses ergoemacs-mode doom-themes dashboard centaur-tabs all-the-icons)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
