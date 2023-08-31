@@ -382,7 +382,7 @@
   (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action))
 
 ;; Stop the delete key from being weird.
-(normal-erase-is-backspace-mode 1)
+; (normal-erase-is-backspace-mode 1)
 
 ;;! This section is for additional keybindings!
 ;; So this can be real nice. :)
@@ -417,7 +417,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(delete-selection-mode t)
+ '(delete-selection-mode 1)
  '(package-selected-packages
    '(treemacs treemacs-tab-bar treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired sublimity sly rainbow-delimiters paredit highlight-parentheses ergoemacs-mode doom-themes dashboard centaur-tabs all-the-icons)))
 (custom-set-faces
