@@ -7,6 +7,11 @@
 ;; Enable MELPA.
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;; Create required packages.
+(setq my-package-list '())
 
 ;; Turn off the startup message (for now).
 (setq inhibit-startup-message t)
@@ -41,14 +46,6 @@
       "Vmacs"))
 
 ;; We gotta start with the theme maaaan. Doom-one is the absolute nicest out there.
-
-(let ((cool-file "DOOMED.vmacs"))
-  (if (not (file-exists-p cool-file))
-      (progn
-        (write-region "" "" cool-file)
-        (package-install 'doom-themes))
-    (print "DOOM theme already installed, nice. 8)" #'external-debugging-output)))
-
 (use-package doom-themes
   :ensure t
   :config
@@ -74,7 +71,7 @@
 
 ;; Absolutely EVAPORATE ALL Emacs bindings!
 
-(package-install 'ergoemacs-mode )
+(use-package ergoemacs-mode :ensure t)
 
 (setq ergoemacs-theme nil)
 (setq ergoemacs-keyboard-layout "us")
@@ -83,7 +80,7 @@
 
 ;; All-the-icons!
 
-(package-install 'all-the-icons)
+(use-package all-the-icons :ensure t)
 
 ; Install those dang 'ol fonts
 (let ((cool-file "fonts-installed-vlisp.vmacs"))
@@ -93,16 +90,11 @@
         (all-the-icons-install-fonts t))
       (print "Fonts already installed, nice. 8)" #'external-debugging-output)))
 
-(use-package all-the-icons
+(use-package all-the-icons :ensure t
   :if (display-graphic-p))
-; (use-package all-the-icons
-;   :if (display-graphic-p))
 
 ;; Centaur-tabs
-
-(package-install 'centaur-tabs)
-
-(use-package centaur-tabs
+(use-package centaur-tabs :ensure t
   :demand
   :config
   (centaur-tabs-mode t)
@@ -131,9 +123,6 @@
   (list (cond (t "vmacs"))))
 
 ;; Treemacs
-
-(package-install 'treemacs)
-
 (use-package treemacs
   :ensure t
   :defer t
@@ -276,14 +265,13 @@
 
       ;; Useful things in dashboard
       (setq dashboard-footer-messages '("<- Rightclick the sidebar to get started!"))))
-(package-install 'dashboard)
 
 ;; Common Lisp POWER PACK WOO!
 
 ;;! SLIME goes here.
 
 ;; ParEdit
-(package-install 'paredit)
+(use-package paredit :ensure t)
 
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
 (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
@@ -301,7 +289,7 @@
 (if (>= vmacs-fancy-parentheses-highlight-mode 1)
   (progn 
     (print "Parentheses shadow mode enabled." #'external-debugging-output)
-    (package-install 'highlight-parentheses)
+    (use-package highlight-parentheses :ensure t)
     (require 'highlight-parentheses)
     (define-globalized-minor-mode global-highlight-parentheses-mode highlight-parentheses-mode
       (lambda nil (highlight-parentheses-mode t)))
@@ -311,7 +299,7 @@
 (if (>= vmacs-fancy-parentheses-highlight-mode 2)
   (progn
     (print "Parentheses rainbow mode enabled" #'external-debugging-output)
-    (package-install 'rainbow-delimiters)
+    (use-package rainbow-delimiters :ensure t)
     (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)))
 
 ;; All other cases. Mode 0, disabled.
