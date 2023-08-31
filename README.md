@@ -20,12 +20,13 @@ TODO:
 
 ~~reopen old tabs~~ (works :D)
 
-paste with selection region overwrite
-
-common lisp tools
+~~paste with selection region overwrite~~
 
 ~~shortcuts for enabling/disabling treemacs~~ (F5)
 
+fix delete key not deleting a selected region
+
+common lisp tools
 Hook up SLY.
 OR use slime?
 
