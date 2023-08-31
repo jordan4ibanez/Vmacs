@@ -386,6 +386,9 @@
 (keymap-set ergoemacs-user-keymap "<delete>" 'delete-forward-char)
 
 ;;! END IMPORTANT SECTION!
+
+;; This gets created by Easy-Customization
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Easy-Customization.html
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
