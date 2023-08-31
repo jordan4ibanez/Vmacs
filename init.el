@@ -38,7 +38,7 @@
 ;; Set the window title. https://emacs.stackexchange.com/a/46016
 ;; So all this is doing is building a string based on expressions!
 (setq frame-title-format
-      `((buffer-file-name "%b - ")
+    `((buffer-file-name "%b - ")
       "Vmacs"))
 
 ;; We gotta start with the theme maaaan. Doom-one is the absolute nicest out there.
@@ -375,6 +375,18 @@
 
 ;; Show/hide Treemacs.
 (define-key ergoemacs-user-keymap (kbd "<f5>") 'treemacs)
+
+;; Toggle comment out. https://stackoverflow.com/a/9697222
+;; FIXME: This needs to only take line numbers into consideration
+(defun comment-or-uncomment-region-or-line ()
+  "Comments or uncomments the region or the current line if there's no active region."
+  (interactive)
+  (let (beg end)
+    (if (region-active-p)
+        (setq beg (region-beginning) end (region-end))
+      (setq beg (line-beginning-position) end (line-end-position)))
+    (comment-or-uncomment-region beg end)))
+(define-key ergoemacs-user-keymap (kbd "C-/") 'comment-or-uncomment-region-or-line)
 
 
 
