@@ -22,9 +22,9 @@ TODO:
 
 ~~ctrl+/ to comment out region with ``'comment-region``~~ (WOOO)
 
-~~reopen old tabs~~ (works :D)
+~~reopen old tabs~~ ~~(works :D)~~ <-but a bad idea
 
-~~paste with selection region overwrite~~
+~~paste with selection region overwrite~~ (fixed)
 
 ~~shortcuts for enabling/disabling treemacs~~ (F5)
 
@@ -34,11 +34,11 @@ common lisp tools.
 
 Maybe some sort of linting?
 
-Maybe some sort of autocomplete/smart suggest?
+~~Maybe some sort of autocomplete/smart suggest?~~ corfu
 
-Hook up slime.
+~~Hook up slime.~~ (fixed)
 
-Add DrRacket SLY commands to make this thing an absolute beast.
+~~Add DrRacket SLY commands to make this thing an absolute beast.~~ (done)
 
 ## Package manager:
 
