@@ -72,19 +72,6 @@
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
 
-
-;; Testing sublimity
-;;! This causes weird issues!
-
-; (package-install 'sublimity)
-
-; (require 'sublimity)
-; (require 'sublimity-scroll)
-; (require 'sublimity-map) ;; experimental
-; (require 'sublimity-attractive)
-
-; (sublimity-mode 1)
-
 ;; Absolutely EVAPORATE ALL Emacs bindings!
 
 (package-install 'ergoemacs-mode )
@@ -293,8 +280,7 @@
 
 ;; Common Lisp POWER PACK WOO!
 
-;; SLY
-(package-install 'sly)
+;;! SLIME goes here.
 
 ;; ParEdit
 (package-install 'paredit)
@@ -417,7 +403,7 @@
  ;; If there is more than one, they won't work right.
  '(delete-selection-mode 1)
  '(package-selected-packages
-   '(treemacs treemacs-tab-bar treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired sublimity sly rainbow-delimiters paredit highlight-parentheses ergoemacs-mode doom-themes dashboard centaur-tabs all-the-icons)))
+   '(treemacs treemacs-tab-bar treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired rainbow-delimiters paredit highlight-parentheses ergoemacs-mode doom-themes dashboard centaur-tabs all-the-icons)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
