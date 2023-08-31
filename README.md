@@ -75,8 +75,6 @@ In between slime and sly, whichever is easier to install
 
 - ~~Smooth scrolling is included with Emacs as of version 29.1. You don't need sublimity - just enable pixel-scroll-precision-mode.~~ (REMOVED)
 
->^Note on sublimity, was only being used for the radar, it's kinda brittle.
-
 - Rather than installing packages with package-install, you should use use-package. (use-package my-package :ensure t) is all you need. If you set use-package-always-ensure to t, the :ensure t is not needed.
 
 - define-key is a legacy function. Use keymap-set instead.
