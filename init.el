@@ -10,9 +10,6 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; Create required packages.
-(setq my-package-list '())
-
 ;; Turn off the startup message (for now).
 (setq inhibit-startup-message t)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -119,8 +116,8 @@
 (setq centaur-tabs-adjust-buffer-order t)
 
 ;; Just dump EVERYTHING into a single group.
-(defun centaur-tabs-buffer-groups ()
-  (list (cond (t "vmacs"))))
+; (defun centaur-tabs-buffer-groups ()
+;   (list (cond (t "vmacs"))))
 
 ;; Treemacs
 (use-package treemacs
@@ -269,7 +266,16 @@
 ;; Common Lisp POWER PACK WOO!
 
 ;; SLIME (Vmacs REPL)
+(use-package slime :ensure t)
+
 (setq inferior-lisp-program "sbcl")
+
+(add-hook 'lisp-mode-hook '(lambda ()
+                                  (unless (get-process "SLIME Lisp")
+                                     (let ((oldbuff (current-buffer)))
+                                       (slime)
+                                       (switch-buffer oldbuff)))))
+
 
 
 ;; ParEdit
@@ -316,25 +322,28 @@
 
 ;;* Begin portion A. Credit: https://unix.stackexchange.com/questions/19874/prevent-unwanted-buffers-from-opening
 
-;; Makes *scratch* empty.
-(setq initial-scratch-message "")
+(setf vmacs-enable-debugging t)
 
-;; Removes *scratch* from buffer after the mode has been set.
-(defun remove-scratch-buffer ()
-  (if (get-buffer "*scratch*")
-      (kill-buffer "*scratch*")))
-(add-hook 'after-change-major-mode-hook 'remove-scratch-buffer)
+(if vmacs-enable-debugging (progn 
+  ;; Makes *scratch* empty.
+  (setq initial-scratch-message "")
 
-;; Removes *messages* from the buffer.
-(setq-default message-log-max nil)
-(kill-buffer "*Messages*")
+  ;; Removes *scratch* from buffer after the mode has been set.
+  (defun remove-scratch-buffer ()
+    (if (get-buffer "*scratch*")
+        (kill-buffer "*scratch*")))
+  (add-hook 'after-change-major-mode-hook 'remove-scratch-buffer)
 
-;; Removes *Completions* from buffer after you've opened a file.
-(add-hook 'minibuffer-exit-hook
-      '(lambda ()
-         (let ((buffer "*Completions*"))
-           (and (get-buffer buffer)
-                (kill-buffer buffer)))))
+  ;; Removes *messages* from the buffer.
+  (setq-default message-log-max nil)
+  (kill-buffer "*Messages*")
+
+  ;; Removes *Completions* from buffer after you've opened a file.
+  (add-hook 'minibuffer-exit-hook
+        '(lambda ()
+          (let ((buffer "*Completions*"))
+            (and (get-buffer buffer)
+                  (kill-buffer buffer)))))))
 
 ;; Don't show *Buffer list* when opening multiple files at the same time.
 (setq inhibit-startup-buffer-menu t)
@@ -382,10 +391,14 @@
                   (point))))
     (comment-or-uncomment-region start end)))
 
-(keymap-set ergoemacs-user-keymap "C-/" 'vmacs-comment-line)
+; (keymap-set ergoemacs-user-keymap "C-/" 'vmacs-comment-line)
 
 ;; Make the del key behave like normal.
 (keymap-set ergoemacs-user-keymap "<delete>" 'delete-forward-char)
+
+
+
+
 
 ;;! END IMPORTANT SECTION!
 
