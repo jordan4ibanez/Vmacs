@@ -71,7 +71,7 @@ In between slime and sly, whichever is easier to install
 
 ### Ican'tThinkOfAGoodName's ideas:
 
-- You can remove the call to package-initialize. It's not necessary since Emacs 27.
+- ~~You can remove the call to package-initialize. It's not necessary since Emacs 27.~~
 
 - Smooth scrolling is included with Emacs as of version 29.1. You don't need sublimity - just enable pixel-scroll-precision-mode.
 
