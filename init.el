@@ -35,7 +35,7 @@
 (delete-selection-mode 1)
 
 ;; Automatically maximize Vmacs.
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Set the window title. https://emacs.stackexchange.com/a/46016
 ;; So all this is doing is building a string based on expressions!
@@ -114,33 +114,45 @@
 ; (use-package all-the-icons
 ;   :if (display-graphic-p))
 
+
+;; Awesome-tabs
+
+(package-install 'awesome-tab)
+
+git clone --depth=1 https://github.com/manateelazycat/awesome-tab.git
+
+(use-package awesome-tab
+  :load-path "path/to/your/awesome-tab"
+  :config
+  (awesome-tab-mode t))
+
 ;; Centaur-tabs
 
-(package-install 'centaur-tabs)
+; (package-install 'centaur-tabs)
 
-(use-package centaur-tabs
-  :demand
-  :config
-  (centaur-tabs-mode t)
-  :bind
-  ("C-<iso-lefttab>" . centaur-tabs-backward)
-  ("C-<tab>" . centaur-tabs-forward))
+; (use-package centaur-tabs
+;   :demand
+;   :config
+;   (centaur-tabs-mode t)
+;   :bind
+;   ("C-<iso-lefttab>" . centaur-tabs-backward)
+;   ("C-<tab>" . centaur-tabs-forward))
 
 ;; Make tab scrolling behave like VSCode/Pulsar.
 ;; (setq centaur-tabs-cycle-scope 'tabs)
-(setq centaur-tabs-style "alternate")
+; (setq centaur-tabs-style "alternate")
 ;; Bigger height for 1920x1080
-(setq centaur-tabs-height 32)
-(setq centaur-tabs-set-icons t)
-(setq centaur-tabs-close-button " x ")
+; (setq centaur-tabs-height 32)
+; (setq centaur-tabs-set-icons t)
+; (setq centaur-tabs-close-button " x ")
 
 ;; Little * when modified but not saved.
-(setq centaur-tabs-set-modified-marker t)
-(setq centaur-tabs-modified-marker "*")
+; (setq centaur-tabs-set-modified-marker t)
+; (setq centaur-tabs-modified-marker "*")
 
 ;; Now make it automatically alphabetically order! :D
-(centaur-tabs-enable-buffer-alphabetical-reordering)
-(setq centaur-tabs-adjust-buffer-order t)
+; (centaur-tabs-enable-buffer-alphabetical-reordering)
+; (setq centaur-tabs-adjust-buffer-order t)
 
 
 
@@ -396,6 +408,11 @@
 
 ;;* End portion A.
 
+;; Automatically re-open last session.
+(desktop-save-mode 1)
+(savehist-mode 1) 
+(setq bookmark-save-flag t)
+
 ;; Single click folder expansion in treemacs.
 (with-eval-after-load 'treemacs
   (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action))
@@ -415,12 +432,22 @@
   "Comments or uncomments the region or the current line if there's no active region."
   (interactive)
   (let (beg end)
-    (print (format "%s, end" beg end) #'external-debugging-output)
+    ; (print (format "%s, end" beg end) #'external-debugging-output)
     (if (region-active-p)
+        ; (print "hi there" #'external-debugging-output)
         (setq beg (region-beginning) end (region-end))
-      (setq beg (line-beginning-position) end (line-end-position)))
+        (message (format "blah %s" (line-number-at-pos region-beginning) #'external-debugging-output))
+        ; (print (format "%s" (count-lines (region-beginning) (region-end))) #'external-debugging-output)
+        (setq beg (line-beginning-position) end (line-end-position)))
     (comment-or-uncomment-region beg end)))
-(define-key ergoemacs-user-keymap (kbd "C-/") 'comment-or-uncomment-region-or-line)
+
+(defun count-lines-region (start end)
+  "Print number of lines and characters in the region."
+  (interactive "r")
+  (message "Region has %d lines, %d characters"
+       (count-lines start end) (- end start)))
+
+(define-key ergoemacs-user-keymap (kbd "C-/") 'count-lines-region)
 
 
 
