@@ -460,7 +460,26 @@
 (keymap-set ergoemacs-user-keymap "<delete>" 'delete-forward-char)
 
 ;; Disable escape from trying to exit files.
-(keymap-set ergoemacs-user-keymap "<escape>" nil)
+;; https://www.reddit.com/r/emacs/comments/10l40yi/how_do_i_make_esc_stop_closing_all_my_windows/ (danderzei)
+(defun keyboard-escape-quit-alt ()
+  "Alternative version of `keyboard-escape-quit` that does not change windows."
+  (interactive)
+  (cond ((eq last-command 'mode-exited) nil)
+        ((region-active-p)
+         (deactivate-mark))
+        ((> (minibuffer-depth) 0)
+         (abort-recursive-edit))
+        (current-prefix-arg
+         nil)
+        ((> (recursion-depth) 0)
+         (exit-recursive-edit))
+        (buffer-quit-function
+         (funcall buffer-quit-function))
+        ;;((not (one-window-p t))
+        ;; (delete-other-windows))
+        ((string-match "^ \\*" (buffer-name (current-buffer)))
+         (bury-buffer))))
+(keymap-set ergoemacs-user-keymap "<escape>" 'keyboard-escape-quit)
 
 
 ;; Start up SLIME:  F12
