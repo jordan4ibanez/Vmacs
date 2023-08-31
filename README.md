@@ -10,6 +10,10 @@
 
 Fun fact: This was bootstrapped with VSCode. :D
 
+First there was emacs, then there was evil mode, crazy mode after that.
+
+I present to you: Lazy mode.
+
 ### How to install:
 It is expected that you have SBCL installed and in your system path.
 
