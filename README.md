@@ -60,6 +60,8 @@ Add DrRacket SLY commands to make this thing an absolute beast.
 
 [CTRLF](https://github.com/radian-software/ctrlf) (The <u>**BEST**</u> search utility I could find!)
 
+[corfu.el](https://github.com/minad/corfu) (Autocomplete - Set to INSTANT by default.)
+
 ;; Lispy stuff!
 
 [ParEdit](https://www.emacswiki.org/emacs/ParEdit) (Lisp parenthesis balancer)

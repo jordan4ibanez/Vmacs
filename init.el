@@ -157,6 +157,7 @@
   (with-eval-after-load 'winum
     (keymap-set winum-keymap "M-0" #'treemacs-select-window))
   :config
+  
   (progn
     (setq treemacs-collapse-dirs                   (if treemacs-python-executable 3 0)
           treemacs-deferred-git-apply-delay        0.5
@@ -307,6 +308,21 @@
 
 ;;!!!! Common Lisp POWER PACK WOO!!!!
 
+
+;; corfu (autocomplete)
+(use-package corfu :ensure t)
+(setq corfu-auto t)
+
+;;! This is called this for a reason :)
+(defvar i-have-a-fast-computer t)
+
+(if i-have-a-fast-computer
+  (setq corfu-auto        t
+        corfu-auto-delay  0 ;; TOO SMALL - NOT RECOMMENDED
+        corfu-auto-prefix 1 ;; TOO SMALL - NOT RECOMMENDED
+        completion-styles '(basic)))
+
+(global-corfu-mode)
 
 
 ;; SLIME (Vmacs REPL)
