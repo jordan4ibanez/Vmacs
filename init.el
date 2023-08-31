@@ -114,45 +114,33 @@
 ; (use-package all-the-icons
 ;   :if (display-graphic-p))
 
-
-;; Awesome-tabs
-
-(package-install 'awesome-tab)
-
-git clone --depth=1 https://github.com/manateelazycat/awesome-tab.git
-
-(use-package awesome-tab
-  :load-path "path/to/your/awesome-tab"
-  :config
-  (awesome-tab-mode t))
-
 ;; Centaur-tabs
 
-; (package-install 'centaur-tabs)
+(package-install 'centaur-tabs)
 
-; (use-package centaur-tabs
-;   :demand
-;   :config
-;   (centaur-tabs-mode t)
-;   :bind
-;   ("C-<iso-lefttab>" . centaur-tabs-backward)
-;   ("C-<tab>" . centaur-tabs-forward))
+(use-package centaur-tabs
+  :demand
+  :config
+  (centaur-tabs-mode t)
+  :bind
+  ("C-<iso-lefttab>" . centaur-tabs-backward)
+  ("C-<tab>" . centaur-tabs-forward))
 
-;; Make tab scrolling behave like VSCode/Pulsar.
-;; (setq centaur-tabs-cycle-scope 'tabs)
-; (setq centaur-tabs-style "alternate")
-;; Bigger height for 1920x1080
-; (setq centaur-tabs-height 32)
-; (setq centaur-tabs-set-icons t)
-; (setq centaur-tabs-close-button " x ")
+; Make tab scrolling behave like VSCode/Pulsar.
+; (setq centaur-tabs-cycle-scope 'tabs)
+(setq centaur-tabs-style "alternate")
+; Bigger height for 1920x1080
+(setq centaur-tabs-height 32)
+(setq centaur-tabs-set-icons t)
+(setq centaur-tabs-close-button " x ")
 
-;; Little * when modified but not saved.
-; (setq centaur-tabs-set-modified-marker t)
-; (setq centaur-tabs-modified-marker "*")
+; Little * when modified but not saved.
+(setq centaur-tabs-set-modified-marker t)
+(setq centaur-tabs-modified-marker "*")
 
-;; Now make it automatically alphabetically order! :D
-; (centaur-tabs-enable-buffer-alphabetical-reordering)
-; (setq centaur-tabs-adjust-buffer-order t)
+; Now make it automatically alphabetically order! :D
+(centaur-tabs-enable-buffer-alphabetical-reordering)
+(setq centaur-tabs-adjust-buffer-order t)
 
 
 
