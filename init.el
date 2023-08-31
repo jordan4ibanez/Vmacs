@@ -373,10 +373,11 @@
 ;;* End portion A.
 
 ;; Automatically re-open last session.
-(desktop-save-mode 1)
+;; ! This causes problems !!!
+; (desktop-save-mode 1)
 ;; I dunno if there's are necessary but it's working so I don't want to touch it.
-(savehist-mode 1) 
-(setq bookmark-save-flag t)
+; (savehist-mode 1) 
+; (setq bookmark-save-flag t)
 
 ;; Single click folder expansion in treemacs.
 (with-eval-after-load 'treemacs
