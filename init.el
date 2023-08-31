@@ -142,6 +142,9 @@
 (centaur-tabs-enable-buffer-alphabetical-reordering)
 (setq centaur-tabs-adjust-buffer-order t)
 
+;; Just dump EVERYTHING into a single group.
+(defun centaur-tabs-buffer-groups ()
+  (list (cond (t "vmacs"))))
 
 
 ;; Stop someone from accidentally closing the dashboard.
@@ -397,9 +400,9 @@
 ;;* End portion A.
 
 ;; Automatically re-open last session.
-(desktop-save-mode 1)
-(savehist-mode 1) 
-(setq bookmark-save-flag t)
+; (desktop-save-mode 1)
+; (savehist-mode 1) 
+; (setq bookmark-save-flag t)
 
 ;; Single click folder expansion in treemacs.
 (with-eval-after-load 'treemacs
