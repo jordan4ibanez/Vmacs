@@ -509,9 +509,12 @@
 
 ;; This replaces project dired with some actual useful utility.
 (define-key global-map
-	    [menu-bar file project-dired]
+	    [menu-bar file dired]
 	    '("Open Folder" . treemacs-add-project-to-workspace))
 
+(define-key global-map
+	    [menu-bar file project-dired]
+	    '("Close Folder" . treemacs-remove-project-from-workspace))
 
 ;;! End the drop down menu modifications!
 
