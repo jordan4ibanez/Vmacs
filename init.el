@@ -31,6 +31,9 @@
 ;; Make the cursor actually usable. [] -> |
 (setq-default cursor-type 'bar)
 
+;; ONLY spaces please!
+(setf indent-tabs-mode nil)
+
 ;; Make pasting/selection overwrite work like normal.
 ;; FIXME: Think needs: https://www.gnu.org/software/emacs/manual/html_node/emacs/CUA-Bindings.html
 (delete-selection-mode 1)
@@ -99,6 +102,7 @@
   ("C-<iso-lefttab>" . centaur-tabs-backward)
   ("C-<tab>" . centaur-tabs-forward))
 
+
 ; Make tab scrolling behave like VSCode/Pulsar.
 ; (setq centaur-tabs-cycle-scope 'tabs)
 (setq centaur-tabs-style "alternate")
@@ -109,7 +113,7 @@
 
 ; Little * when modified but not saved.
 (setq centaur-tabs-set-modified-marker t)
-(setq centaur-tabs-modified-marker "*")
+(setq centaur-tabs-modified-marker " * ")
 
 ; Now make it automatically alphabetically order! :D
 (centaur-tabs-enable-buffer-alphabetical-reordering)
@@ -378,6 +382,9 @@
 ;; I dunno if there's are necessary but it's working so I don't want to touch it.
 ; (savehist-mode 1) 
 ; (setq bookmark-save-flag t)
+;;* ^Continued from here.
+;;* Instead, we'll just automatically maximize the window
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Single click folder expansion in treemacs.
 (with-eval-after-load 'treemacs
