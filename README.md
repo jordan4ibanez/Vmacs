@@ -26,9 +26,13 @@ TODO:
 
 ~~fix delete key not deleting a selected region~~ (WOOOO!)
 
-common lisp tools
-Hook up SLY.
-OR use slime?
+common lisp tools.
+
+Maybe some sort of linting?
+
+Maybe some sort of autocomplete/smart suggest?
+
+Hook up slime.
 
 Add DrRacket SLY commands to make this thing an absolute beast.
 
