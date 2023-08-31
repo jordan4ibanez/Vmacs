@@ -32,6 +32,10 @@
 ;; Make the cursor actually usable. [] -> |
 (setq-default cursor-type 'bar)
 
+;; Make pasting/selection overwrite work like normal.
+;; FIXME: Think needs: https://www.gnu.org/software/emacs/manual/html_node/emacs/CUA-Bindings.html
+(delete-selection-mode 1)
+
 ;; Automatically maximize Vmacs.
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
