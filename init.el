@@ -7,7 +7,6 @@
 ;; Enable MELPA.
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
 
 ;; Turn off the startup message (for now).
 (setq inhibit-startup-message t)
