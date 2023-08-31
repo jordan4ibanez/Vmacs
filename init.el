@@ -292,7 +292,7 @@
       (setq dashboard-set-file-icons t)
 
       ;; Useful things in dashboard
-      (setq dashboard-footer-messages '("<- Rightclick the sidebar to get started!"))))
+      (setq dashboard-footer-messages '("Now with extra lisp!"))))
 
 
 ;; CTRLF - BETTER SEARCHING YEAH!
