@@ -74,6 +74,9 @@ Maybe some sort of linting?
 
 [diff-hl](https://github.com/dgutov/diff-hl) (Shows uncommitted lines in the gutter)
 
+[hl-todo](https://github.com/tarsius/hl-todo) (Shows colored todo fixme, and other things)
+NOTE: Document this!
+
 ;; Lispy stuff!
 
 [ParEdit](https://www.emacswiki.org/emacs/ParEdit) (Lisp parenthesis balancer)
