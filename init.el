@@ -548,8 +548,18 @@
 ;; Make the del key behave like normal.
 (keymap-set ergoemacs-user-keymap "<delete>" 'delete-forward-char)
 
-;; Make CTRL+backspace work like VSCode
-(keymap-set ergoemacs-user-keymap "C-<backspace>" 'delete-horizontal-space)
+;; Make CTRL+backspace work like VSCode https://emacs.stackexchange.com/a/30404
+(defun backward-kill-char-or-word ()
+  (interactive)
+  (cond 
+   ((looking-back (rx (char word)) 1)
+    (backward-kill-word 1))
+   ((looking-back (rx (char blank)) 1)
+    (delete-horizontal-space t))
+   (t
+    (backward-delete-char 1))))
+
+(keymap-set ergoemacs-user-keymap "C-<backspace>" 'backward-kill-char-or-word)
 
 ;; Disable escape from trying to exit files.
 ;; https://www.reddit.com/r/emacs/comments/10l40yi/how_do_i_make_esc_stop_closing_all_my_windows/ (danderzei)
