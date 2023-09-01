@@ -35,13 +35,9 @@ Should be good from there on out.
 
 ### TODO:
 
-~~Was working on ultra reload, to hot reload the config~~ (F9 reloads the config)
-
 CTRL+BACKSPACE deletes the indentation OR word (no idea how to make this work)
 
 Autosave
-
-~~See if there is a way to remember where the buffer was scrolled when reopening files~~ (save-place-mode enabled)
 
 Better comments like VSCode
 
