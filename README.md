@@ -34,6 +34,8 @@ Should be good from there on out.
 
 ### TODO:
 
+Was working on ultra reload, to hot reload the config
+
 CTRL+BACKSPACE deletes the indentation OR word (no idea how to make this work)
 
 Autosave
