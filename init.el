@@ -4,7 +4,7 @@
 ;; I hope the user followed the directions or this ain't gonna work. :T
 (add-to-list 'load-path "~/.emacs.d/vmacs/")
 
-;; Enable MELPA.
+;;pd Enable MELPA.
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
@@ -57,11 +57,12 @@
       "Vmacs"))
 
 ;; We gotta start with the theme maaaan. Doom-one is the absolute nicest out there.
+;;pd Doom themes
 (use-package doom-themes
   :ensure t
   :config
   ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+  (setq doom-themes-enable-bold t ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
   (load-theme 'doom-one t)
 
@@ -80,14 +81,13 @@
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
 
-;; DOOM Modeline
+;;pd DOOM Modeline
 (use-package doom-modeline
   :ensure t
   :hook (after-init . doom-modeline-mode))
 
 ;; Absolutely EVAPORATE ALL Emacs bindings!
-;;! ERGOEMACS WOOOO
-
+;;pd ergoemacs
 (use-package ergoemacs-mode :ensure t)
 
 (setq ergoemacs-theme nil)
@@ -95,8 +95,7 @@
 (require 'ergoemacs-mode)
 (ergoemacs-mode 1)
 
-;; All-the-icons!
-
+;;pd All-the-icons!
 (use-package all-the-icons :ensure t)
 
 ; Install those dang 'ol fonts
@@ -110,7 +109,8 @@
 (use-package all-the-icons :ensure t
   :if (display-graphic-p))
 
-;; Centaur-tabs
+;;pd Centaur-tabs
+;;note: tabs like vscode
 (use-package centaur-tabs :ensure t
   :demand
   :config
@@ -166,7 +166,8 @@
           (not (file-name-extension name)))
      )))
 
-;; Treemacs
+;;pd Treemacs
+;;note: vscode style sidebar
 (if (not vmacs-hot-reload)
     (progn
       (use-package treemacs
@@ -282,7 +283,8 @@
 	:ensure t
 	:config (treemacs-set-scope-type 'Tabs))))
 
-;; Atom style dashboard.
+;;pd dashboard
+;;note: Atom style dashboard
 
 ;; Enabled by default.
 (defvar enable-vmacs-dashboard t)
@@ -313,8 +315,8 @@
       (setq dashboard-footer-messages '("Now with extra lisp!"))))
 
 
-;; CTRLF - BETTER SEARCHING YEAH!
-
+;;pd CTRLF
+;;note: BETTER SEARCHING YEAH!
 (use-package ctrlf :ensure t)
 (ctrlf-mode +1)
 (with-eval-after-load 'ctrlf
@@ -324,16 +326,18 @@
                       (keymap-set ergoemacs-user-keymap "C-S-<return>" #'ctrlf-backward-default))
 
 
-;;!!!! Common Lisp POWER PACK WOO!!!!
+;;yell !!!! Common Lisp POWER PACK WOO!!!!
 
-;; diff-hl (shows unmerged line changes)
+;;pd diff-hl
+;;note: shows unmerged line changes
 (use-package diff-hl :ensure t)
 
 (diff-hl-flydiff-mode)
 (global-diff-hl-mode)
 
 
-;; corfu (autocomplete)
+;;pd corfu
+;;note: autocomplete
 (use-package corfu :ensure t)
 (setq corfu-auto t)
 
@@ -349,13 +353,15 @@
 (global-corfu-mode)
 
 
-;; SLIME (Vmacs REPL)
+;;pd SLIME
+;;note: Vmacs Common Lisp REPL
 (use-package slime :ensure t)
 
 (setq inferior-lisp-program "sbcl")
 
 
 ;;pd ParEdit
+;;note: Enforce Common Lisp bracket styling
 (use-package paredit :ensure t)
 
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
@@ -390,22 +396,35 @@
 ;; All other cases. Mode 0, disabled.
 (if (<= vmacs-fancy-parentheses-highlight-mode 0) (print "Parentheses mode disabled." #'external-debugging-output))
 
-;; hl-todo
+;;pd hl-todo
+;;note: enables all these nice colorful comments
 (use-package hl-todo :ensure t)
 
-;; FIXME: Use this to add/modify useful words in hl-todo, pink ain't going to cut it
 (setq hl-todo-keyword-faces
       '(("WARNING"    . "#FF0000")  ;; Pure RED
         ;; Stands for Very Important Section.
         ("VIS"        . "#FF0000")
         ("vis"        . "#FF0000")
+        ;; Does what it says on the tin. :D
+        ;; Don't yell too much, or you'll hurt your eyes!
+        ("YELL"       . "#41FDFE")  ;; Bright Cyan
+        ("yell"       . "#41FDFE")
+        ;; I suppose you're gonna write angry comments someday. Here you go.
+        ("ANGER"      . "#dd0055")  ;; Anger (yes that's the color name)
+        ("anger"      . "#dd0055")
         ;; If you're making a todo list you can list them like shown below.
         ;; Literally stands for "Todo Todo". :P
         ("TODO"       . "#3c8d0d")  ;; Christmas Green.
         ("TT"         . "#3c8d0d")
         ("tt"         . "#3c8d0d")
         ("NOTE"       . "#4F7942")  ;; Fern Green
+        ("note"       . "#4F7942")
         ("SUGGESTION" . "#4F7942")
+        ("suggestion" . "#4F7942")
+        ;; Sometimes, you just gotta say it. Like "why is this even here??" type comments.
+        ;; Hot pink on a dark theme definitely makes me say wtf.
+        ("WTF"        . "#FF69B4")  ;; Hot pink
+        ("wtf"        . "#FF69B4")
         ;; Stands for Documentation Section
         ("DS"         . "#4F7942")
         ("ds"         . "#4F7942")
@@ -413,8 +432,9 @@
         ("PD"         . "#fcb829")  ;; Mustard yellow
         ("pd"         . "#fcb829")
         ("FIXME"      . "#FF7518")  ;; Pumpkin orange
-        ("FIX"        . "#FF7518")
         ("PLEASE FIX" . "#FF7518")
+        ("fixme"      . "#FF7518")
+        ("please fix" . "#FF7518")
         ("DEBUG"      . "#A020F0")  ;; Pure PURPLE
         ("GOTCHA"     . "#FF4500")  ;; Orange red
         ("STUB"       . "#1E90FF")));; Dodger blue
@@ -442,8 +462,8 @@
 ;;tt 2.) do something else
 ;;TT 3.) The thing is now done
 
-;;vis Very important section!
-;;vis This section is specifically designated for quality of life improvements!
+;;yell BEGIN VERY IMPORTANT SECTION!
+;;note: This section is specifically designated for quality of life improvements!
 
 ;;DS Begin portion A. Credit: https://unix.stackexchange.com/questions/19874/prevent-unwanted-buffers-from-opening
 
@@ -577,10 +597,10 @@
 (keymap-set ergoemacs-user-keymap "<f9>" 'vmacs-hot-reload)
 
 
-;;! END IMPORTANT SECTION!
+;;yell END VERY IMPORTANT SECTION!
 
 
-;;! Begin the drop down menu modifications!
+;;note: vis Begin the drop down menu modifications!
 
 ;; Make the "File" menu less confusing to new users.
 (define-key global-map [menu-bar file project-dired] nil)
@@ -595,7 +615,7 @@
 	    [menu-bar file project-dired]
 	    '("Close Folder" . treemacs-remove-project-from-workspace))
 
-;;! End the drop down menu modifications!
+;;note: End the drop down menu modifications!
 
 ;; This gets created by Easy-Customization
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Easy-Customization.html
