@@ -392,9 +392,9 @@
 
 ;;* Begin portion A. Credit: https://unix.stackexchange.com/questions/19874/prevent-unwanted-buffers-from-opening
 
-(setf vmacs-disable-debugging t)
+(setf vmacs-enable-debugging nil)
 
-(if vmacs-disable-debugging (progn 
+(if vmacs-enable-debugging (progn 
   ;; Makes *scratch* empty.
   (setq initial-scratch-message "")
 
@@ -469,6 +469,9 @@
 
 ;; Make the del key behave like normal.
 (keymap-set ergoemacs-user-keymap "<delete>" 'delete-forward-char)
+
+;; Make CTRL+backspace work like VSCode
+(keymap-set ergoemacs-user-keymap "C-<backspace>" 'delete-horizontal-space)
 
 ;; Disable escape from trying to exit files.
 ;; https://www.reddit.com/r/emacs/comments/10l40yi/how_do_i_make_esc_stop_closing_all_my_windows/ (danderzei)
