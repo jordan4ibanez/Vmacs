@@ -32,13 +32,13 @@ Should be good from there on out.
 
 ### TODO:
 
-CTRL+BACKSPACE deletes the indentation OR word
+CTRL+BACKSPACE deletes the indentation OR word (no idea how to make this work)
 
 Autosave
 
 See if there is a way to remember where the buffer was scrolled when reopening files
 
-
+Better comments like VSCode
 
 common lisp tools.
 
