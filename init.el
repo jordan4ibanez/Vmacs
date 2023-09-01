@@ -34,6 +34,9 @@
 (line-number-mode 1)
 (global-display-line-numbers-mode 1)
 
+;; Save place in line between sessions
+(save-place-mode 1)
+
 ;; Stop the mouse scroll wheel from going crazy.
 (setq mouse-wheel-progressive-speed nil)
 ;; Use default VSCode/Pulsar scrolling
