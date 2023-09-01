@@ -383,9 +383,34 @@
 ;; All other cases. Mode 0, disabled.
 (if (<= vmacs-fancy-parentheses-highlight-mode 0) (print "Parentheses mode disabled." #'external-debugging-output))
 
-; (show-paren-mode 1)
-; (setq show-paren-when-point-inside-paren 1)
-; (setq show-paren-delay 0)
+;; hl-todo
+(use-package hl-todo :ensure t)
+
+;; Patch it to enable whole line TODO FIXME etc commenting
+(defun hl-todo--setup-regexp ()
+  (concat "\\(\\<"
+          "\\(" (mapconcat #'car hl-todo-keyword-faces "\\|") "\\)"
+          "\\>"
+	  "[^\"\n]*\\)"))
+
+(defun hl-todo--setup ()
+  (hl-todo--setup-regexp)
+  (setq hl-todo--keywords
+	`((,(lambda (bound) (hl-todo--search nil bound))
+	   (0 (hl-todo--get-face) prepend t))))
+  (font-lock-add-keywords nil hl-todo--keywords t))
+
+(defvar hl-todo--syntax-table (copy-syntax-table text-mode-syntax-table))
+
+;; FIXME: Use this to add/modify useful words in hl-todo, pink ain't going to cut it
+;; (setq hl-todo-keyword-faces
+;;       '(("TODO"   . "#FF0000")
+;;         ("FIXME"  . "#FF0000")
+;;         ("DEBUG"  . "#A020F0")
+;;         ("GOTCHA" . "#FF4500")
+;;         ("STUB"   . "#1E90FF")))
+
+(global-hl-todo-mode 1)
 
 ;;! Very important section!
 ;;! This section is specifically designated for quality of life improvements!
