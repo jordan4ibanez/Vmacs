@@ -7,8 +7,14 @@
 ;; Enable MELPA.
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(unless package-archive-contents
-  (package-refresh-contents))
+
+;; Turning this off can speed up startup time quite a bit!
+(setq turn-on-automatic-package-updates nil)
+
+(if turn-on-automatic-package-updates 
+    (progn
+      (unless package-archive-contents
+        (package-refresh-contents))))
 
 ;; Turn off the startup message (for now).
 (setq inhibit-startup-message t)
