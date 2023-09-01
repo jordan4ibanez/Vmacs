@@ -14,6 +14,8 @@ First there was emacs, then there was evil mode, crazy mode after that.
 
 I present to you: Lazy mode.
 
+This version of Emacs is tailored as much as I can to behave like VSCode and be tailored to Common Lisp development.
+
 ### How to install:
 It is expected that you have SBCL installed and in your system path.
 
