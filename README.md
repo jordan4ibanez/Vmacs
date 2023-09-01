@@ -39,8 +39,6 @@ CTRL+BACKSPACE deletes the indentation OR word (no idea how to make this work)
 
 Autosave
 
-~~Better comments like VSCode~~ (hl-todo)
-
 common lisp tools.
 
 Maybe some sort of linting?
