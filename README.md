@@ -41,7 +41,7 @@ CTRL+BACKSPACE deletes the indentation OR word (no idea how to make this work)
 
 Autosave
 
-See if there is a way to remember where the buffer was scrolled when reopening files
+~~See if there is a way to remember where the buffer was scrolled when reopening files~~ (save-place-mode enabled)
 
 Better comments like VSCode
 
