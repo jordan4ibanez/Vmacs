@@ -91,3 +91,11 @@ Maybe some sort of linting?
 
 - You can make this go in a different file by modifying the custom-file variable.
 >^ Going to look into this
+
+### mrkubax10's ideas:
+- Also maybe it would be possible to remove some unnecessary Emacs bloat like ERC, gnus etc. also games
+>^
+- Anything that you don't use probably. Major modes for languages for example. No idea if it's possible to remove that
+>^
+- Also as I said these "programs" inside Emacs like ERC, gnus, rmail, Tetris, Snake, Adventure etc
+>^ I would also like this
