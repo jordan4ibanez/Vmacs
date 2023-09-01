@@ -35,13 +35,15 @@ Should be good from there on out.
 
 ### TODO:
 
-~~CTRL+BACKSPACE deletes the indentation OR word (no idea how to make this work)~~ (solved!)
+transition to smartparens for better new programmer experience
+
+figure out if there's a way to disable region getting removed on shift+tab
 
 Autosave
 
 common lisp tools.
 
-Maybe some sort of linting?
+~~Maybe some sort of linting?~~ (there's nothing)
 
 
 ## Package manager:
