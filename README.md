@@ -32,7 +32,7 @@ Should be good from there on out.
 
 ### TODO:
 
-CTRL+BACKSPACE deletes the line, not the rest of the buffe
+CTRL+BACKSPACE deletes the indentation OR word
 
 Autosave
 
