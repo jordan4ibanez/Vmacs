@@ -22,7 +22,15 @@ If you're unsure of this, try running ``sbcl`` in your terminal/command prompt.
 Git clone this into a folder called ``.emacs.d`` in your home directory.
 Start Emacs, it'll automatically start to install.
 
-TODO:
+A small note: The first time you start it up it's going to take a minute to install all the packages.
+
+Once it gets to the dashboard, let all the warnings with SLIME finish (wrongly documented functions etc) and then close and open back up emacs.
+
+If you don't want to ever check for updates, or maybe only once in a while, I have ``turn-on-automatic-package-updates``. I recommend once in a while because it slows down startup a lot. 
+
+Should be good from there on out.
+
+### TODO:
 
 CTRL+BACKSPACE deletes the line, not the rest of the buffer
 
