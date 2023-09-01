@@ -28,7 +28,8 @@ A small note: The first time you start it up it's going to take a minute to inst
 
 Once it gets to the dashboard, let all the warnings with SLIME finish (wrongly documented functions etc) and then close and open back up emacs.
 
-If you don't want to ever check for updates, or maybe only once in a while, I have ``turn-on-automatic-package-updates``. I recommend once in a while because it slows down startup a lot. 
+If you don't want to ever check for updates, or maybe only once in a while, there is ``turn-on-automatic-package-updates``. I recommend once in a while because it slows down startup a lot.
+It's enabled by default, though.
 
 Should be good from there on out.
 
