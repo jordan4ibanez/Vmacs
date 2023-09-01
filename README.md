@@ -32,33 +32,18 @@ Should be good from there on out.
 
 ### TODO:
 
-CTRL+BACKSPACE deletes the line, not the rest of the buffer
+CTRL+BACKSPACE deletes the line, not the rest of the buffe
 
 Autosave
 
 See if there is a way to remember where the buffer was scrolled when reopening files
 
-~~**STOP ESCAPE FROM TRYING TO CLOSE THE BUFFER IT'S SO IRRITATING.**~~ (fixed!)
 
-~~ctrl+/ to comment out region with ``'comment-region``~~ (WOOO)
-
-~~reopen old tabs~~ ~~(works :D)~~ <-but a bad idea
-
-~~paste with selection region overwrite~~ (fixed)
-
-~~shortcuts for enabling/disabling treemacs~~ (F5)
-
-~~fix delete key not deleting a selected region~~ (WOOOO!)
 
 common lisp tools.
 
 Maybe some sort of linting?
 
-~~Maybe some sort of autocomplete/smart suggest?~~ corfu
-
-~~Hook up slime.~~ (fixed)
-
-~~Add DrRacket SLY commands to make this thing an absolute beast.~~ (done)
 
 ## Package manager:
 
