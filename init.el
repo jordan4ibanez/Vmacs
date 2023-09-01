@@ -509,7 +509,17 @@
     (keymap-set ergoemacs-user-keymap "C-d" 'slime-eval-defun)
     (keymap-set ergoemacs-user-keymap "C-r" 'slime-eval-buffer)))
 
+;; Fix home key not going to beggining of line's text!
+(keymap-set ergoemacs-user-keymap "<home>" 'back-to-indentation)
 
+
+;; Vmacs ULTRA RELOAD
+(defun reload-dotemacs-file ()
+  "reload your .emacs file without restarting Emacs"
+
+  (interactive)
+
+  (load-file "~/.emacs") )
 
 
 ;;! END IMPORTANT SECTION!
