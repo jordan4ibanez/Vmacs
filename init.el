@@ -37,6 +37,9 @@
 ;; Save place in line between sessions
 (save-place-mode 1)
 
+(auto-save-visited-mode 1)
+(setq auto-save-visited-interval 30)
+
 ;; Stop the mouse scroll wheel from going crazy.
 (setq mouse-wheel-progressive-speed nil)
 ;; Use default VSCode/Pulsar scrolling
@@ -560,6 +563,26 @@
     (backward-delete-char 1))))
 
 (keymap-set ergoemacs-user-keymap "C-<backspace>" 'backward-kill-char-or-word)
+
+;; Make shift-tab unindent line like vscode
+;; FIXME: region changes so this just exits when a region is selected
+;; NOTE: Works for single lines nicely though :)
+(defun vmacs-unindent-line ()
+  (interactive)
+  (let ((start (line-beginning-position))
+        (end (line-end-position)))
+    (when (or (not transient-mark-mode) (region-active-p))
+      (setq start (save-excursion
+                    (goto-char (region-beginning))
+                    (beginning-of-line)
+                    (point))
+            end (save-excursion
+                  (goto-char (region-end))
+                  (end-of-line)
+                  (point))))
+    (indent-rigidly start end -2)))
+
+(keymap-set ergoemacs-user-keymap "<backtab>" 'vmacs-unindent-line)
 
 ;; Disable escape from trying to exit files.
 ;; https://www.reddit.com/r/emacs/comments/10l40yi/how_do_i_make_esc_stop_closing_all_my_windows/ (danderzei)
