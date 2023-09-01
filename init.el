@@ -355,7 +355,7 @@
 (setq inferior-lisp-program "sbcl")
 
 
-;; ParEdit
+;;pd ParEdit
 (use-package paredit :ensure t)
 
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
@@ -393,7 +393,33 @@
 ;; hl-todo
 (use-package hl-todo :ensure t)
 
-;; Patch it to enable whole line TODO FIXME etc commenting
+;; FIXME: Use this to add/modify useful words in hl-todo, pink ain't going to cut it
+(setq hl-todo-keyword-faces
+      '(("WARNING"    . "#FF0000")  ;; Pure RED
+        ;; Stands for Very Important Section.
+        ("VIS"        . "#FF0000")
+        ("vis"        . "#FF0000")
+        ;; If you're making a todo list you can list them like shown below.
+        ;; Literally stands for "Todo Todo". :P
+        ("TODO"       . "#3c8d0d")  ;; Christmas Green.
+        ("TT"         . "#3c8d0d")
+        ("tt"         . "#3c8d0d")
+        ("NOTE"       . "#4F7942")  ;; Fern Green
+        ("SUGGESTION" . "#4F7942")
+        ;; Stands for Documentation Section
+        ("DS"         . "#4F7942")
+        ("ds"         . "#4F7942")
+        ;; Stands for Package Documentation
+        ("PD"         . "#fcb829")  ;; Mustard yellow
+        ("pd"         . "#fcb829")
+        ("FIXME"      . "#FF7518")  ;; Pumpkin orange
+        ("FIX"        . "#FF7518")
+        ("PLEASE FIX" . "#FF7518")
+        ("DEBUG"      . "#A020F0")  ;; Pure PURPLE
+        ("GOTCHA"     . "#FF4500")  ;; Orange red
+        ("STUB"       . "#1E90FF")));; Dodger blue
+
+;; Patch it to enable whole line https://github.com/tarsius/hl-todo/discussions/69#discussioncomment-4069108
 (defun hl-todo--setup-regexp ()
   (concat "\\(\\<"
           "\\(" (mapconcat #'car hl-todo-keyword-faces "\\|") "\\)"
@@ -409,20 +435,17 @@
 
 (defvar hl-todo--syntax-table (copy-syntax-table text-mode-syntax-table))
 
-;; FIXME: Use this to add/modify useful words in hl-todo, pink ain't going to cut it
-(setq hl-todo-keyword-faces
-      '(("TODO"   . "#FF0000")
-        ("FIXME"  . "#FF0000")
-        ("DEBUG"  . "#A020F0")
-        ("GOTCHA" . "#FF4500")
-        ("STUB"   . "#1E90FF")))
-
 (global-hl-todo-mode 1)
 
-;;! Very important section!
-;;! This section is specifically designated for quality of life improvements!
+;;TODO sample todo list of fixing something
+;;tt 1.) do the thing
+;;tt 2.) do something else
+;;TT 3.) The thing is now done
 
-;;* Begin portion A. Credit: https://unix.stackexchange.com/questions/19874/prevent-unwanted-buffers-from-opening
+;;vis Very important section!
+;;vis This section is specifically designated for quality of life improvements!
+
+;;DS Begin portion A. Credit: https://unix.stackexchange.com/questions/19874/prevent-unwanted-buffers-from-opening
 
 (setf vmacs-disable-debugging t)
 
@@ -453,7 +476,7 @@
 ;; Show only one active window when opening multiple files at the same time.
 (add-hook 'window-setup-hook 'delete-other-windows)
 
-;;* End portion A.
+;;DS End portion A.
 
 ;; Automatically re-open last session.
 ;; ! This causes problems !!!
