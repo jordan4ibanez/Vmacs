@@ -35,7 +35,7 @@ Should be good from there on out.
 
 ### TODO:
 
-CTRL+BACKSPACE deletes the indentation OR word (no idea how to make this work)
+~~CTRL+BACKSPACE deletes the indentation OR word (no idea how to make this work)~~ (solved!)
 
 Autosave
 
