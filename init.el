@@ -410,12 +410,12 @@
 (defvar hl-todo--syntax-table (copy-syntax-table text-mode-syntax-table))
 
 ;; FIXME: Use this to add/modify useful words in hl-todo, pink ain't going to cut it
-;; (setq hl-todo-keyword-faces
-;;       '(("TODO"   . "#FF0000")
-;;         ("FIXME"  . "#FF0000")
-;;         ("DEBUG"  . "#A020F0")
-;;         ("GOTCHA" . "#FF4500")
-;;         ("STUB"   . "#1E90FF")))
+(setq hl-todo-keyword-faces
+      '(("TODO"   . "#FF0000")
+        ("FIXME"  . "#FF0000")
+        ("DEBUG"  . "#A020F0")
+        ("GOTCHA" . "#FF4500")
+        ("STUB"   . "#1E90FF")))
 
 (global-hl-todo-mode 1)
 
