@@ -539,12 +539,12 @@
 
 
 ;; Vmacs ULTRA RELOAD
-(defun reload-dotemacs-file ()
-  "reload your .emacs file without restarting Emacs"
-
+(defun vmacs-hot-reload ()
+  "reload your init.el file without restarting Emacs"
   (interactive)
+  (load-file "~/.emacs.d/init.el") )
 
-  (load-file "~/.emacs") )
+(keymap-set ergoemacs-user-keymap "<f9>" 'vmacs-hot-reload)
 
 
 ;;! END IMPORTANT SECTION!
