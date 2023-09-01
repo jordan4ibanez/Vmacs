@@ -76,7 +76,9 @@
 (setq ring-bell-function 'ignore)
 
 ;; DOOM Modeline
-(use-package doom-modeline :ensure t)
+(use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-mode))
 
 ;; Absolutely EVAPORATE ALL Emacs bindings!
 ;;! ERGOEMACS WOOOO
@@ -126,8 +128,8 @@
 (setq centaur-tabs-modified-marker " * ")
 
 ; Now make it automatically alphabetically order! :D
-(centaur-tabs-enable-buffer-alphabetical-reordering)
-(setq centaur-tabs-adjust-buffer-order t)
+; (centaur-tabs-enable-buffer-alphabetical-reordering)
+; (setq centaur-tabs-adjust-buffer-order t)
 
 ;; Stop someone from accidentally closing the dashboard.
 (defun centaur-tabs-hide-tab (x)
@@ -163,6 +165,7 @@
 (use-package treemacs
   :ensure t
   :defer t
+  :hook (after-init . treemacs)
   :init
   (with-eval-after-load 'winum
     (keymap-set winum-keymap "M-0" #'treemacs-select-window))
@@ -271,8 +274,6 @@
   :after (treemacs)
   :ensure t
   :config (treemacs-set-scope-type 'Tabs))
-
-(add-hook 'emacs-startup-hook 'treemacs)
 
 ;; Atom style dashboard.
 
