@@ -75,7 +75,11 @@
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
 
+;; DOOM Modeline
+(use-package doom-modeline :ensure t)
+
 ;; Absolutely EVAPORATE ALL Emacs bindings!
+;;! ERGOEMACS WOOOO
 
 (use-package ergoemacs-mode :ensure t)
 
