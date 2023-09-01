@@ -417,9 +417,9 @@
 
 ;;* Begin portion A. Credit: https://unix.stackexchange.com/questions/19874/prevent-unwanted-buffers-from-opening
 
-(setf vmacs-enable-debugging nil)
+(setf vmacs-disable-debugging t)
 
-(if vmacs-enable-debugging (progn 
+(if vmacs-disable-debugging (progn 
   ;; Makes *scratch* empty.
   (setq initial-scratch-message "")
 
