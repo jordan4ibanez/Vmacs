@@ -490,6 +490,11 @@
 
 (global-hl-todo-mode 1)
 
+;;TODO sample todo list of fixing something
+;;tt 1.) do the thing
+;;tt 2.) do something else
+;;TT 3.) The thing is now done
+
 ;;pd real-auto-save
 ;;note: Time based autosave :D
 (use-package real-auto-save :ensure t)
@@ -498,10 +503,6 @@
 ;; 5 seconds by default.
 (setq real-auto-save-interval 5)
 
-;;TODO sample todo list of fixing something
-;;tt 1.) do the thing
-;;tt 2.) do something else
-;;TT 3.) The thing is now done
 
 ;;yell BEGIN VERY IMPORTANT SECTION!
 ;;note: This section is specifically designated for quality of life improvements!
