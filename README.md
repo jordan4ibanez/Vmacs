@@ -35,9 +35,7 @@ Should be good from there on out.
 
 ### TODO:
 
-Fix groups, there should only be 2:
-- Vmacs
-- SBCL SLIME REPL
+Fix corfu not connecting in .lisp files
 
 figure out how to split vertically proportioned like vscode
 
