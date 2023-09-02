@@ -364,18 +364,34 @@
 (setq inferior-lisp-program "sbcl")
 
 
-;;pd ParEdit
-;;note: Enforce Common Lisp bracket styling
-(use-package paredit :ensure t)
+;;pd Vmacs parentheses helper choice
+;;note: 0 is off. Only set it to this if you like your code to look crazy.
+;;note: 1 is traditional paredit. VERY Strict.
+;;note: 2 is newer smartparens. A little more loosey goosey.
+;;note: defaults to 1.
+(setq vmacs-parentheses-helper 1)
 
-(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+(if (= vmacs-parentheses-helper 1)
+    ;;pd ParEdit
+    ;;note: Enforce Common Lisp bracket styling
+    (progn 
+      (use-package paredit :ensure t)
+      (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+      (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+      (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+      (add-hook 'ielm-mode-hook             #'enable-paredit-mode)
+      (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
+      (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+      (add-hook 'scheme-mode-hook           #'enable-paredit-mode)))
 
+
+;;pd smartparens
+;;note: Enforce common lisp bracket styling with nice evolution from ParEdit
+(if (= vmacs-parentheses-helper 2)
+    (progn
+      (use-package smartparens :ensure t)
+      (smartparens-strict-mode t)
+      (smartparens-global-mode t)))
 
 ;; Enable parenthesis visualization. Modes stack.
 (defvar vmacs-fancy-parentheses-highlight-mode 1)
@@ -660,7 +676,7 @@
  ;; If there is more than one, they won't work right.
  '(delete-selection-mode 1)
  '(package-selected-packages
-   '(treemacs treemacs-tab-bar treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired rainbow-delimiters paredit highlight-parentheses ergoemacs-mode doom-themes dashboard centaur-tabs all-the-icons)))
+   '(treemacs treemacs-tab-bar treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired rainbow-delimiters highlight-parentheses ergoemacs-mode doom-themes dashboard centaur-tabs all-the-icons)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
