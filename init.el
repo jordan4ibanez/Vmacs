@@ -744,6 +744,10 @@ Other buffer group by `centaur-tabs-get-group-name' with project name."
 ;; Fix home key not going to beggining of line's text!
 (keymap-set ergoemacs-user-keymap "<home>" 'back-to-indentation)
 
+;; Fix CTRL+left & right
+(keymap-set ergoemacs-user-keymap "C-<left>" 'backward-word)
+(keymap-set ergoemacs-user-keymap "C-<right>" 'forward-word)
+
 
 ;; Vmacs ULTRA RELOAD
 (defun vmacs-hot-reload ()
