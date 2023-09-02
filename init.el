@@ -492,6 +492,12 @@
 ;;yell BEGIN VERY IMPORTANT SECTION!
 ;;note: This section is specifically designated for quality of life improvements!
 
+
+;; Make slime split vertically instead of horizontal
+(setq split-height-threshold nil)
+(setq split-width-threshold nil)
+(setq shackle-rules '((slime-mode :align 'below)))
+
 ;;DS Begin portion A. Credit: https://unix.stackexchange.com/questions/19874/prevent-unwanted-buffers-from-opening
 
 (setf vmacs-disable-debugging t)
@@ -683,7 +689,7 @@
  ;; If there is more than one, they won't work right.
  '(delete-selection-mode 1)
  '(package-selected-packages
-   '(treemacs treemacs-tab-bar treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired rainbow-delimiters highlight-parentheses ergoemacs-mode doom-themes dashboard centaur-tabs all-the-icons)))
+   '(real-auto-save treemacs treemacs-tab-bar treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired rainbow-delimiters highlight-parentheses ergoemacs-mode doom-themes dashboard centaur-tabs all-the-icons)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
