@@ -35,13 +35,7 @@ Should be good from there on out.
 
 ### TODO:
 
-transition to smartparens for better new programmer experience
-
 figure out if there's a way to disable region getting removed on shift+tab
-
-~~Autosave~~ (real-auto-save)
-
-~~common lisp tools.~~ (documented below)
 
 ~~Maybe some sort of linting?~~ (there's nothing)
 
