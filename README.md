@@ -75,6 +75,8 @@ NOTE: Document this!
 
 [real-auto-save](https://github.com/ChillarAnand/real-auto-save) (time based autosave)
 
+[markdown-mode](https://jblevins.org/projects/markdown-mode/) (README.md support)
+
 **Currently testing: [gcmh](https://gitlab.com/koral/gcmh/) (tunes the garbage collector to only run when idle)
 
 ;; Lispy stuff!
