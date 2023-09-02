@@ -39,6 +39,8 @@ Fix groups, there should only be 2:
 - Vmacs
 - SBCL SLIME REPL
 
+figure out how to split vertically proportioned like vscode
+
 figure out if there's a way to disable region getting removed on shift+tab
 
 ~~Maybe some sort of linting?~~ (there's nothing)
