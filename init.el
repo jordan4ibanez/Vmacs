@@ -1,3 +1,8 @@
+;; The default is 800 kilobytes.  Measured in bytes.
+;; 50 Megabytes.
+;;WARNING: use only if gcmh is disabled.
+;; (setq gc-cons-threshold (* 50 1000 1000))
+
 ;; A friendly terminal welcome. :)
 (print "Welcome to Vmacs!" #'external-debugging-output)
 
@@ -20,15 +25,24 @@
 ;;note: Before we even touch a single thing, make this thing start faster!
 
 ;;pd Garbage Collector Magic Hack
+;;note: Otherwise known as gcmh
+;;note: source https://github.com/daviwil/emacs-from-scratch/blob/master/show-notes/Emacs-Scratch-12.org
 ;;note: Improves responsiveness of Vmacs
-(use-package gcmh :ensure t)
-(gcmh-mode 1)
+;;WARNING: This is experimental, can consume a bit of power with the responsiveness. It's in testing.
+;;yell This is currently being tested, recommended to disable it if you run into performance problems.
+(defvar vmacs-garbage-collector-magic-hack-enabled t)
 
-;;note: Tune the GC to be between UBER aggressive & relaxed.
-(setq gcmh-idle-delay 1)
+(if vmacs-garbage-collector-magic-hack-enabled
+    (progn 
+      (use-package gcmh :ensure t)
+      (gcmh-mode 1)
 
-;;note: this is for debugging purposes
-;; (setq garbage-collection-messages t)
+      ;;note: Tune the GC to be between UBER aggressive & relaxed.
+      (setq gcmh-idle-delay 1)
+
+      ;;note: this is for debugging purposes
+      (setq garbage-collection-messages nil)))
+
 
 ;; Enable hot reload!
 ;; This makes it easier to write out if clauses.
@@ -713,3 +727,8 @@
  )
 
 (setf vmacs-hot-reload t)
+
+;; Make gc pauses faster by decreasing the threshold.
+;; 2 Megabytes.
+;;WARNING: use only if gcmh is disabled.
+(setq gc-cons-threshold (* 2 1000 1000))
