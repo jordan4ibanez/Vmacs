@@ -35,6 +35,10 @@ Should be good from there on out.
 
 ### TODO:
 
+Fix groups, there should only be 2:
+- Normal
+- SBCL SLIME REPL
+
 figure out if there's a way to disable region getting removed on shift+tab
 
 ~~Maybe some sort of linting?~~ (there's nothing)
