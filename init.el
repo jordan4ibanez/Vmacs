@@ -297,8 +297,6 @@
 
 (if (eq enable-vmacs-dashboard t)
     (progn 
-     (require 'dashboard)
-
       (use-package dashboard
         :ensure t
         :config
