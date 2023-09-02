@@ -215,7 +215,10 @@
               (vmacs-match "*slime-repl sbcl*")
               (vmacs-match "*slime-repl sbcl<2>*")
               (vmacs-match "*slime-repl sbcl<3>*")
-              (vmacs-match "*slime-events"))
+              (vmacs-match "*slime-events")
+              (vmacs-match "*ansi-term*")
+              (vmacs-match "*ansi-term*<2>")
+              (vmacs-match "*ansi-term*<3>"))
           "terminal-area")
          (t "vmacs"))))
 
@@ -734,6 +737,16 @@
   (load-file "~/.emacs.d/init.el") )
 
 (keymap-set ergoemacs-user-keymap "<f9>" 'vmacs-hot-reload)
+
+;; CTRL+` to open up a terminal https://emacs.stackexchange.com/a/48477
+(defun vmacs-terminal ()
+  "Start a terminal emulator in a new window."
+  (interactive)
+  (split-window-sensibly)
+  (other-window 1)
+  (ansi-term (executable-find "bash")))
+
+(keymap-set ergoemacs-user-keymap "C-`" 'vmacs-terminal)
 
 
 ;;yell END VERY IMPORTANT SECTION!
