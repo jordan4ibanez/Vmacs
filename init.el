@@ -103,7 +103,7 @@
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
   ;; Enable custom neotree theme (all-the-icons must be installed!)
-  (doom-themes-neotree-config)
+  ;; (doom-themes-neotree-config)
   ;; or for treemacs users
   (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
   (doom-themes-treemacs-config)
@@ -720,7 +720,7 @@
  ;; If there is more than one, they won't work right.
  '(delete-selection-mode 1)
  '(package-selected-packages
-   '(real-auto-save treemacs treemacs-tab-bar treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired rainbow-delimiters highlight-parentheses ergoemacs-mode doom-themes dashboard centaur-tabs all-the-icons)))
+   '(real-auto-save treemacs treemacs-tab-bar treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired rainbow-delimiters highlight-parentheses ergoemacs-mode doom-themes dashboard centaur-tabs)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
