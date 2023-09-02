@@ -8,18 +8,32 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
-;; Enable hot reload!
-;; This makes it easier to write out if clauses.
-(if (not (boundp 'vmacs-hot-reload))
-    (setq vmacs-hot-reload nil))
-
 ;; Turning this off can speed up startup time quite a bit!
+;; Enable repository update.
 (setq turn-on-automatic-package-updates nil)
 
 (if turn-on-automatic-package-updates 
     (progn
       (unless package-archive-contents
         (package-refresh-contents))))
+
+;;note: Before we even touch a single thing, make this thing start faster!
+
+;;pd Garbage Collector Magic Hack
+;;note: Improves responsiveness of Vmacs
+(use-package gcmh :ensure t)
+(gcmh-mode 1)
+
+;;note: Tune the GC to be between UBER aggressive & relaxed.
+(setq gcmh-idle-delay 1)
+
+;;note: this is for debugging purposes
+;; (setq garbage-collection-messages t)
+
+;; Enable hot reload!
+;; This makes it easier to write out if clauses.
+(if (not (boundp 'vmacs-hot-reload))
+    (setq vmacs-hot-reload nil))
 
 ;; Turn off the startup message (for now).
 (setq inhibit-startup-message t)
