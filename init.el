@@ -384,7 +384,6 @@
       (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
       (add-hook 'scheme-mode-hook           #'enable-paredit-mode)))
 
-
 ;;pd smartparens
 ;;note: Enforce common lisp bracket styling with nice evolution from ParEdit
 (if (= vmacs-parentheses-helper 2)
@@ -476,6 +475,14 @@
 (defvar hl-todo--syntax-table (copy-syntax-table text-mode-syntax-table))
 
 (global-hl-todo-mode 1)
+
+;;pd real-auto-save
+;;note: Time based autosave :D
+(use-package real-auto-save :ensure t)
+(add-hook 'prog-mode-hook 'real-auto-save-mode)
+
+;; 5 seconds by default.
+(setq real-auto-save-interval 5)
 
 ;;TODO sample todo list of fixing something
 ;;tt 1.) do the thing
