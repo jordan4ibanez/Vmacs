@@ -79,7 +79,7 @@ NOTE: Document this!
 
 [markdown-mode](https://jblevins.org/projects/markdown-mode/) (README.md support)
 
-**Currently testing: [gcmh](https://gitlab.com/koral/gcmh/) (tunes the garbage collector to only run when idle)
+**Currently testing**: [gcmh](https://gitlab.com/koral/gcmh/) (tunes the garbage collector to only run when idle)
 
 ;; Lispy stuff!
 
@@ -90,6 +90,8 @@ NOTE: Document this!
 [highlight-parentheses](https://sr.ht/~tsdh/highlight-parentheses.el/) (Makes it easier to understand bracket scope)
 
 [rainbow-delimeters](https://github.com/Fanael/rainbow-delimiters) (Fancy rainbow brackets (disabled by default))
+
+**Currently Testing**:[cape](https://github.com/minad/cape) (common lisp extension to corfu)
 
 
 ### Notes:
