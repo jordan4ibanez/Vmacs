@@ -339,8 +339,10 @@
       ;; Set the banner.
       (setq dashboard-startup-banner "~/.emacs.d/vmacs/vmacs-logo.txt")
 
-      ;; Use all-the-icons.
-      (setq dashboard-icon-type 'all-the-icons)
+      (setq dashboard-display-icons-p t) ;; display icons on both GUI and terminal
+      (setq dashboard-icon-type 'nerd-icons) ;; use `nerd-icons' package
+
+      (setq dashboard-set-heading-icons t)
       (setq dashboard-set-file-icons t)
 
       ;; Useful things in dashboard
