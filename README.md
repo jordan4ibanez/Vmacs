@@ -39,9 +39,9 @@ transition to smartparens for better new programmer experience
 
 figure out if there's a way to disable region getting removed on shift+tab
 
-Autosave
+~~Autosave~~ (real-auto-save)
 
-common lisp tools.
+~~common lisp tools.~~ (documented below)
 
 ~~Maybe some sort of linting?~~ (there's nothing)
 
@@ -66,17 +66,19 @@ common lisp tools.
 
 [CTRLF](https://github.com/radian-software/ctrlf) (The <u>**BEST**</u> search utility I could find!)
 
-[corfu.el](https://github.com/minad/corfu) (Autocomplete - Set to INSTANT by default.)
+[corfu.el](https://github.com/minad/corfu) (Autocomplete - Set to INSTANT by default)
 
 [diff-hl](https://github.com/dgutov/diff-hl) (Shows uncommitted lines in the gutter)
 
 [hl-todo](https://github.com/tarsius/hl-todo) (Shows colored todo fixme, and other things)
 NOTE: Document this!
 
+[real-auto-save](https://github.com/ChillarAnand/real-auto-save) (time based autosave)
+
 ;; Lispy stuff!
 
 [ParEdit](https://www.emacswiki.org/emacs/ParEdit)
-OR
+**OR**
 [Smartparens](https://github.com/Fuco1/smartparens) (Lisp parentheses balancer)
 
 [highlight-parentheses](https://sr.ht/~tsdh/highlight-parentheses.el/) (Makes it easier to understand bracket scope)
