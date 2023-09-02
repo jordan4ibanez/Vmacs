@@ -75,7 +75,9 @@ NOTE: Document this!
 
 ;; Lispy stuff!
 
-[ParEdit](https://www.emacswiki.org/emacs/ParEdit) (Lisp parenthesis balancer)
+[ParEdit](https://www.emacswiki.org/emacs/ParEdit) (Lisp parentheses balancer)
+OR
+[Smartparens](https://github.com/Fuco1/smartparens) (Lisp parentheses balancer)
 
 [highlight-parentheses](https://sr.ht/~tsdh/highlight-parentheses.el/) (Makes it easier to understand bracket scope)
 
