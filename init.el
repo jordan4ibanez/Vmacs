@@ -46,7 +46,7 @@
 
 ;; Enable hot reload!
 ;; This makes it easier to write out if clauses.
-(if (not (boundp 'vmacs-hot-reload))
+(unless (boundp 'vmacs-hot-reload)
     (setq vmacs-hot-reload nil))
 
 ;; Turn off the startup message (for now).
@@ -134,7 +134,7 @@
 
 ; Install those dang 'ol fonts
 (let ((cool-file "fonts-installed-vlisp.vmacs"))
-  (if (not (file-exists-p cool-file))
+  (unless (file-exists-p cool-file)
       (progn
         (write-region "" "" cool-file)
         (all-the-icons-install-fonts t))
@@ -202,7 +202,7 @@
 
 ;;pd Treemacs
 ;;note: vscode style sidebar
-(if (not vmacs-hot-reload)
+(unless vmacs-hot-reload
     (progn
       (use-package treemacs
 	:ensure t
