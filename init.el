@@ -392,6 +392,15 @@
 
 (global-corfu-mode)
 
+;;pd kind-icon
+;;note: nice icons for corfu autocomplete
+(use-package kind-icon
+  :ensure t
+  :after corfu
+  :custom
+  (kind-icon-default-face 'corfu-default) ; to compute blended backgrounds correctly
+  :config
+  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 ;;pd SLIME
 ;;note: Vmacs Common Lisp REPL
