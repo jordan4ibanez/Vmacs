@@ -66,6 +66,8 @@ figure out if there's a way to disable region getting removed on shift+tab
 
 [corfu.el](https://github.com/minad/corfu) (Autocomplete - Set to INSTANT by default)
 
+[kind-icon](https://github.com/jdtsmith/kind-icon) (gives nice icons to corfu.el)
+
 [diff-hl](https://github.com/dgutov/diff-hl) (Shows uncommitted lines in the gutter)
 
 [hl-todo](https://github.com/tarsius/hl-todo) (Shows colored todo fixme, and other things)
