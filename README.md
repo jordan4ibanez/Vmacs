@@ -75,7 +75,7 @@ NOTE: Document this!
 
 ;; Lispy stuff!
 
-[ParEdit](https://www.emacswiki.org/emacs/ParEdit) (Lisp parentheses balancer)
+[ParEdit](https://www.emacswiki.org/emacs/ParEdit)
 OR
 [Smartparens](https://github.com/Fuco1/smartparens) (Lisp parentheses balancer)
 
