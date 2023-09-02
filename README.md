@@ -69,6 +69,8 @@ NOTE: Document this!
 
 [real-auto-save](https://github.com/ChillarAnand/real-auto-save) (time based autosave)
 
+**Currently testing: [gcmh](https://gitlab.com/koral/gcmh/) (tunes the garbage collector to only run when idle)
+
 ;; Lispy stuff!
 
 [ParEdit](https://www.emacswiki.org/emacs/ParEdit)
