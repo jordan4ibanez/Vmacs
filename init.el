@@ -102,8 +102,7 @@
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  ;; (doom-themes-neotree-config)
+
   ;; or for treemacs users
   (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
   (doom-themes-treemacs-config)
@@ -129,7 +128,11 @@
 (require 'ergoemacs-mode)
 (ergoemacs-mode 1)
 
-;;pd All-the-icons!
+;;note: Some things support one, some things support the other.
+;;note: mix n' match
+;;pd nerd-icons
+(use-package nerd-icons :ensure t)
+;;pd all-the-icons
 (use-package all-the-icons :ensure t)
 
 ; Install those dang 'ol fonts
@@ -137,11 +140,9 @@
   (unless (file-exists-p cool-file)
       (progn
         (write-region "" "" cool-file)
+        (nerd-icons-install-fonts t)
         (all-the-icons-install-fonts t))
       (print "Fonts already installed, nice. 8)" #'external-debugging-output)))
-
-(use-package all-the-icons :ensure t
-  :if (display-graphic-p))
 
 ;;pd Centaur-tabs
 ;;note: tabs like vscode
@@ -315,7 +316,12 @@
       (use-package treemacs-tab-bar ;;treemacs-tab-bar if you use tab-bar-mode
 	:after (treemacs)
 	:ensure t
-	:config (treemacs-set-scope-type 'Tabs))))
+	:config (treemacs-set-scope-type 'Tabs))
+   
+   ;;wtf I have no idea why this depends on all-the-icons but I'm not gonna question it
+   (use-package treemacs-nerd-icons :ensure t
+                :config (treemacs-load-theme "nerd-icons"))
+   ))
 
 ;;pd dashboard
 ;;note: Atom style dashboard
@@ -324,7 +330,8 @@
 (defvar enable-vmacs-dashboard t)
 
 (if (eq enable-vmacs-dashboard t)
-    (progn 
+    (progn
+     
       (use-package dashboard
         :ensure t
         :config
@@ -342,7 +349,7 @@
       (setq dashboard-display-icons-p t) ;; display icons on both GUI and terminal
       (setq dashboard-icon-type 'nerd-icons) ;; use `nerd-icons' package
 
-      (setq dashboard-set-heading-icons t)
+      ; (setq dashboard-set-heading-icons t)
       (setq dashboard-set-file-icons t)
 
       ;; Useful things in dashboard
