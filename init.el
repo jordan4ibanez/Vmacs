@@ -77,7 +77,7 @@
 (setq-default cursor-type 'bar)
 
 ;; ONLY spaces please!
-(setf indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 
 ;; Make pasting/selection overwrite work like normal.
 ;; FIXME: Think needs: https://www.gnu.org/software/emacs/manual/html_node/emacs/CUA-Bindings.html
