@@ -135,8 +135,9 @@
 ;;pd all-the-icons
 (use-package all-the-icons :ensure t)
 
-; Install those dang 'ol fonts
-(let ((cool-file "fonts-installed-vlisp.vmacs"))
+;; Install those dang 'ol fonts
+;;note: this is a dot file, hidden by default in most file managers
+(let ((cool-file ".fonts-installed-vlisp"))
   (unless (file-exists-p cool-file)
     (progn
       (write-region "" "" cool-file)
