@@ -37,13 +37,9 @@ Side note: You have to click the REPL before it will start outputting debug info
 
 ### TODO:
 
-Fix corfu not connecting in .lisp files
-
 figure out how to split vertically proportioned like vscode
 
 figure out if there's a way to disable region getting removed on shift+tab
-
-~~Maybe some sort of linting?~~ (there's nothing)
 
 
 ## Package manager:
