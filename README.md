@@ -33,6 +33,8 @@ It's enabled by default, though.
 
 Should be good from there on out.
 
+Side note: You have to click the REPL before it will start outputting debug info unfortunately.
+
 ### TODO:
 
 Fix corfu not connecting in .lisp files
