@@ -89,7 +89,9 @@ NOTE: Document this!
 
 [rainbow-delimeters](https://github.com/Fanael/rainbow-delimiters) (Fancy rainbow brackets (disabled by default))
 
-**Currently Testing**:[cape](https://github.com/minad/cape) (common lisp extension to corfu)
+**Currently Testing**:[cape](https://github.com/minad/cape) (extension for corfu)
+
+**Currently Testing**:[slime-company](https://github.com/anwyn/slime-company) (Common Lisp [SLIME] plugin for cape)
 
 
 ### Notes:
