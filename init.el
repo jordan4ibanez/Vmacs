@@ -280,7 +280,7 @@
 	      treemacs-tag-follow-cleanup              t
 	      treemacs-tag-follow-delay                1.5
 	      treemacs-text-scale                      nil
-	      treemacs-user-mode-line-format           'doom-modeline
+	      treemacs-user-mode-line-format           nil
 	      treemacs-user-header-line-format         nil
 	      treemacs-wide-toggle-width               70
 	      treemacs-width                           35
