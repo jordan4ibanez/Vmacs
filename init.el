@@ -208,10 +208,14 @@
 (defun centaur-tabs-buffer-groups ()
   (interactive)
   (list
-   (cond ((or (vmacs-match "*sly-inferior-lisp for sbcl*")
+   (cond ((or (vmacs-match "*inferior-lisp*")
+              (vmacs-match "*inferior-lisp*<2>")
+              (vmacs-match "*inferior-lisp*<3>")
               (vmacs-match "*dashboard*")
-              (vmacs-match "*sly-mrepl for sbcl*")
-              (vmacs-match "*sly-events for sbcl*")
+              (vmacs-match "*slime-repl sbcl*")
+              (vmacs-match "*slime-repl sbcl<2>*")
+              (vmacs-match "*slime-repl sbcl<3>*")
+              (vmacs-match "*slime-events")
               (vmacs-match "*ansi-term*")
               (vmacs-match "*ansi-term*<2>")
               (vmacs-match "*ansi-term*<3>"))
@@ -394,10 +398,80 @@
 (global-diff-hl-mode)
 
 
-;;pd SLY
-;;note: Vmacs Common Lisp REPL built upon SLIME
-(use-package sly :ensure t)
+;;pd corfu
+;;note: autocomplete
+(use-package corfu :ensure t)
+(setq corfu-auto t)
+
+;;! This is called this for a reason :)
+(defvar i-have-a-fast-computer t)
+
+(if i-have-a-fast-computer
+  (setq corfu-auto        t
+        corfu-auto-delay  0 ;; TOO SMALL - NOT RECOMMENDED
+        corfu-auto-prefix 1 ;; TOO SMALL - NOT RECOMMENDED
+        completion-styles '(basic)))
+
+(global-corfu-mode)
+
+;;pd cape
+;; ;;note: Common Lisp extensions into corfu
+;; ;; Add extensions
+;; (use-package cape
+;;   :ensure t
+;;   ;; Bind dedicated completion commands
+;;   ;; Alternative prefix keys: C-c p, M-p, M-+, ...
+;;   :bind (("C-c p p" . completion-at-point) ;; capf
+;;          ("C-c p t" . complete-tag)        ;; etags
+;;          ("C-c p d" . cape-dabbrev)        ;; or dabbrev-completion
+;;          ("C-c p h" . cape-history)
+;;          ("C-c p f" . cape-file)
+;;          ("C-c p k" . cape-keyword)
+;;          ("C-c p s" . cape-elisp-symbol)
+;;          ("C-c p e" . cape-elisp-block)
+;;          ("C-c p a" . cape-abbrev)
+;;          ("C-c p l" . cape-line)
+;;          ("C-c p w" . cape-dict)
+;;          ("C-c p \\" . cape-tex)
+;;          ("C-c p _" . cape-tex)
+;;          ("C-c p ^" . cape-tex)
+;;          ("C-c p &" . cape-sgml)
+;;          ("C-c p r" . cape-rfc1345))
+;;   :init
+;;   ;; Add to the global default value of `completion-at-point-functions' which is
+;;   ;; used by `completion-at-point'.  The order of the functions matters, the
+;;   ;; first function returning a result wins.  Note that the list of buffer-local
+;;   ;; completion functions takes precedence over the global list.
+;;   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+;;   (add-to-list 'completion-at-point-functions #'cape-file)
+;;   (add-to-list 'completion-at-point-functions #'cape-elisp-block)
+;;   ;;(add-to-list 'completion-at-point-functions #'cape-history)
+;;   ;;(add-to-list 'completion-at-point-functions #'cape-keyword)
+;;   ;;(add-to-list 'completion-at-point-functions #'cape-tex)
+;;   ;;(add-to-list 'completion-at-point-functions #'cape-sgml)
+;;   ;;(add-to-list 'completion-at-point-functions #'cape-rfc1345)
+;;   ;;(add-to-list 'completion-at-point-functions #'cape-abbrev)
+;;   ;;(add-to-list 'completion-at-point-functions #'cape-dict)
+;;   ;;(add-to-list 'completion-at-point-functions #'cape-elisp-symbol)
+;;   ;;(add-to-list 'completion-at-point-functions #'cape-line)
+;;   )
+
+;;pd kind-icon
+;;note: nice icons for corfu autocomplete
+;; (use-package kind-icon
+;;   :ensure t
+;;   :after corfu
+;;   :custom
+;;   (kind-icon-default-face 'corfu-default) ; to compute blended backgrounds correctly
+;;   :config
+;;   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+
+;;pd SLIME
+;;note: Vmacs Common Lisp REPL
+(use-package slime :ensure t)
+
 (setq inferior-lisp-program "sbcl")
+
 
 ;;pd Vmacs parentheses helper choice
 ;;note: 0 is off. Only set it to this if you like your code to look crazy.
@@ -536,10 +610,10 @@
 ;;note: This section is specifically designated for quality of life improvements!
 
 
-;; Make sly split vertically instead of horizontal
+;; Make slime split vertically instead of horizontal
 (setq split-height-threshold nil)
 (setq split-width-threshold nil)
-(setq shackle-rules '((sly-mode :align 'below)))
+(setq shackle-rules '((slime-mode :align 'below)))
 
 ;;DS Begin portion A. Credit: https://unix.stackexchange.com/questions/19874/prevent-unwanted-buffers-from-opening
 
@@ -677,18 +751,18 @@
 (keymap-set ergoemacs-user-keymap "<escape>" 'keyboard-escape-quit)
 
 
-;;note Start up sly:  F12
-;;vis  Best for performance testing.
-;;note Compile a file:  CTRL+G
-;;vis  Best for debugging/prototyping.
-;;note Eval a function: CTRL+D
-;;note Eval a file: CTRL+R
-(with-eval-after-load 'sly
+;; Start up SLIME:  F12
+;;! Best for performance testing.
+;; Compile a file:  CTRL+G
+;;! Best for debugging/prototyping.
+;; Eval a function: CTRL+D
+;; Eval a file: CTRL+R
+(with-eval-after-load 'slime
   (progn 
-    (keymap-set ergoemacs-user-keymap "<f12>" 'sly)
-    (keymap-set ergoemacs-user-keymap "C-g" 'sly-compile-and-load-file)
-    (keymap-set ergoemacs-user-keymap "C-d" 'sly-eval-defun)
-    (keymap-set ergoemacs-user-keymap "C-r" 'sly-eval-buffer)))
+    (keymap-set ergoemacs-user-keymap "<f12>" 'slime)
+    (keymap-set ergoemacs-user-keymap "C-g" 'slime-compile-and-load-file)
+    (keymap-set ergoemacs-user-keymap "C-d" 'slime-eval-defun)
+    (keymap-set ergoemacs-user-keymap "C-r" 'slime-eval-buffer)))
 
 ;; Fix home key not going to beggining of line's text!
 (keymap-set ergoemacs-user-keymap "<home>" 'back-to-indentation)
