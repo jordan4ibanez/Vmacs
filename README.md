@@ -22,6 +22,9 @@ It is expected that you have SBCL installed and in your system path.
 If you're unsure of this, try running ``sbcl`` in your terminal/command prompt.
 
 Git clone this into a folder called ``.emacs.d`` in your home directory.
+
+cd to ``~/.emacs.d/``. (This will stop treemacs from opening your home folder as a project on first run)
+
 Start Emacs, it'll automatically start to install.
 
 A small note: The first time you start it up it's going to take a minute to install all the packages.
