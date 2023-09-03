@@ -81,6 +81,8 @@ NOTE: Document this!
 
 ;; Lispy stuff!
 
+[SLY](https://github.com/joaotavora/sly) (Common Lisp SBCL REPL)
+
 [ParEdit](https://www.emacswiki.org/emacs/ParEdit)
 **OR**
 [Smartparens](https://github.com/Fuco1/smartparens) (Lisp parentheses balancer)
@@ -88,10 +90,6 @@ NOTE: Document this!
 [highlight-parentheses](https://sr.ht/~tsdh/highlight-parentheses.el/) (Makes it easier to understand bracket scope)
 
 [rainbow-delimeters](https://github.com/Fanael/rainbow-delimiters) (Fancy rainbow brackets (disabled by default))
-
-**Currently Testing**:[cape](https://github.com/minad/cape) (extension for corfu)
-
-**Currently Testing**:[slime-company](https://github.com/anwyn/slime-company) (Common Lisp [SLIME] plugin for cape)
 
 
 ### Notes:
