@@ -384,6 +384,14 @@
   ;;! CTRL+SHIFT+ENTER SEARCHES BACKWARDS!
   (keymap-set ergoemacs-user-keymap "C-S-<return>" #'ctrlf-backward-default))
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(delete-selection-mode 1)
+ '(package-selected-packages
+   '(real-auto-save treemacs treemacs-tab-bar treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired rainbow-delimiters highlight-parentheses ergoemacs-mode doom-themes dashboard centaur-tabs)))
 
 ;;yell !!!! Common Lisp POWER PACK WOO!!!!
 
@@ -770,14 +778,7 @@
 
 ;; This gets created by Easy-Customization
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Easy-Customization.html
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(delete-selection-mode 1)
- '(package-selected-packages
-   '(real-auto-save treemacs treemacs-tab-bar treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired rainbow-delimiters highlight-parentheses ergoemacs-mode doom-themes dashboard centaur-tabs)))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
