@@ -558,15 +558,15 @@
 (use-package real-auto-save :ensure t)
 (add-hook 'prog-mode-hook 'real-auto-save-mode)
 
+;; 5 seconds by default.
+(setq real-auto-save-interval 1)
+
 ;;pd markdown-mode
 ;;note: mode for README.md files
 (use-package markdown-mode
   :ensure t
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown"))
-
-;; 5 seconds by default.
-(setq real-auto-save-interval 5)
 
 
 ;;yell BEGIN VERY IMPORTANT SECTION!
