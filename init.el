@@ -741,7 +741,7 @@
 (defun vmacs-hot-reload ()
   "reload your init.el file without restarting Emacs"
   (interactive)
-  (load-file "~/.emacs.d/init.el") )
+  (load-file "~/.emacs.d/init.el"))
 
 (keymap-set ergoemacs-user-keymap "<f9>" 'vmacs-hot-reload)
 
