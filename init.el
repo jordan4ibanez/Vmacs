@@ -505,8 +505,10 @@
         ("ANGER"      . "#dd0055")  ;; Anger (yes that's the color name)
         ("anger"      . "#dd0055")
         ;; If you're making a todo list you can list them like shown below.
-        ;; Literally stands for "Todo Todo". :P
+        ;; TL literally stands for "Todo List" and "Todo Todo". :P
         ("TODO"       . "#3c8d0d")  ;; Christmas Green.
+        ("TL"         . "#3c8d0d")
+        ("tl"         . "#3c8d0d")
         ("TT"         . "#3c8d0d")
         ("tt"         . "#3c8d0d")
         ("NOTE"       . "#4F7942")  ;; Fern Green
