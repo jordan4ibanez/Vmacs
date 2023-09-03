@@ -744,6 +744,9 @@
 
 (keymap-set ergoemacs-user-keymap "C-`" 'vmacs-terminal)
 
+;; Stop Vmacs from pestering you with the warning about running processes
+(setq confirm-kill-processes nil)
+
 
 ;;yell END VERY IMPORTANT SECTION!
 
