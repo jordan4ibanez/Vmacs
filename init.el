@@ -552,9 +552,9 @@
 (global-hl-todo-mode 1)
 
 ;;TODO sample todo list of fixing something
-;;tt 1.) do the thing
-;;tt 2.) do something else
-;;TT 3.) The thing is now done
+;;tl 1.) do the thing
+;;tl 2.) do something else
+;;TL 3.) The thing is now done
 
 ;;pd real-auto-save
 ;;note: Time based autosave :D
