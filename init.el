@@ -208,17 +208,14 @@
 (defun centaur-tabs-buffer-groups ()
   (interactive)
   (list
-   (cond ((or (vmacs-match "*inferior-lisp*")
-              (vmacs-match "*inferior-lisp*<2>")
-              (vmacs-match "*inferior-lisp*<3>")
+   (cond ((or (vmacs-match "*sly-inferior-lisp for sbcl*")
               (vmacs-match "*dashboard*")
-              (vmacs-match "*sly-repl sbcl*")
-              (vmacs-match "*sly-repl sbcl<2>*")
-              (vmacs-match "*sly-repl sbcl<3>*")
-              (vmacs-match "*sly-events")
-              (vmacs-match "*ansi-term*")
-              (vmacs-match "*ansi-term*<2>")
-              (vmacs-match "*ansi-term*<3>"))
+              (vmacs-match "*sly-repl for sbcl*")
+              (vmacs-match "*sly-events for sbcl")
+              (vmacs-match "*ansi-term")
+              (vmacs-match "*ansi-term<2>")
+              (vmacs-match "*ansi-term<3>")
+              (vmacs-match "*ansi-term<4>"))
           "terminal-area")
          (t "vmacs"))))
 
@@ -422,7 +419,7 @@
 
 ;;pd kind-icon
 ;;note: nice icons for corfu autocomplete
-;; This isn't working with slime-company
+;;note: does not work with sly, don't know why
 (use-package kind-icon
   :ensure t
   :after corfu
