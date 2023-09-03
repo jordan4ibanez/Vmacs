@@ -210,7 +210,7 @@
   (list
    (cond ((or (vmacs-match "*sly-inferior-lisp for sbcl*")
               (vmacs-match "*dashboard*")
-              (vmacs-match "*sly-repl for sbcl*")
+              (vmacs-match "*sly-mrepl for sbcl*")
               (vmacs-match "*sly-events for sbcl")
               (vmacs-match "*ansi-term")
               (vmacs-match "*ansi-term<2>")
