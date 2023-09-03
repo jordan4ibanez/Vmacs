@@ -33,6 +33,8 @@ It's enabled by default, though.
 
 Should be good from there on out.
 
+Also this is specifically tailored to SBCL on Linux. I have not a single clue if this works on Windows.
+
 ### TODO:
 
 Fix corfu not connecting in .lisp files
@@ -64,10 +66,6 @@ figure out if there's a way to disable region getting removed on shift+tab
 
 [CTRLF](https://github.com/radian-software/ctrlf) (The <u>**BEST**</u> search utility I could find!)
 
-[corfu.el](https://github.com/minad/corfu) (Autocomplete - Set to INSTANT by default)
-
-[kind-icon](https://github.com/jdtsmith/kind-icon) (gives nice icons to corfu.el)
-
 [diff-hl](https://github.com/dgutov/diff-hl) (Shows uncommitted lines in the gutter)
 
 [hl-todo](https://github.com/tarsius/hl-todo) (Shows colored todo fixme, and other things)
@@ -81,6 +79,8 @@ NOTE: Document this!
 
 ;; Lispy stuff!
 
+[SLY](https://github.com/joaotavora/sly) (REPL for Vmacs)
+
 [ParEdit](https://www.emacswiki.org/emacs/ParEdit)
 **OR**
 [Smartparens](https://github.com/Fuco1/smartparens) (Lisp parentheses balancer)
@@ -89,7 +89,6 @@ NOTE: Document this!
 
 [rainbow-delimeters](https://github.com/Fanael/rainbow-delimiters) (Fancy rainbow brackets (disabled by default))
 
-**Currently Testing**:[cape](https://github.com/minad/cape) (common lisp extension to corfu)
 
 
 ### Notes:
