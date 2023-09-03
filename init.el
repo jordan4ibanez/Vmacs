@@ -342,6 +342,8 @@
     (use-package treemacs-nerd-icons :ensure t
       :config (treemacs-load-theme "nerd-icons"))))
 
+(setq default-directory "~/.emacs.d/")
+
 ;;pd dashboard
 ;;note: Atom style dashboard
 
