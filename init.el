@@ -342,8 +342,6 @@
     (use-package treemacs-nerd-icons :ensure t
       :config (treemacs-load-theme "nerd-icons"))))
 
-(treemacs-add-project-to-workspace "~/.emacs.d/")
-
 ;;pd dashboard
 ;;note: Atom style dashboard
 
