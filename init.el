@@ -216,7 +216,9 @@
               (vmacs-match "*ansi-term")
               (vmacs-match "*ansi-term<2>")
               (vmacs-match "*ansi-term<3>")
-              (vmacs-match "*ansi-term<4>"))
+              (vmacs-match "*ansi-term<4>")
+              (vmacs-match "*Async-native-compile-log*")
+              (vmacs-match "*Warnings*"))
           "terminal-area")
          (t "vmacs"))))
 
