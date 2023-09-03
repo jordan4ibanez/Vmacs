@@ -195,6 +195,7 @@
      (string-prefix-p " *temp" name)
      (string-prefix-p "*Help" name)
      (string-prefix-p "*mybuf" name)
+     (string-prefix-p "*dashboard*" name)
 					; (string-prefix-p "*dashboard*" name)
 
      ;; Is not magit buffer.
