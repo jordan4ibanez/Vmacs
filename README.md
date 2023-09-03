@@ -21,20 +21,28 @@ It is expected that you have SBCL installed and in your system path.
 
 If you're unsure of this, try running ``sbcl`` in your terminal/command prompt.
 
-Git clone this into a folder called ``.emacs.d`` in your home directory.
+Make sure you have no ``.emacs.d`` folder! If you do, back it up.
 
-cd to ``~/.emacs.d/``. (This will stop treemacs from opening your home folder as a project on first run)
+For first time startup, run this: (it's so treemacs doesn't open your home folder as a project on first startup)
 
-Start Emacs, it'll automatically start to install.
+```
+git clone https://github.com/jordan4ibanez/Vmacs.git ~/.emacs.d/
+
+cd ~/.emacs.d/
+
+emacs
+```
+
+Vmacs will start to automatically install. Might take a minute.
+
+Once it gets to the dashboard, let all the warnings with SLIME finish (wrongly documented/deprecated functions etc) and then close and open back up emacs.
+
+After this, you can startup emacs like normal.
 
 A small note: The first time you start it up it's going to take a minute to install all the packages.
 
-Once it gets to the dashboard, let all the warnings with SLIME finish (wrongly documented functions etc) and then close and open back up emacs.
-
 If you don't want to ever check for updates, or maybe only once in a while, there is ``turn-on-automatic-package-updates``. I recommend once in a while because it slows down startup a lot.
 It's enabled by default, though.
-
-Should be good from there on out.
 
 Side note: You have to click the REPL before it will start outputting debug info unfortunately.
 
