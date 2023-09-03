@@ -16,6 +16,8 @@ I present to you: Lazy mode.
 
 This version of Emacs is tailored as much as I can to behave like VSCode and Common Lisp development.
 
+Here is a video on it: https://youtu.be/Q3ez5Aw_7nY
+
 ### How to install:
 It is expected that you have SBCL installed and in your system path.
 
@@ -32,6 +34,8 @@ cd ~/.emacs.d/
 
 emacs
 ```
+
+Or if you'd like to watch a video on how to install: https://youtu.be/88xj_45Dpzg
 
 Vmacs will start to automatically install. Might take a minute.
 
