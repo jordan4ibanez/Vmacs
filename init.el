@@ -422,8 +422,8 @@
 
 (if i-have-a-fast-computer
     (setq corfu-auto        t
-          corfu-auto-delay  0 ;; TOO SMALL - NOT RECOMMENDED
-          corfu-auto-prefix 1 ;; TOO SMALL - NOT RECOMMENDED
+          corfu-auto-delay  0.75 ;; TOO SMALL - NOT RECOMMENDED
+          corfu-auto-prefix 4
           completion-styles '(basic)))
 
 ;; Only hit enter to select
