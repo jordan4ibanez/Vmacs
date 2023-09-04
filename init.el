@@ -421,12 +421,14 @@
 (defvar i-have-a-fast-computer t)
 
 (if i-have-a-fast-computer
-  (setq corfu-auto        t
-        corfu-auto-delay  0 ;; TOO SMALL - NOT RECOMMENDED
-        corfu-auto-prefix 1 ;; TOO SMALL - NOT RECOMMENDED
-        completion-styles '(basic)))
+    (setq corfu-auto        t
+          corfu-auto-delay  0 ;; TOO SMALL - NOT RECOMMENDED
+          corfu-auto-prefix 1 ;; TOO SMALL - NOT RECOMMENDED
+          completion-styles '(basic)))
+
 ;; Only hit enter to select
 (define-key corfu-map [tab] nil)
+(define-key corfu-map "\t" nil)
 
 ;;pd kind-icon
 ;;note: nice icons for corfu autocomplete
@@ -700,6 +702,8 @@
 (defun keyboard-escape-quit-alt ()
   "Alternative version of `keyboard-escape-quit` that does not change windows."
   (interactive)
+  ;;note: fixes corfu acting like hot garbage
+  (corfu-quit)
   (cond ((eq last-command 'mode-exited) nil)
         ((region-active-p)
          (deactivate-mark))
