@@ -715,7 +715,7 @@
         ;; (delete-other-windows))
         ((string-match "^ \\*" (buffer-name (current-buffer)))
          (bury-buffer))))
-(keymap-set ergoemacs-user-keymap "<escape>" 'keyboard-escape-quit)
+(keymap-set ergoemacs-user-keymap "<escape>" 'keyboard-escape-quit-alt)
 
 
 ;; Start up SLY:  F12
