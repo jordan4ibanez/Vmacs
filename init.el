@@ -17,7 +17,7 @@
       (package-initialize)
       (package-refresh-contents)
       (package-install 'use-package)
-      (print "Vmacs first time run initialized!"))))
+      (print "Vmacs first time run initialized!" #'external-debugging-output))))
 
 ;;pd Enable MELPA.
 (require 'package)
