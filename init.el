@@ -13,8 +13,14 @@
 (add-to-list 'load-path "~/.emacs.d/vmacs/")
 
 ;; This will automatically fix use-package not being installed!
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+(let ((cool-file ".vmacs-fully-initialized"))
+  (unless (file-exists-p cool-file)
+    (progn
+      (write-region "" "" cool-file)
+      (package-initialize)
+      (package-refresh-contents)
+      (package-install 'use-package)
+      (print "Vmacs first time run initialized!" #'external-debugging-output))))
 
 ;;pd Enable MELPA.
 (require 'package)
