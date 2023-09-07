@@ -1,3 +1,6 @@
+;;note: This is for debugging purposes, causes a warning to stop the world.
+;; (setq debug-on-error t)
+
 ;; The default is 800 kilobytes.  Measured in bytes.
 ;; 50 Megabytes.
 ;;WARNING: use only if gcmh is disabled.
@@ -243,7 +246,7 @@
       :hook (after-init . treemacs)
       :init
       (with-eval-after-load 'winum
-	(keymap-set winum-keymap "M-0" #'treemacs-select-window))
+	(define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
       :config
   
       (progn
@@ -393,9 +396,9 @@
 (ctrlf-mode +1)
 (with-eval-after-load 'ctrlf
   ;;! CTRL+ENTER SEARCHES FORWARDS!
-  (keymap-set ergoemacs-user-keymap "C-<return>" #'ctrlf-forward-default)
+  (define-key ergoemacs-user-keymap (kbd "C-<return>") #'ctrlf-forward-default)
   ;;! CTRL+SHIFT+ENTER SEARCHES BACKWARDS!
-  (keymap-set ergoemacs-user-keymap "C-S-<return>" #'ctrlf-backward-default))
+  (define-key ergoemacs-user-keymap (kbd "C-S-<return>") #'ctrlf-backward-default))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -639,7 +642,7 @@
 
 ;; Single click folder expansion in treemacs.
 (with-eval-after-load 'treemacs
-  (keymap-set treemacs-mode-map "<mouse-1>" #'treemacs-single-click-expand-action))
+  (define-key treemacs-mode-map (kbd "<mouse-1>") #'treemacs-single-click-expand-action))
 
 ;; Stop the delete key from being weird.
 ; (normal-erase-is-backspace-mode 1)
@@ -650,7 +653,7 @@
 
 
 ;; Show/hide Treemacs.
-(keymap-set ergoemacs-user-keymap "<f5>" 'treemacs)
+(define-key ergoemacs-user-keymap (kbd "<f5>") 'treemacs)
 
 ;; Toggle comment out.
 ;; Thank user1017523: https://stackoverflow.com/a/20064658
@@ -669,10 +672,10 @@
                   (point))))
     (comment-or-uncomment-region start end)))
 
-(keymap-set ergoemacs-user-keymap "C-/" 'vmacs-comment-line)
+(define-key ergoemacs-user-keymap (kbd "C-/") 'vmacs-comment-line)
 
 ;; Make the del key behave like normal.
-(keymap-set ergoemacs-user-keymap "<delete>" 'delete-forward-char)
+(define-key ergoemacs-user-keymap (kbd "<delete>") 'delete-forward-char)
 
 ;; Make CTRL+backspace work like VSCode https://emacs.stackexchange.com/a/30404
 (defun backward-kill-char-or-word ()
@@ -685,7 +688,7 @@
    (t
     (backward-delete-char 1))))
 
-(keymap-set ergoemacs-user-keymap "C-<backspace>" 'backward-kill-char-or-word)
+(define-key ergoemacs-user-keymap (kbd "C-<backspace>") 'backward-kill-char-or-word)
 
 ;; Make shift-tab unindent line like vscode
 ;; FIXME: region changes so this just exits when a region is selected
@@ -705,7 +708,7 @@
                   (point))))
     (indent-rigidly start end -2)))
 
-(keymap-set ergoemacs-user-keymap "<backtab>" 'vmacs-unindent-line)
+(define-key ergoemacs-user-keymap (kbd "<backtab>") 'vmacs-unindent-line)
 
 ;; Disable escape from trying to exit files.
 ;; https://www.reddit.com/r/emacs/comments/10l40yi/how_do_i_make_esc_stop_closing_all_my_windows/ (danderzei)
@@ -729,7 +732,7 @@
         ;; (delete-other-windows))
         ((string-match "^ \\*" (buffer-name (current-buffer)))
          (bury-buffer))))
-(keymap-set ergoemacs-user-keymap "<escape>" 'keyboard-escape-quit-alt)
+(define-key ergoemacs-user-keymap (kbd "<escape>") 'keyboard-escape-quit-alt)
 
 
 ;; Start up SLY:  F12
@@ -740,17 +743,17 @@
 ;; Eval a file: CTRL+R
 (with-eval-after-load 'sly
   (progn 
-    (keymap-set ergoemacs-user-keymap "<f12>" 'sly)
-    (keymap-set ergoemacs-user-keymap "C-g" 'sly-compile-and-load-file)
-    (keymap-set ergoemacs-user-keymap "C-d" 'sly-eval-defun)
-    (keymap-set ergoemacs-user-keymap "C-r" 'sly-eval-buffer)))
+    (define-key ergoemacs-user-keymap (kbd "<f12>") 'sly)
+    (define-key ergoemacs-user-keymap (kbd "C-g") 'sly-compile-and-load-file)
+    (define-key ergoemacs-user-keymap (kbd "C-d") 'sly-eval-defun)
+    (define-key ergoemacs-user-keymap (kbd "C-r") 'sly-eval-buffer)))
 
 ;; Fix home key not going to beggining of line's text!
-(keymap-set ergoemacs-user-keymap "<home>" 'back-to-indentation)
+(define-key ergoemacs-user-keymap (kbd "<home>") 'back-to-indentation)
 
 ;; Fix CTRL+left & right
-(keymap-set ergoemacs-user-keymap "C-<left>" 'backward-word)
-(keymap-set ergoemacs-user-keymap "C-<right>" 'forward-word)
+(define-key ergoemacs-user-keymap (kbd "C-<left>") 'backward-word)
+(define-key ergoemacs-user-keymap (kbd "C-<right>") 'forward-word)
 
 
 ;; Vmacs ULTRA RELOAD
@@ -759,7 +762,7 @@
   (interactive)
   (load-file "~/.emacs.d/init.el"))
 
-(keymap-set ergoemacs-user-keymap "<f9>" 'vmacs-hot-reload)
+(define-key ergoemacs-user-keymap (kbd "<f9>") 'vmacs-hot-reload)
 
 ;; CTRL+` to open up a terminal https://emacs.stackexchange.com/a/48477
 (defun vmacs-terminal ()
@@ -769,7 +772,7 @@
   (other-window 1)
   (ansi-term (executable-find "bash")))
 
-(keymap-set ergoemacs-user-keymap "C-`" 'vmacs-terminal)
+(define-key ergoemacs-user-keymap (kbd "C-`") 'vmacs-terminal)
 
 ;; Stop Vmacs from pestering you with the warning about running processes
 (setq confirm-kill-processes nil)
