@@ -152,10 +152,9 @@
 ;;note: this is a dot file, hidden by default in most file managers
 (let ((cool-file ".vmacs-fonts-installed"))
   (unless (file-exists-p cool-file)
-    (progn
-      (write-region "" "" cool-file)
-      (nerd-icons-install-fonts t)
-      (all-the-icons-install-fonts t))
+    (write-region "" "" cool-file)
+    (nerd-icons-install-fonts t)
+    (all-the-icons-install-fonts t)    
     (print "Fonts already installed, nice. 8)" #'external-debugging-output)))
 
 ;;pd Centaur-tabs
@@ -482,7 +481,12 @@
       (smartparens-strict-mode t)
       (smartparens-global-mode t)))
 
-;; Enable parenthesis visualization. Modes stack.
+;;pd show-paren-mode
+;;note: This should always be enabled because it's extremely helpful
+(show-paren-mode 1)
+
+;;pd Parenthesis Visualization helper.
+;;note: Enable parenthesis visualization. Modes stack.
 (defvar vmacs-fancy-parentheses-highlight-mode 1)
 
 ;; Mode 1 Shadow mode. RED, trails out to darker shades of red further out of scope.
