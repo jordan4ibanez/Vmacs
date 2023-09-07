@@ -482,7 +482,8 @@
       (smartparens-global-mode t)))
 
 ;;pd show-paren-mode
-;;note: This should always be enabled because it's extremely helpful
+;;note: This should always be enabled because it's extremely helpful.
+;;note: https://www.emacswiki.org/emacs/ShowParenMode
 (show-paren-mode 1)
 
 ;;pd Parenthesis Visualization helper.
