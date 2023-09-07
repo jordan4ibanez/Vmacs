@@ -150,7 +150,7 @@
 
 ;; Install those dang 'ol fonts
 ;;note: this is a dot file, hidden by default in most file managers
-(let ((cool-file ".fonts-installed-vlisp"))
+(let ((cool-file ".vmacs-fonts-installed"))
   (unless (file-exists-p cool-file)
     (progn
       (write-region "" "" cool-file)
