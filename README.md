@@ -8,6 +8,8 @@
     \_/   |_| |_| |_|  \__,_|  \___| |___/
 ```
 
+Targeted Emacs version: 27.1 (Ubuntu Repo Target)
+
 Fun fact: This was bootstrapped with VSCode. :D
 
 First there was emacs, then there was evil mode, crazy mode after that.
