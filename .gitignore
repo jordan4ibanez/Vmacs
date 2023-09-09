@@ -19,3 +19,5 @@ history
 places
 .fonts-installed-vlisp
 recentf~
+.vmacs-fonts-installed
+.vmacs-fully-initialized
