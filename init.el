@@ -408,7 +408,7 @@
  ;; If there is more than one, they won't work right.
  '(delete-selection-mode 1)
  '(package-selected-packages
-   '(markdown-mode hl-todo paredit kind-icon corfu sly diff-hl real-auto-save treemacs treemacs-tab-bar treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired rainbow-delimiters highlight-parentheses ergoemacs-mode doom-themes dashboard centaur-tabs)))
+   '(use-package markdown-mode hl-todo paredit kind-icon corfu sly diff-hl real-auto-save treemacs treemacs-tab-bar treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired rainbow-delimiters highlight-parentheses ergoemacs-mode doom-themes dashboard centaur-tabs)))
 
 ;;yell !!!! Common Lisp POWER PACK WOO!!!!
 
@@ -748,9 +748,16 @@
 ;;! Best for debugging/prototyping.
 ;; Eval a function: CTRL+D
 ;; Eval a file: CTRL+R
+(defun start-sly-in-treemacs-root-dir ()
+  (interactive)
+  (progn
+    (let ((default-directory (treemacs--current-builtin-project-function)))
+      (print default-directory #'external-debugging-output)
+      (sly))))
+
 (with-eval-after-load 'sly
-  (progn 
-    (define-key ergoemacs-user-keymap (kbd "<f12>") 'sly)
+  (progn
+    (define-key ergoemacs-user-keymap (kbd "<f12>") 'start-sly-in-treemacs-root-dir)
     (define-key ergoemacs-user-keymap (kbd "C-g") 'sly-compile-and-load-file)
     (define-key ergoemacs-user-keymap (kbd "C-d") 'sly-eval-defun)
     (define-key ergoemacs-user-keymap (kbd "C-r") 'sly-eval-buffer)))
