@@ -434,7 +434,7 @@
 
 (if i-have-a-fast-computer
     (setq corfu-auto        t
-          corfu-auto-delay  1 ;; TOO SMALL - NOT RECOMMENDED
+          corfu-auto-delay  0.25 ;; TOO SMALL - NOT RECOMMENDED
           corfu-auto-prefix 4
           completion-styles '(basic)))
 
@@ -598,9 +598,9 @@
 ;;note: This section is specifically designated for quality of life improvements!
 
 ;; Make sly split vertically instead of horizontal
-(setq split-height-threshold nil)
-(setq split-width-threshold nil)
-(setq shackle-rules '((sly-mode :align 'below)))
+;; (setq split-height-threshold nil)
+;; (setq split-width-threshold nil)
+;; (setq shackle-rules '((sly-mode :align 'below)))
 
 ;;DS Begin portion A. Credit: https://unix.stackexchange.com/questions/19874/prevent-unwanted-buffers-from-opening
 
