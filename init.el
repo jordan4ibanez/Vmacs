@@ -408,7 +408,7 @@
  ;; If there is more than one, they won't work right.
  '(delete-selection-mode 1)
  '(package-selected-packages
-   '(use-package markdown-mode hl-todo paredit kind-icon corfu sly diff-hl real-auto-save treemacs treemacs-tab-bar treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired rainbow-delimiters highlight-parentheses ergoemacs-mode doom-themes dashboard centaur-tabs)))
+   '(glsl-mode use-package markdown-mode hl-todo paredit kind-icon corfu sly diff-hl real-auto-save treemacs treemacs-tab-bar treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired rainbow-delimiters highlight-parentheses ergoemacs-mode doom-themes dashboard centaur-tabs)))
 
 ;;yell !!!! Common Lisp POWER PACK WOO!!!!
 
@@ -594,6 +594,10 @@
   :ensure t
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown"))
+
+(use-package glsl-mode
+  :ensure t)
+
 
 
 ;;yell BEGIN VERY IMPORTANT SECTION!
