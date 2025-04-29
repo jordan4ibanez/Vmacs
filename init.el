@@ -752,19 +752,19 @@
 ;;! Best for debugging/prototyping.
 ;; Eval a function: CTRL+D
 ;; Eval a file: CTRL+R
-(defun start-sly-in-treemacs-root-dir ()
-  (interactive)
-  (progn
-    (let ((default-directory (treemacs--current-builtin-project-function)))
-      (print default-directory #'external-debugging-output)
-      (sly))))
+;; (defun start-sly-in-treemacs-root-dir ()
+;;   (interactive)
+;;   (progn
+;;     (let ((default-directory (treemacs--current-builtin-project-function)))
+;;       (print default-directory #'external-debugging-output)
+;;       (sly))))
 
-(with-eval-after-load 'sly
-  (progn
-    (define-key ergoemacs-user-keymap (kbd "<f12>") 'start-sly-in-treemacs-root-dir)
-    (define-key ergoemacs-user-keymap (kbd "C-g") 'sly-compile-and-load-file)
-    (define-key ergoemacs-user-keymap (kbd "C-d") 'sly-eval-defun)
-    (define-key ergoemacs-user-keymap (kbd "C-r") 'sly-eval-buffer)))
+;; (with-eval-after-load 'sly
+;;   (progn
+;;     (define-key ergoemacs-user-keymap (kbd "<f12>") 'start-sly-in-treemacs-root-dir)
+;;     (define-key ergoemacs-user-keymap (kbd "C-g") 'sly-compile-and-load-file)
+;;     (define-key ergoemacs-user-keymap (kbd "C-d") 'sly-eval-defun)
+;;     (define-key ergoemacs-user-keymap (kbd "C-r") 'sly-eval-buffer)))
 
 ;; Fix home key not going to beggining of line's text!
 (define-key ergoemacs-user-keymap (kbd "<home>") 'back-to-indentation)
