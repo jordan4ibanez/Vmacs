@@ -96,8 +96,6 @@ NOTE: Document this!
 
 ;; Lispy stuff!
 
-[SLY](https://github.com/joaotavora/sly) (Common Lisp SBCL REPL)
-
 [ParEdit](https://www.emacswiki.org/emacs/ParEdit)
 **OR**
 [Smartparens](https://github.com/Fuco1/smartparens) (Lisp parentheses balancer)
