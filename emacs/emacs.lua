@@ -8,8 +8,16 @@ emacs.Mode = { ENABLE = 1, DISABLE = -1 }
 -- @param name Symbol to set the value for
 -- @param value Value to set
 -- @return value
-function emacs.set(name, value)
-    return functioncall(emacs_environment, "set", 2, { name, value })
+function emacs.set(object, value)
+    return functioncall(emacs_environment, "set", 2, { object, value })
+end
+
+--- Set a symbol to a value automatically interning the string.
+-- @param name Symbol to set the value for
+-- @param value Value to set
+-- @return value
+function emacs.set_intern(name, value)
+    return functioncall(emacs_environment, "set", 2, { emacs.intern(name), value })
 end
 
 --- Set a symbols default value
@@ -134,7 +142,7 @@ function emacs.symbolp(object)
     return emacs.run("symbolp", object) ~= nil
 end
 
----This function returns the symbol in obarray whose name is name, or nil if obarray has no symbol with that name. Therefore, you can use intern-soft to test whether a symbol with a given name is already interned. If obarray is omitted, the value of the global variable obarray is used.
+--- This function returns the symbol in obarray whose name is name, or nil if obarray has no symbol with that name. Therefore, you can use intern-soft to test whether a symbol with a given name is already interned. If obarray is omitted, the value of the global variable obarray is used.
 --- The argument name may also be a symbol; in that case, the function returns name if name is interned in the specified obarray, and otherwise nil.
 function emacs.intern_soft(symbol_name)
     return emacs.run("intern-soft", symbol_name) ~= nil
