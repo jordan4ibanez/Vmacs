@@ -7,10 +7,6 @@
 
 (run-lua-file "./init.lua")
 
-(testing)
-
-(wtf)
-
 ;; Close the D library when emacs exits.
 ;; The function is coming from the D library.
 (add-hook 'kill-emacs-hook 
