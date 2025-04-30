@@ -306,7 +306,50 @@ void initializeLuaState() {
 
     lua_pushcfunction(state, cast(BAD_IDEA)&expose_function);
     lua_setglobal(state, "expose_function");
+}
 
+static emacs_value execute_lua_str(emacs_env* env, ptrdiff_t nargs,
+    emacs_value* args, void* data) {
+    (void) env;
+    (void) data;
+
+    if (nargs < 2) {
+        LOG("Missing arguments");
+        return NIL(env);
+    }
+
+    ptrdiff_t code_len;
+    if ((code_len = emacs_get_string_length(env, args[1])) < 0) {
+        LOG("Failed to get code len");
+        return NIL(env);
+    }
+
+    char* lua_code = malloc(code_len);
+    if (!lua_code) {
+        LOG("Failed to allocate lua_code");
+        return NIL(env);
+    }
+
+    if (!env -  > copy_string_contents(env, args[1], lua_code,  & code_len)) {
+        LOG("Failed to copy lua code");
+        return NIL(env);
+    }
+
+    lua_State * L = env -  > get_user_ptr(env, args[0]);
+
+    // Expose the emacs environment for use in Lua
+    lua_pushlightuserdata(L, env);
+    lua_setglobal(L, "emacs_environment");
+    lua_pop(L, -1);
+
+    if (luaL_dostring(L, lua_code)) {
+        printf("LUAMACS(execute_lua_str) Error occured running lua code: %s\n",
+            lua_tostring(L, -1));
+        return NIL(env);
+    }
+
+    free(lua_code);
+    return NIL(env);
 }
 
 /// Initializes the shared library along with the lua 5.2 state.
