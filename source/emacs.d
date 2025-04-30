@@ -5,6 +5,7 @@ import emacs_module;
 import std.stdio;
 import std.string;
 
+/// Emacs has this thing where it needs to have this defined or it explodes.
 export extern (C) __gshared int plugin_is_GPL_compatible;
 
 /// The Lua 5.2 state.
