@@ -286,7 +286,7 @@ void defun(emacs_env* env, int mm_arity, emacs_function func,
 void terminateLuaState() {
     lua_close(state);
     state = null;
-    writeln("Deinitialized lua state.");
+    writeln("Lua 5.2 state terminated.");
 }
 
 void initializeLuaState() {
