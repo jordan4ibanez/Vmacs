@@ -248,25 +248,26 @@ static extern (C) __gshared emacs_value lua_function_proxy(emacs_env* env, ptrdi
 }
 
 static int expose_function(lua_State* L) {
-    emacs_env* env = lua_touserdata(L, -6);
+    emacs_env* env = cast(emacs_env_29*) lua_touserdata(L, -6);
     const char* lisp_fname = lua_tostring(L, -5);
     const char* docstring = lua_tostring(L, -4);
-    int nargs = lua_tointeger(L, -3);
+    int nargs = cast(int) lua_tointeger(L, -3);
     int returns = lua_toboolean(L, -2);
     int function_reg_index = luaL_ref(L, LUA_REGISTRYINDEX);
 
-    // TODO: It leaks:
-    LuaFunctionData* data = malloc(sizeof(LuaFunctionData));
-    data -  > reg_index = function_reg_index;
-    data -  > nargs = nargs;
-    data -  > returns = returns;
-    data -  > L = L;
+    // TODO: It leaks: 
+    // todo: use the gc so this isn't a disaster
+    LuaFunctionData* data = cast(LuaFunctionData*) malloc(LuaFunctionData.sizeof);
+    data.reg_index = function_reg_index;
+    data.nargs = nargs;
+    data.returns = returns;
+    data.L = L;
 
-    emacs_value efunc = env -  > make_function(env, nargs, nargs, lua_function_proxy,
+    emacs_value efunc = env.make_function(env, nargs, nargs, &lua_function_proxy,
         docstring, data);
-    emacs_value symbol = env -  > intern(env, lisp_fname);
-    emacs_value args[] = {symbol, efunc};
-    env -  > funcall(env, env -  > intern(env, "defalias"), 2, args);
+    emacs_value symbol = env.intern(env, lisp_fname);
+    emacs_value[] args = [symbol, efunc];
+    env.funcall(env, env.intern(env, "defalias"), 2, args.ptr);
 
     return 0;
 }
