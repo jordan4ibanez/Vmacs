@@ -96,6 +96,10 @@ function emacs.cons(car, cdr)
     return cell
 end
 
+function emacs.car(list)
+    emacs.run("car", list)
+end
+
 --- Append a value to a list
 -- @param name Interned symbol of the list to append to
 -- @param value The value to append
