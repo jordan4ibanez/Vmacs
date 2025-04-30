@@ -6,7 +6,7 @@
 	"dependencies": {
 		"bindbc-lua": "~>0.6.1"
 	},
-	"description": "A minimal D application.",
+	"description": "The driving engine for vmacs.",
 	"dflags-ldc": [
 		"--link-defaultlib-shared"
 	],
