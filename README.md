@@ -10,6 +10,7 @@
 
 This was bootstrapped in vscode. (It was a nightmare)
 
+This was used as a guide: https://github.com/MAlba124/memacs
 This is built off, translated from: https://github.com/MAlba124/luamacs
 
 For Ubuntu distros:
