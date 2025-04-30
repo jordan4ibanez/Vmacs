@@ -72,6 +72,12 @@ function emacs.require(feature)
     functioncall_no_return(emacs_environment, "require", 1, { feature })
 end
 
+--- Load a feature interned.
+-- @param feature The interned feature to load
+function emacs.require_interned(feature)
+    functioncall_no_return(emacs_environment, "require", 1, { emacs.intern(feature) })
+end
+
 --- Execute a file of lisp code
 -- @param file Name of file to load
 -- @return Returns true if the file exists and loads successfully
