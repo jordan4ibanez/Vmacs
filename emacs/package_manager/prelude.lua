@@ -31,11 +31,7 @@ end
 -- @param pkg Symbol representing a package
 -- @return True if the package is installed, false otherwise
 function prelude.is_installed(pkg)
-    if (not em.run("package-installed-p", pkg)) then
-        return false
-    else
-        return true
-    end
+    return em.run("package-installed-p", pkg) ~= nil
 end
 
 function prelude.install(pkg)
