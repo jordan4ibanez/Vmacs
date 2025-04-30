@@ -113,4 +113,14 @@ function emacs.define_key(keymap, key, def)
     functioncall_no_return(emacs_environment, "define-key", 3, { keymap, key, def })
 end
 
+function emacs.run(functionName, ...)
+    local values = { ... }
+    return functioncall(emacs_environment, functionName, #values, values)
+end
+
+function emacs.run_no_return(functionName, ...)
+    local values = { ... }
+    return functioncall_no_return(emacs_environment, functionName, #values, values)
+end
+
 return emacs
