@@ -7,6 +7,7 @@ local pakage = require("package")
 local com = require("commands")
 local buf = require("buffer")
 local num = require("numbers")
+local disp = require("display")
 local prelude = require("prelude")
 
 print("startup time: " .. em.emacs_init_time())
@@ -22,3 +23,12 @@ local function startup_hook()
     })
 end
 em.add_hook_intern(em.Hook.emacs_startup_hook, startup_hook, "startup_hook")
+
+-- Disable theme on Terminal and enable Mouse Support.
+if (not disp.display_graphic_p()) then
+    print("running in terminal")
+    em.run("xterm-mouse-mode", 1)
+    if (em.eq(em.get("system-type"), em.get("window-nt"))) then
+        ui.disable_theme(em.car(em.get("custom-enabled-themes")))
+    end
+end
