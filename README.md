@@ -15,7 +15,10 @@ This is built off, translated from: https://github.com/MAlba124/luamacs
 For Ubuntu distros:
 
 ```
-sudo apt install 
+sudo apt install liblua5.2-dev
 ```
 
 If running vim mode in emacs is considered evil, this is downright apocalyptic.
+
+Install a D compiler. I recommend LDC2.
+
