@@ -10,7 +10,7 @@ void testD() {
     writeln("Edit source/app.d to start your project.");
 }
 
-static void defun(emacs_env* env, int mm_arity, emacs_function func,
+void defun(emacs_env* env, int mm_arity, emacs_function func,
     const char* docstring, const char* symbol_name) {
 
     emacs_value efunc =
