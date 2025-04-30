@@ -1,10 +1,10 @@
 module emacs;
 
 import bindbc.lua;
+import core.stdc.string;
 import emacs_module;
 import std.stdio;
 import std.string;
-import core.stdc.string;
 
 /// Emacs has this thing where it needs to have this defined or it explodes.
 export extern (C) __gshared int plugin_is_GPL_compatible;
@@ -50,7 +50,7 @@ emacs_value lua_to_emacs_val(emacs_env* env, lua_State* L, int stack_index) {
             return env.make_string(env, thisString, strlen(thisString));
         }
     case LUA_TUSERDATA: {
-            emacs_value val = lua_touserdata(L, stack_index);
+            emacs_value val = cast(emacs_value_tag*) lua_touserdata(L, stack_index);
             return val;
         }
     case LUA_TTABLE: {
@@ -64,7 +64,7 @@ emacs_value lua_to_emacs_val(emacs_env* env, lua_State* L, int stack_index) {
                 lua_getfield(L, -3, "cdr");
                 emacs_value cdr = lua_to_emacs_val(env, L, -1);
 
-                emacs_value[] args = {car, cdr};
+                emacs_value[] args = [car, cdr];
                 return env.funcall(env, env.intern(env, "cons"), 2, args);
             } else {
                 LOG("Unknown table type");
