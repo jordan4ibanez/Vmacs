@@ -3,11 +3,13 @@
     (princ "Has module support. Firing up!\n" #'external-debugging-output)
     (error "No module support. Recompile with module support."))
 
-
 (module-load "./liblua_mode.so")
 
+(run-lua-file "./init.lua")
 
+(testing)
 
+(wtf)
 
 ;; Close the D library when emacs exits.
 ;; The function is coming from the D library.
