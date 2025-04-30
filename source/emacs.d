@@ -47,8 +47,8 @@ emacs_value lua_to_emacs_val(emacs_env *env, lua_State *L, size_t stack_index) {
     return boolean ? env.intern(env, "t") : NIL(env);
   }
   case LUA_TSTRING: {
-    const char *string = lua_tostring(L, stack_index);
-    return env->make_string(env, string, strlen(string));
+    const char *thisString = lua_tostring(L, stack_index);
+    return env.make_string(env, thisString, strlen(thisString));
   }
   case LUA_TUSERDATA: {
     emacs_value val = lua_touserdata(L, stack_index);
