@@ -388,8 +388,7 @@ export extern (C) __gshared int emacs_module_init(emacs_runtime* runtime) {
 
     defun(env, 0, &terminate, "Terminate the Vmacs lua plugin", "terminate-vmacs");
 
-    // defun(env, 0, state_init, "Initialize the lua state", "luamacs-state-init");
-    // defun(env, 2, execute_lua_str, "Execute a given string containing lua code",
+    // defun(env, 2, &execute_lua_str, "Execute a given string containing lua code",
     // "luamacs-exec-str");
 
     // LOG("Initialized");
