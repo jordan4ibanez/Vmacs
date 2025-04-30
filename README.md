@@ -25,3 +25,8 @@ Install a D compiler. I recommend LDC2.
 
 //! note: if you functioncall into your own function it's gonna blow up.
 // functioncall(emacs_environment, "testing", 1, {"hi"})
+
+I can't find a list of elisp functions so I have to read RTFM:
+https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html
+
+This is true horror.
