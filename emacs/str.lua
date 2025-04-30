@@ -1,3 +1,5 @@
+--- String related functions.
+
 local em = require("emacs")
 
 local str = {}
