@@ -7,12 +7,7 @@ import std.string;
 
 export extern (C) __gshared int plugin_is_GPL_compatible;
 
-void testD() {
-    writeln("Edit source/app.d to start your project.");
-}
-
 void initLua() {
-
     LuaSupport ret = loadLua();
     if (ret != luaSupport) {
         if (ret == luaSupport.noLibrary) {
@@ -23,7 +18,6 @@ void initLua() {
             // configured to load
         }
     }
-
 }
 
 void defun(emacs_env* env, int mm_arity, emacs_function func,
