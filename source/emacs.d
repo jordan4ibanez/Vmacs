@@ -294,8 +294,8 @@ void initializeLuaState() {
     luaL_openlibs(state);
     writeln("Lua 5.2 state initialized");
 
+    // todo: fix this. This is insanely dangerous.
     // fixme: this is insanely dangerous.
-
     alias BAD_IDEA = extern (C) int function(lua_State*) nothrow;
 
     lua_pushcfunction(state, cast(BAD_IDEA)&functioncall);
