@@ -7,24 +7,6 @@ local pakage = require("package")
 print("startup time: " .. em.emacs_init_time())
 
 
-
-local function testFunction()
-    print("elisp calling lua in D!")
-end
-
-expose_function(
-    emacs_environment,
-    "testing",
-    "Reset GC threshold to a more sane value",
-    0,
-    false,
-    testFunction
-)
-
-
-
-
-
 emacs.set(em.intern("inhibit-startup-screen"), 1)
 
 -- emacs.run("kill-buffer", emacs.run("get-buffer-create", "*Messages*"))
@@ -49,13 +31,4 @@ emacs.run("insert", "Hello from lua in D running in elisp! :D")
 -- emacs.run("switch-to-buffer", emacs.run("get-buffer-create", "*scratch*"))
 
 
--- em.run("make-frame", "test")
-
--- emacs.run_no_return("set-window-buffer", "test*")
-
--- functioncall(emacs_environment, "generate-new-buffer", 1, { "hi" })
-
--- functioncall(emacs_environment, "generate-new-buffer", 1, { "hi" })
-
-
--- em.set("unread-command-events", "C-g")
+print("startup time: " .. em.emacs_init_time())
