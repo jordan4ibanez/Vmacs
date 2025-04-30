@@ -44,11 +44,16 @@ end
 function emacs.setopt_intern(name_or_table, form)
     if (type(name_or_table) == "table") then
         for k, v in pairs(name_or_table) do
-            -- print(k,v)
-            emacs.run_no_return("setopt", emacs.intern(k), v)
+            -- print(k, v)
+            local x = emacs.intern_soft(k)
+            if (x) then
+                emacs.set(x, v)
+            else
+                emacs.set_intern(k, v)
+            end
         end
     else
-        emacs.run_no_return("setopt", emacs.intern(name_or_table), form)
+        emacs.set_intern(emacs.intern(name_or_table), form)
     end
 end
 
