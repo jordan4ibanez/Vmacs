@@ -156,6 +156,43 @@ static int emacs_to_lua_val(emacs_env* env, emacs_value eval, lua_State* L) {
     return 0;
 }
 
+// Lua function
+// Call emacs lisp function from lua
+static int functioncall(lua_State* L) {
+    emacs_env* env = lua_touserdata(L, -4);
+    const char* func_name = lua_tostring(L, -3);
+    size_t nargs = cast(size_t) lua_tonumber(L, -2);
+
+    if (nargs == 0) {
+        emacs_value ret = env -  > funcall(env, env -  > intern(env, func_name), 0, NULL);
+        if (emacs_to_lua_val(env, ret, L) < 0) {
+            return 0;
+        }
+        return 1;
+    }
+
+    emacs_value* evalues = malloc(sizeof(emacs_value) * nargs);
+    if (!evalues) {
+        LOG("Failed to allocate evalues");
+        return 0;
+    }
+
+    for (size_t i = 0; i < nargs; i++) {
+        lua_rawgeti(L, -1 - i, i + 1);
+        evalues[i] = lua_to_emacs_val(env, L, -1);
+    }
+
+    emacs_value ret =
+        env -  > funcall(env, env -  > intern(env, func_name), nargs, evalues);
+    if (emacs_to_lua_val(env, ret, L) < 0) {
+        free(evalues);
+        return 0;
+    }
+
+    free(evalues);
+    return 1;
+}
+
 /// Define an elisp function.
 void defun(emacs_env* env, int mm_arity, emacs_function func,
     string docstring, string symbol_name) {
