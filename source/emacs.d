@@ -65,14 +65,14 @@ emacs_value lua_to_emacs_val(emacs_env* env, lua_State* L, int stack_index) {
                 emacs_value cdr = lua_to_emacs_val(env, L, -1);
 
                 emacs_value[] args = [car, cdr];
-                return env.funcall(env, env.intern(env, "cons"), 2, args);
+                return env.funcall(env, env.intern(env, "cons"), 2, args.ptr);
             } else {
-                LOG("Unknown table type");
+                writeln("Unknown table type");
                 return NIL(env);
             }
         }
     default: {
-            LOG("Unknown type");
+            writeln("Unknown type");
             return NIL(env);
         }
     }
