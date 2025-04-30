@@ -7,6 +7,9 @@ import std.string;
 
 export extern (C) __gshared int plugin_is_GPL_compatible;
 
+/// The Lua 5.2 state.
+__gshared lua_State* state;
+
 /// Return nil to elisp from D.
 pragma(inline, true)
 emacs_value NIL(emacs_env* env) {
