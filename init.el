@@ -5,3 +5,12 @@
 
 
 (module-load "./liblua_mode.so")
+
+
+
+
+;; Close the D library when emacs exits.
+;; The function is coming from the D library.
+(add-hook 'kill-emacs-hook 
+    (lambda () 
+        (terminate-vmacs)))
