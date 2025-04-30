@@ -45,11 +45,8 @@ void initLua() {
 
 export extern (C) __gshared emacs_value terminate(emacs_env* env, ptrdiff_t nargs,
     emacs_value* args, void* data) {
-
     lua_close(state);
-
     writeln("Thank you for using VMACS! :)");
-
     return NIL(env);
 }
 
