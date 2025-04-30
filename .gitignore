@@ -23,6 +23,7 @@ recentf~
 .vmacs-fully-initialized
 luamacs.o
 luamacs.so
+url/
 
 
 .dub
