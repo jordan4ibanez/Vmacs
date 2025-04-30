@@ -4,14 +4,16 @@ emacs = {}
 
 emacs.Mode = { ENABLE = 1, DISABLE = -1 }
 
+--- Run emacs function with variables automatically distributed.
 function emacs.run(functionName, ...)
     local values = { ... }
     return functioncall(emacs_environment, functionName, #values, values)
 end
 
+--- Run emacs function with variables automatically distributed with no return value.
 function emacs.run_no_return(functionName, ...)
     local values = { ... }
-    return functioncall_no_return(emacs_environment, functionName, #values, values)
+    functioncall_no_return(emacs_environment, functionName, #values, values)
 end
 
 --- Set a symbol to a value
