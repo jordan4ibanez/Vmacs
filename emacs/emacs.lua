@@ -29,7 +29,7 @@ end
 -- @param value Value to set
 -- @return value
 function emacs.set_intern(name, value)
-    return emacs.run("set", 2, { emacs.intern(name), value })
+    return emacs.run("set", emacs.intern(name), value)
 end
 
 --- Set a symbols default value
@@ -37,26 +37,26 @@ end
 -- @param value Value to set
 -- @return value
 function emacs.set_default(name, value)
-    return emacs.run("set-default", 2, { name, value })
+    return emacs.run("set-default", name, value)
 end
 
 --- Display a message inside emacs
 -- @param msg The message to be displayed
 function emacs.message(msg)
-    emacs.run_no_return("message", 1, { msg })
+    emacs.run_no_return("message", msg)
 end
 
 --- Get the time emacs took to initialize
 -- @return String displayig timestamp, i.e. "1.12 seconds"
 function emacs.emacs_init_time()
-    return emacs.run("emacs-init-time", 0, {})
+    return emacs.run("emacs-init-time")
 end
 
 --- Create a symbol
 -- @param sym_name Name of the symbol
 -- @return A userdata object. ONLY USE THE RETURNED VALUE IN OTHER EMACS FUNCTIONS
 function emacs.intern(sym_name)
-    return emacs.run("intern", 1, { sym_name })
+    return emacs.run("intern", sym_name)
 end
 
 --- Create a cons cell
@@ -75,7 +75,7 @@ end
 -- @param name Interned symbol of the list to append to
 -- @param value The value to append
 function emacs.add_to_list(list, value)
-    emacs.run("add-to-list", 2, { list, value })
+    emacs.run("add-to-list", list, value)
 end
 
 --- Add a value to a list without triggering return value conversion
@@ -83,68 +83,68 @@ end
 -- @param name Interned symbol of the list to append to
 -- @param value The value to append
 function emacs.add_to_list_no_ret(list, value)
-    emacs.run_no_return("add-to-list", 2, { list, value })
+    emacs.run_no_return("add-to-list", list, value)
 end
 
 --- Load a feature
 -- @param feature The feature to load
 function emacs.require(feature)
-    emacs.run_no_return("require", 1, { feature })
+    emacs.run_no_return("require", feature)
 end
 
 --- Load a feature interned.
 -- @param feature The interned feature to load
 function emacs.require_interned(feature)
-    emacs.run_no_return("require", 1, { emacs.intern(feature) })
+    emacs.run_no_return("require", emacs.intern(feature))
 end
 
 --- Execute a file of lisp code
 -- @param file Name of file to load
 -- @return Returns true if the file exists and loads successfully
 function emacs.load(file)
-    return emacs.run("load", 1, { file })
+    return emacs.run("load", file)
 end
 
 --- Evaluate elisp code
 -- @param form Elisp code to evaluate
 -- @return The return value of the evaluated code
 function emacs.eval(form)
-    return emacs.run("eval", 1, { form })
+    return emacs.run("eval", form)
 end
 
 --- Evaluate elisp code
 -- @param form Elisp code to evaluate
 -- @return The return value of the evaluated code
 function emacs.eval_expression(form)
-    return emacs.run("eval-expression", 1, { form })
+    return emacs.run("eval-expression", form)
 end
 
 function emacs.add_hook(hook, func, lm_local)
     if not lm_local then
-        emacs.run_no_return("add-hook", 2, { hook, func })
+        emacs.run_no_return("add-hook", hook, func)
     else
-        emacs.run_no_return("add-hook", 4, { hook, func, nil, true })
+        emacs.run_no_return("add-hook", hook, func, nil, true)
     end
 end
 
 function emacs.add_hook_intern(hook, func, lm_local)
     if not lm_local then
-        emacs.run_no_return("add-hook", 2, { emacs.intern(hook), func })
+        emacs.run_no_return("add-hook", emacs.intern(hook), func)
     else
-        emacs.run_no_return("add-hook", 4, { emacs.intern(hook), func, nil, true })
+        emacs.run_no_return("add-hook", emacs.intern(hook), func, nil, true)
     end
 end
 
 function emacs.make_local_variable(symbol)
-    return emacs.run("make-local-variable", 1, { symbol })
+    return emacs.run("make-local-variable", symbol)
 end
 
 function emacs.kbd(keys)
-    return emacs.run("kbd", 1, { keys })
+    return emacs.run("kbd", keys)
 end
 
 function emacs.define_key(keymap, key, def)
-    emacs.run_no_return("define-key", 3, { keymap, key, def })
+    emacs.run_no_return("define-key", keymap, key, def)
 end
 
 --- This function returns t if object is a symbol, nil otherwise.
