@@ -297,7 +297,7 @@ void initializeLuaState() {
     lua_setglobal(state, "expose_function");
 }
 
-static emacs_value execute_lua_str(emacs_env* env, ptrdiff_t nargs,
+static emacs_value executeLuaStr(emacs_env* env, ptrdiff_t nargs,
     emacs_value* args, void* data) {
     cast(void) env;
     cast(void) data;
@@ -339,6 +339,20 @@ static emacs_value execute_lua_str(emacs_env* env, ptrdiff_t nargs,
 
     free(lua_code);
     return NIL(env);
+}
+
+static void executeLuaFile(emacs_env* env, string fileLocation) {
+    cast(void) env;
+
+    // Expose the emacs environment for use in Lua
+    lua_pushlightuserdata(state, env);
+    lua_setglobal(state, "emacs_environment");
+    lua_pop(state, -1);
+
+    if (luaL_dofile(state, fileLocation.toStringz())) {
+        printf("LUAMACS(execute_lua_str) Error occured running lua code: %s\n",
+            lua_tostring(state, -1));
+    }
 }
 
 /// Define an elisp function.
@@ -388,10 +402,7 @@ export extern (C) __gshared int emacs_module_init(emacs_runtime* runtime) {
 
     defun(env, 0, &terminate, "Terminate the Vmacs lua plugin", "terminate-vmacs");
 
-    // defun(env, 2, &execute_lua_str, "Execute a given string containing lua code",
-    // "luamacs-exec-str");
-
-    // LOG("Initialized");
+    executeLuaFile(env, "./init.lua");
 
     return 0;
 }
