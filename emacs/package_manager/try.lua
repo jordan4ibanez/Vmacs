@@ -33,15 +33,16 @@
 -- For more info see https://github.com/larstvei/Try
 
 local em = require("emacs")
+local str = require("str")
 
 em.require_interned("package")
 em.require_interned("url")
 
 local try = {}
 
-
-
-
-
+--- Returns non-nil if this looks like an URL to a .el file.
+function try.raw_link_p(url)
+    str.string_match_p("[^:]*://\\([^?\r\n]+\\).*\\.el?$", url)
+end
 
 return try;
