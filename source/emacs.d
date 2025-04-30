@@ -324,7 +324,7 @@ static emacs_value execute_lua_str(emacs_env* env, ptrdiff_t nargs,
         return NIL(env);
     }
 
-    char* lua_code = malloc(code_len);
+    char* lua_code = cast(char*) malloc(code_len);
     if (!lua_code) {
         writeln("Failed to allocate lua_code");
         return NIL(env);
@@ -335,7 +335,7 @@ static emacs_value execute_lua_str(emacs_env* env, ptrdiff_t nargs,
         return NIL(env);
     }
 
-    lua_State* L = env.get_user_ptr(env, args[0]);
+    lua_State* L = cast(lua_State*) env.get_user_ptr(env, args[0]);
 
     // Expose the emacs environment for use in Lua
     lua_pushlightuserdata(L, env);
