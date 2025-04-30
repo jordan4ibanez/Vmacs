@@ -10,8 +10,12 @@
 
 This was bootstrapped in vscode. (It was a nightmare)
 
+This is built off, translated from: https://github.com/MAlba124/luamacs
+
 For Ubuntu distros:
 
 ```
 sudo apt install 
 ```
+
+If running vim mode in emacs is considered evil. This is downright apocalyptic.
