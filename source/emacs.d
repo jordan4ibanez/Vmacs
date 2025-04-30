@@ -272,17 +272,6 @@ static int expose_function(lua_State* L) {
     return 0;
 }
 
-/// Define an elisp function.
-void defun(emacs_env* env, int mm_arity, emacs_function func,
-    string docstring, string symbol_name) {
-
-    emacs_value efunc =
-        env.make_function(env, mm_arity, mm_arity, func, docstring.toStringz(), NULL);
-    emacs_value symbol = env.intern(env, symbol_name.toStringz());
-    emacs_value[] args = [symbol, efunc];
-    env.funcall(env, env.intern(env, "defalias"), 2, args.ptr);
-}
-
 void terminateLuaState() {
     lua_close(state);
     state = null;
@@ -350,6 +339,17 @@ static emacs_value execute_lua_str(emacs_env* env, ptrdiff_t nargs,
 
     free(lua_code);
     return NIL(env);
+}
+
+/// Define an elisp function.
+void defun(emacs_env* env, int mm_arity, emacs_function func,
+    string docstring, string symbol_name) {
+
+    emacs_value efunc =
+        env.make_function(env, mm_arity, mm_arity, func, docstring.toStringz(), NULL);
+    emacs_value symbol = env.intern(env, symbol_name.toStringz());
+    emacs_value[] args = [symbol, efunc];
+    env.funcall(env, env.intern(env, "defalias"), 2, args.ptr);
 }
 
 /// Initializes the shared library along with the lua 5.2 state.
