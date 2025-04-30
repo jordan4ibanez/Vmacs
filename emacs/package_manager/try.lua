@@ -1,6 +1,36 @@
 --- Number related functions.
 
--- package.path = os.getenv("HOME") .. "/.emacs.d/emacs/?.lua;" .. package.path
+-- Copyright (C) 2014 Lars Tveito.
+
+-- Author: Lars Tveito <larstvei@ifi.uio.no>
+-- URL: http://github.com/larstvei/try
+-- Created: 13th November 2014
+-- Keywords: packages
+-- Version: 0.0.1
+-- Package-Requires: ((emacs "24"))
+
+-- Contains code from GNU Emacs <https://www.gnu.org/software/emacs/>,
+-- released under the GNU General Public License version 3 or later.
+
+-- Try is free software; you can redistribute it and/or modify it under the
+-- terms of the GNU General Public License as published by the Free Software
+-- Foundation; either version 3, or (at your option) any later version.
+--
+-- Try is distributed in the hope that it will be useful, but WITHOUT ANY
+-- WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+-- FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+-- details.
+--
+-- You should have received a copy of the GNU General Public License along
+-- with Try. If not, see <http://www.gnu.org/licenses/>.
+
+--; Commentary:
+
+-- Try is a package that allows you to try out Emacs packages without
+-- installing them. If you pass a URL to a plain text `.el`-file it evaluates
+-- the content, without storing the file.
+
+-- For more info see https://github.com/larstvei/Try
 
 local em = require("emacs")
 
