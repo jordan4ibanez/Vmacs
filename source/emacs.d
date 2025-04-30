@@ -291,6 +291,20 @@ void terminateLuaState() {
 
 void initializeLuaState() {
     state = luaL_newstate();
+    luaL_openlibs(state);
+    writeln("Lua 5.2 state initialized");
+
+    // fixme: this is insanely dangerous.
+
+    lua_pushcfunction(state, &functioncall);
+    lua_setglobal(state, "functioncall");
+
+    lua_pushcfunction(state, &functioncall_no_return);
+    lua_setglobal(state, "functioncall_no_return");
+
+    lua_pushcfunction(state, &expose_function);
+    lua_setglobal(state, "expose_function");
+
 }
 
 /// Initializes the shared library along with the lua 5.2 state.
