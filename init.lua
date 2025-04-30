@@ -1,4 +1,5 @@
 package.path = os.getenv("HOME") .. "/.emacs.d/emacs/?.lua;" .. package.path
+package.path = ";" .. os.getenv("HOME") .. "/.emacs.d/emacs/package_manager/?.lua;" .. package.path
 
 local em = require("emacs")
 local ui = require("ui")
@@ -6,6 +7,7 @@ local pakage = require("package")
 local com = require("commands")
 local buf = require("buffer")
 local num = require("numbers")
+local try = require("try")
 
 print("startup time: " .. em.emacs_init_time())
 
@@ -27,8 +29,6 @@ local marker_point = em.intern("marker-point")
 -- local ending = emacs.run("region-ending")
 -- emacs.run("goto-char", start)
 -- emacs.run("insert", "Hello from lua in D running in elisp! :D")
-
-
 
 --! That's cool.
 -- emacs.run("switch-to-buffer", emacs.run("get-buffer-create", "*scratch*"))
