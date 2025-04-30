@@ -32,3 +32,5 @@ if (not disp.display_graphic_p()) then
         ui.disable_theme(em.car(em.get("custom-enabled-themes")))
     end
 end
+
+em.run("princ", "hi there", em.get("external-debugging-output"))
