@@ -1,11 +1,12 @@
 module emacs;
 
+import bindbc.lua;
 import emacs_module;
 import std.stdio;
 
 export extern (C) __gshared int plugin_is_GPL_compatible;
 
-void test_d() {
+void testD() {
     writeln("Edit source/app.d to start your project.");
 }
 
@@ -28,7 +29,7 @@ export extern (C) __gshared int emacs_module_init(emacs_runtime* runtime) {
     // "luamacs-exec-str");
     // LOG("Initialized");
 
-    writeln("hi");
+    testD();
 
     return 0;
 }
