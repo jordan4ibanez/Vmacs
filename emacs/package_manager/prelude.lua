@@ -1,3 +1,8 @@
+--- Prelude package manager.
+--- Built on top of the standard emacs package system.
+--- It allows you to import packages if you don't feel like
+--- rewriting them in lua.
+
 local em = require("emacs")
 local str = require("str")
 local buf = require("buffer")
