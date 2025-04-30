@@ -134,4 +134,10 @@ function emacs.symbolp(object)
     return emacs.run("symbolp", object) ~= nil
 end
 
+---This function returns the symbol in obarray whose name is name, or nil if obarray has no symbol with that name. Therefore, you can use intern-soft to test whether a symbol with a given name is already interned. If obarray is omitted, the value of the global variable obarray is used.
+--- The argument name may also be a symbol; in that case, the function returns name if name is interned in the specified obarray, and otherwise nil.
+function emacs.intern_soft(symbol_name)
+    return emacs.run("intern-soft", symbol_name) ~= nil
+end
+
 return emacs
