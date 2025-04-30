@@ -23,6 +23,13 @@ bool ELISP_IS_TYPE(emacs_env* env, emacs_value type, string str) {
     return env.eq(env, env.intern(env, str.toStringz()), type);
 }
 
+struct LuaFunctionData {
+    int reg_index;
+    int nargs;
+    int returns;
+    lua_State* L; // TODO: use after free vulnerability?
+}
+
 /// Define an elisp function.
 void defun(emacs_env* env, int mm_arity, emacs_function func,
     string docstring, string symbol_name) {
