@@ -13,20 +13,6 @@ emacs_value NIL(emacs_env* env) {
     return env.intern(env, "nil");
 }
 
-void initLua() {
-    LuaSupport ret = loadLua();
-    if (ret == luaSupport) {
-        return;
-    }
-    if (ret == luaSupport.noLibrary) {
-        // Lua shared library failed to load
-    } else if (luaSupport.badLibrary) {
-        // One or more symbols failed to load. The likely cause is that the
-        // shared library is a version different from the one the app was
-        // configured to load
-    }
-}
-
 void defun(emacs_env* env, int mm_arity, emacs_function func,
     string docstring, string symbol_name) {
 
@@ -35,6 +21,23 @@ void defun(emacs_env* env, int mm_arity, emacs_function func,
     emacs_value symbol = env.intern(env, symbol_name.toStringz());
     emacs_value[] args = [symbol, efunc];
     env.funcall(env, env.intern(env, "defalias"), 2, args.ptr);
+}
+
+/// Initializes the shared library along with the lua 5.2 state.
+void initLua() {
+    LuaSupport ret = loadLua();
+    if (ret != luaSupport) {
+        if (ret == luaSupport.noLibrary) {
+            throw new Error("Lua: no library.");
+            // Lua shared library failed to load
+        } else if (luaSupport.badLibrary) {
+            throw new Error("Lua: bad library.");
+            // One or more symbols failed to load. The likely cause is that the
+            // shared library is a version different from the one the app was
+            // configured to load
+        }
+    }
+    state = luaL_newstate();
 }
 
 export extern (C) __gshared emacs_value terminate(emacs_env* env, ptrdiff_t nargs,
