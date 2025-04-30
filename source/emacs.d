@@ -16,6 +16,12 @@ emacs_value NIL(emacs_env* env) {
     return env.intern(env, "nil");
 }
 
+/// Typecheck for elisp.
+pragma(inline, true)
+bool ELISP_IS_TYPE(emacs_env* env, emacs_value type, string str) {
+    return env.eq(env, env.intern(env, str.toStringz()), type);
+}
+
 /// Define an elisp function.
 void defun(emacs_env* env, int mm_arity, emacs_function func,
     string docstring, string symbol_name) {
