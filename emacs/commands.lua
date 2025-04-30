@@ -1,4 +1,4 @@
---- General command related functions.
+--- Command (or command related) functions.
 
 local em = require("emacs")
 
