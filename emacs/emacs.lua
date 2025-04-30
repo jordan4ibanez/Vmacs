@@ -115,6 +115,14 @@ function emacs.add_hook(hook, func, lm_local)
     end
 end
 
+function emacs.add_hook_intern(hook, func, lm_local)
+    if not lm_local then
+        functioncall_no_return(emacs_environment, "add-hook", 2, { emacs.intern(hook), func })
+    else
+        functioncall_no_return(emacs_environment, "add-hook", 4, { emacs.intern(hook), func, nil, true })
+    end
+end
+
 function emacs.make_local_variable(symbol)
     return functioncall(emacs_environment, "make-local-variable", 1, { symbol })
 end
