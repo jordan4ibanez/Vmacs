@@ -119,20 +119,11 @@ function emacs.eval_expression(form)
     return emacs.run("eval-expression", form)
 end
 
-function emacs.add_hook(hook, func, lm_local)
-    if not lm_local then
-        emacs.run_no_return("add-hook", hook, func)
-    else
-        emacs.run_no_return("add-hook", hook, func, nil, true)
-    end
-end
-
-function emacs.add_hook_intern(hook, func, lm_local)
-    if not lm_local then
-        emacs.run_no_return("add-hook", emacs.intern(hook), func)
-    else
-        emacs.run_no_return("add-hook", emacs.intern(hook), func, nil, true)
-    end
+--- Your hook will get baked into the elisp machine and automatically executed at the proper time.
+--- It is set up to pass in no variables at all. This is a simplicity choice. (for now)
+function emacs.add_hook_intern(hook, func, func_name)
+    expose_function(emacs_environment, func_name, "...", 0, false, func)
+    emacs.run_no_return("add-hook", emacs.intern(hook), emacs.intern(func_name))
 end
 
 function emacs.make_local_variable(symbol)
