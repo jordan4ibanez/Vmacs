@@ -7,3 +7,11 @@
    \ V /  | | | | | | | (_| | | (__  \__ \
     \_/   |_| |_| |_|  \__,_|  \___| |___/
 ```
+
+This was bootstrapped in vscode. (It was a nightmare)
+
+For Ubuntu distros:
+
+```
+sudo apt install 
+```
