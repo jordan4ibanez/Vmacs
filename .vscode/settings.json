@@ -4,6 +4,9 @@
     "editor.wordSeparators": "`|;:'\",()"
   },
   "files.associations": {
-    "lualib.h": "c"
+    "lualib.h": "c",
+    "emacs-module.h": "c",
+    "stddef.h": "c",
+    "stdint.h": "c"
   }
 }
