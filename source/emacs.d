@@ -39,12 +39,12 @@ emacs_value lua_to_emacs_val(emacs_env *env, lua_State *L, size_t stack_index) {
   case LUA_TNUMBER: {
     lua_Integer integer = lua_tointeger(L, stack_index);
     lua_Number num = lua_tonumber(L, stack_index);
-    return integer != num ? env->make_float(env, num)
-                          : env->make_integer(env, integer);
+    return integer != num ? env.make_float(env, num)
+                          : env.make_integer(env, integer);
   }
   case LUA_TBOOLEAN: {
     int boolean = lua_toboolean(L, stack_index);
-    return boolean ? env->intern(env, "t") : NIL(env);
+    return boolean ? env.intern(env, "t") : NIL(env);
   }
   case LUA_TSTRING: {
     const char *string = lua_tostring(L, stack_index);
@@ -65,8 +65,8 @@ emacs_value lua_to_emacs_val(emacs_env *env, lua_State *L, size_t stack_index) {
       lua_getfield(L, -3, "cdr");
       emacs_value cdr = lua_to_emacs_val(env, L, -1);
 
-      emacs_value args[] = {car, cdr};
-      return env->funcall(env, env->intern(env, "cons"), 2, args);
+      emacs_value[] args = {car, cdr};
+      return env.funcall(env, env.intern(env, "cons"), 2, args);
     } else {
       LOG("Unknown table type");
       return NIL(env);
