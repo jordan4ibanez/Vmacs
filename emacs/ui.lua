@@ -30,6 +30,11 @@ function ui.require_theme(theme)
     em.run("require-theme", theme)
 end
 
+--- Disable a theme.
+function ui.disable_theme(theme)
+    em.run("disable-theme", theme)
+end
+
 --- Load and enable a theme
 -- @param theme Theme to be loaded
 function ui.load_theme(theme)
