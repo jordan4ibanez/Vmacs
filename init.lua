@@ -3,6 +3,7 @@ package.path = os.getenv("HOME") .. "/.emacs.d/emacs/?.lua;" .. package.path
 local em = require("emacs")
 local ui = require("ui")
 local pakage = require("package")
+local com = require("commands")
 
 print("startup time: " .. em.emacs_init_time())
 
@@ -32,3 +33,8 @@ emacs.run("insert", "Hello from lua in D running in elisp! :D")
 
 
 print("startup time: " .. em.emacs_init_time())
+
+-- com.help_with_tutorial()
+-- em.run(emacs_environment, "help-with-tutorial")
+
+com.help_with_tutorial()
