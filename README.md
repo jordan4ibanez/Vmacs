@@ -23,3 +23,5 @@ If running vim mode in emacs is considered evil, this is downright apocalyptic.
 
 Install a D compiler. I recommend LDC2.
 
+//! note: if you functioncall into your own function it's gonna blow up.
+// functioncall(emacs_environment, "testing", 1, {"hi"})
