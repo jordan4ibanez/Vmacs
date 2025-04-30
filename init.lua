@@ -17,5 +17,5 @@ local function startup_hook()
     print("I am a startup hook!")
 end
 
-em.add_hook_intern("emacs-startup-hook", startup_hook, "startup_hook")
+em.add_hook_intern(em.Hook.emacs_startup_hook, startup_hook, "startup_hook")
 
