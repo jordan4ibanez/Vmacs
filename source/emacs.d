@@ -4,6 +4,7 @@ import bindbc.lua;
 import emacs_module;
 import std.stdio;
 import std.string;
+import core.stdc.string;
 
 /// Emacs has this thing where it needs to have this defined or it explodes.
 export extern (C) __gshared int plugin_is_GPL_compatible;
