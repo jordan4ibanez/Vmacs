@@ -158,7 +158,7 @@ static int emacs_to_lua_val(emacs_env* env, emacs_value eval, lua_State* L) {
 
 /// Lua function. (with return)
 /// Call emacs lisp function from lua 5.2.
-static int functioncall(lua_State* L) {
+static extern (C) __gshared int functioncall(lua_State* L) {
     emacs_env* env = cast(emacs_env*) lua_touserdata(L, -4);
     const char* func_name = lua_tostring(L, -3);
     size_t nargs = cast(size_t) lua_tonumber(L, -2);
