@@ -15,14 +15,15 @@ emacs_value NIL(emacs_env* env) {
 
 void initLua() {
     LuaSupport ret = loadLua();
-    if (ret != luaSupport) {
-        if (ret == luaSupport.noLibrary) {
-            // Lua shared library failed to load
-        } else if (luaSupport.badLibrary) {
-            // One or more symbols failed to load. The likely cause is that the
-            // shared library is a version different from the one the app was
-            // configured to load
-        }
+    if (ret == luaSupport) {
+        return;
+    }
+    if (ret == luaSupport.noLibrary) {
+        // Lua shared library failed to load
+    } else if (luaSupport.badLibrary) {
+        // One or more symbols failed to load. The likely cause is that the
+        // shared library is a version different from the one the app was
+        // configured to load
     }
 }
 
@@ -38,7 +39,9 @@ void defun(emacs_env* env, int mm_arity, emacs_function func,
 
 export extern (C) __gshared emacs_value terminate(emacs_env* env, ptrdiff_t nargs,
     emacs_value* args, void* data) {
+
     // todo: fix this.
+
     lua_close(null);
 
     writeln("closing");
