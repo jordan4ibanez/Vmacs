@@ -184,4 +184,9 @@ function emacs.symbol_name(symbol)
     return emacs.run("symbol-name", symbol)
 end
 
+--- Check the equality of two symbols.
+function emacs.eq(symbol_a, symbol_b)
+    return emacs.run("eq", symbol_a, symbol_b) ~= nil
+end
+
 return emacs
