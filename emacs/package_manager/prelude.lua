@@ -24,7 +24,7 @@ function prelude.add_pkg_archive(archive)
 end
 
 function prelude.refresh_contents()
-    functioncall(emacs_environment, "package-refresh-contents", 0, {})
+    em.run("package-refresh-contents")
 end
 
 --- Check if a package is installed or not
@@ -35,7 +35,7 @@ function prelude.is_installed(pkg)
 end
 
 function prelude.install(pkg)
-    functioncall(emacs_environment, "package-install", 1, { pkg })
+    em.run("package-install", pkg)
 end
 
 function prelude.install_if_not_installed(pkg)
