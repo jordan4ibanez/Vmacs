@@ -11,13 +11,8 @@ em.require(em.intern("package"))
 
 local prelude = {}
 
-
-local function package_initialize()
-    functioncall(emacs_environment, "package-initialize", 0, {})
-end
-
 function prelude.init()
-    package_initialize()
+    functioncall(emacs_environment, "package-initialize", 0, {})
 end
 
 function prelude.enable_native_compilation()
