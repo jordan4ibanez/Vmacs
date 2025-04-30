@@ -221,7 +221,7 @@ static int functioncall_no_return(lua_State* L) {
     return 0;
 }
 
-static emacs_value lua_function_proxy(emacs_env* env, ptrdiff_t nargs,
+static extern (C) __gshared emacs_value lua_function_proxy(emacs_env* env, ptrdiff_t nargs,
     emacs_value* args, void* data) {
     LuaFunctionData* dat = cast(LuaFunctionData*) data;
     if (dat.nargs != nargs) {
