@@ -1,4 +1,4 @@
---- General emacs functions
+--- General emacs functions.
 
 emacs = {}
 
