@@ -283,6 +283,12 @@ void defun(emacs_env* env, int mm_arity, emacs_function func,
     env.funcall(env, env.intern(env, "defalias"), 2, args.ptr);
 }
 
+static void terminateLuaState() {
+    lua_close(state);
+    state = null;
+    writeln("Deinitialized lua state.");
+}
+
 /// Initializes the shared library along with the lua 5.2 state.
 void initLua() {
     LuaSupport ret = loadLua();
