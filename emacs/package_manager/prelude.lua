@@ -12,7 +12,7 @@ em.require(em.intern("package"))
 local prelude = {}
 
 function prelude.init()
-    functioncall(emacs_environment, "package-initialize", 0, {})
+    em.run("package-initialize")
 end
 
 function prelude.enable_native_compilation()
@@ -31,7 +31,7 @@ end
 -- @param pkg Symbol representing a package
 -- @return True if the package is installed, false otherwise
 function prelude.is_installed(pkg)
-    if (functioncall(emacs_environment, "package-installed-p", 1, { pkg }) == nil) then
+    if (not em.run("package-installed-p", pkg)) then
         return false
     else
         return true
