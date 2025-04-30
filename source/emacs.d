@@ -194,7 +194,7 @@ static extern (C) __gshared int functioncall(lua_State* L) {
 
 /// Lua function. (no return)
 /// Call emacs lisp function from lua 5.2.
-static int functioncall_no_return(lua_State* L) {
+static extern (C) __gshared int functioncall_no_return(lua_State* L) {
     emacs_env* env = cast(emacs_env_29*) lua_touserdata(L, -4);
     const char* func_name = lua_tostring(L, -3);
     size_t nargs = cast(size_t) lua_tonumber(L, -2);
@@ -247,7 +247,7 @@ static extern (C) __gshared emacs_value lua_function_proxy(emacs_env* env, ptrdi
     return NIL(env);
 }
 
-static int expose_function(lua_State* L) {
+static extern (C) __gshared int expose_function(lua_State* L) {
     emacs_env* env = cast(emacs_env_29*) lua_touserdata(L, -6);
     const char* lisp_fname = lua_tostring(L, -5);
     const char* docstring = lua_tostring(L, -4);
@@ -341,18 +341,46 @@ static emacs_value executeLuaStr(emacs_env* env, ptrdiff_t nargs,
     return NIL(env);
 }
 
-static void executeLuaFile(emacs_env* env, string fileLocation) {
+/// Execute a lua file.
+static extern (C) __gshared emacs_value executeLuaFile(emacs_env* env, ptrdiff_t nargs,
+    emacs_value* args, void* data) {
     cast(void) env;
+    cast(void) data;
+
+    if (nargs < 1) {
+        writeln("Missing arguments");
+        return NIL(env);
+    }
+
+    ptrdiff_t code_len;
+    if ((code_len = emacs_get_string_length(env, args[0])) < 0) {
+        writeln("Failed to get code len");
+        return NIL(env);
+    }
+
+    char* file_location = cast(char*) malloc(code_len);
+    if (!file_location) {
+        writeln("Failed to allocate file_location");
+        return NIL(env);
+    }
+
+    if (!env.copy_string_contents(env, args[0], file_location, &code_len)) {
+        writeln("Failed to copy file location");
+        return NIL(env);
+    }
 
     // Expose the emacs environment for use in Lua
     lua_pushlightuserdata(state, env);
     lua_setglobal(state, "emacs_environment");
     lua_pop(state, -1);
 
-    if (luaL_dofile(state, fileLocation.toStringz())) {
+    if (luaL_dofile(state, file_location)) {
         printf("LUAMACS(execute_lua_str) Error occured running lua code: %s\n",
             lua_tostring(state, -1));
     }
+
+    free(file_location);
+    return NIL(env);
 }
 
 /// Define an elisp function.
@@ -402,7 +430,9 @@ export extern (C) __gshared int emacs_module_init(emacs_runtime* runtime) {
 
     defun(env, 0, &terminate, "Terminate the Vmacs lua plugin", "terminate-vmacs");
 
-    executeLuaFile(env, "./init.lua");
+    defun(env, 1, &executeLuaFile, "Execute a lua file", "run-lua-file");
+
+    // executeLuaFile(env, "./init.lua");
 
     return 0;
 }
