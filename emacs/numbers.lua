@@ -41,4 +41,9 @@ function num.zerop(object)
     return em.run("zerop", object) ~= nil
 end
 
+---This function acts like eq except when both arguments are numbers. It compares numbers by type and numeric value, so that (eql 1.0 1) returns nil, but (eql 1.0 1.0) and (eql 1 1) both return t. This can be used to compare large integers as well as small ones. Floating-point values with the same sign, exponent and fraction are eql. This differs from numeric comparison: (eql 0.0 -0.0) returns nil and (eql 0.0e+NaN 0.0e+NaN) returns t, whereas = does the opposite.
+function num.eql(a, b)
+    return em.run("eql", a, b) ~= nil
+end
+
 return num
