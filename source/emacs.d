@@ -221,6 +221,32 @@ static int functioncall_no_return(lua_State* L) {
     return 0;
 }
 
+static emacs_value lua_function_proxy(emacs_env* env, ptrdiff_t nargs,
+    emacs_value* args, void* data) {
+    LuaFunctionData* dat = data;
+    if (dat -  > nargs != nargs) {
+        return NIL(env);
+    }
+
+    lua_pushlightuserdata(dat -  > L, env);
+    lua_setglobal(dat -  > L, "emacs_environment");
+    lua_pop(dat -  > L,  - 1);
+
+    lua_rawgeti(dat -  > L, LUA_REGISTRYINDEX, dat -  > reg_index);
+
+    for (int i = 0; i < dat -  > nargs; i++) {
+        emacs_to_lua_val(env, args[i], dat -  > L);
+    }
+
+    lua_call(dat -  > L, dat -  > nargs, dat -  > returns);
+
+    if (dat -  > returns) {
+        return lua_to_emacs_val(env, dat -  > L,  - 1);
+    }
+
+    return NIL(env);
+}
+
 /// Define an elisp function.
 void defun(emacs_env* env, int mm_arity, emacs_function func,
     string docstring, string symbol_name) {
