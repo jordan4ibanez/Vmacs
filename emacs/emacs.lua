@@ -3,6 +3,7 @@
 emacs = {}
 
 emacs.Mode = { ENABLE = 1, DISABLE = -1 }
+emacs.Hook = require("hook_defines")
 
 --- Run emacs function with variables automatically distributed.
 function emacs.run(functionName, ...)
