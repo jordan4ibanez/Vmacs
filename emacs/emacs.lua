@@ -86,6 +86,13 @@ function emacs.eval(form)
     return functioncall(emacs_environment, "eval", 1, { form })
 end
 
+--- Evaluate elisp code
+-- @param form Elisp code to evaluate
+-- @return The return value of the evaluated code
+function emacs.eval_expression(form)
+    return functioncall(emacs_environment, "eval-expression", 1, { form })
+end
+
 function emacs.add_hook(hook, func, lm_local)
     if not lm_local then
         functioncall_no_return(emacs_environment, "add-hook", 2, { hook, func })
