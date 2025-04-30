@@ -18,4 +18,4 @@ For Ubuntu distros:
 sudo apt install 
 ```
 
-If running vim mode in emacs is considered evil. This is downright apocalyptic.
+If running vim mode in emacs is considered evil, this is downright apocalyptic.
