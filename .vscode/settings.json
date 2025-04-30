@@ -8,5 +8,12 @@
     "emacs-module.h": "c",
     "stddef.h": "c",
     "stdint.h": "c"
-  }
+  },
+  "Lua.diagnostics.globals": [
+    "functioncall",
+    "emacs_environment",
+    "functioncall_no_return",
+    "emacs",
+    "expose_function"
+  ]
 }
