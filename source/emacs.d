@@ -150,7 +150,7 @@ static int emacs_to_lua_val(emacs_env* env, emacs_value eval, lua_State* L) {
         return 0;
     } else {
         // Customized type to handle things like windows.
-        writeln("warning: unknown type, might cause crash.");
+        // writeln("warning: unknown type, might cause crash.");
 
         emacs_value* l_udata = cast(emacs_value_tag**) lua_newuserdata(L, emacs_value.sizeof);
         memcpy(l_udata, eval, emacs_value.sizeof);
