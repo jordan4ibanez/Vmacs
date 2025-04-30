@@ -30,6 +30,55 @@ struct LuaFunctionData {
     lua_State* L; // TODO: use after free vulnerability?
 }
 
+
+emacs_value lua_to_emacs_val(emacs_env *env, lua_State *L, size_t stack_index) {
+  switch (lua_type(L, stack_index)) {
+  case LUA_TNIL: {
+    return NIL(env);
+  }
+  case LUA_TNUMBER: {
+    lua_Integer integer = lua_tointeger(L, stack_index);
+    lua_Number num = lua_tonumber(L, stack_index);
+    return integer != num ? env->make_float(env, num)
+                          : env->make_integer(env, integer);
+  }
+  case LUA_TBOOLEAN: {
+    int boolean = lua_toboolean(L, stack_index);
+    return boolean ? env->intern(env, "t") : NIL(env);
+  }
+  case LUA_TSTRING: {
+    const char *string = lua_tostring(L, stack_index);
+    return env->make_string(env, string, strlen(string));
+  }
+  case LUA_TUSERDATA: {
+    emacs_value val = lua_touserdata(L, stack_index);
+    return val;
+  }
+  case LUA_TTABLE: {
+    lua_getfield(L, -1, "type");
+    const char *type = lua_tostring(L, -1);
+
+    if (strcmp(type, "cons") == 0) {
+      lua_getfield(L, -2, "car");
+      emacs_value car = lua_to_emacs_val(env, L, -1);
+
+      lua_getfield(L, -3, "cdr");
+      emacs_value cdr = lua_to_emacs_val(env, L, -1);
+
+      emacs_value args[] = {car, cdr};
+      return env->funcall(env, env->intern(env, "cons"), 2, args);
+    } else {
+      LOG("Unknown table type");
+      return NIL(env);
+    }
+  }
+  default: {
+    LOG("Unknown type");
+    return NIL(env);
+  }
+  }
+}
+
 /// Define an elisp function.
 void defun(emacs_env* env, int mm_arity, emacs_function func,
     string docstring, string symbol_name) {
