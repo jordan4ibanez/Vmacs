@@ -179,6 +179,7 @@ function emacs.intern_soft(symbol_name)
 end
 
 --- This is just a shorter function name for intern_soft.
+--- Try to get a symbol from the emacs machine. Nil if it does not exist.
 function emacs.get(symbol_name)
     return emacs.run("intern-soft", symbol_name)
 end
