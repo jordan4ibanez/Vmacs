@@ -11,6 +11,11 @@ local prelude = require("prelude")
 
 print("startup time: " .. em.emacs_init_time())
 
-
 em.set_intern("inhibit-startup-screen", 1)
+
+local function startup_hook()
+    print("I am a startup hook!")
+end
+
+em.add_hook_intern("emacs-startup-hook", startup_hook, "startup_hook")
 
