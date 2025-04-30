@@ -41,3 +41,4 @@ lua_mode-test-*
 *.o
 *.obj
 *.lst
+liblua_mode.so
