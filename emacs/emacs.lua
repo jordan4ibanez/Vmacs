@@ -148,4 +148,9 @@ function emacs.intern_soft(symbol_name)
     return emacs.run("intern-soft", symbol_name) ~= nil
 end
 
+--- This function returns the string that is symbol’s name.
+function emacs.symbol_name(symbol)
+    return emacs.run("symbol-name", symbol)
+end
+
 return emacs
