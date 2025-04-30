@@ -1,5 +1,5 @@
---- General command related functions
----
+--- General command related functions.
+
 local em = require("emacs")
 
 local com = {}
