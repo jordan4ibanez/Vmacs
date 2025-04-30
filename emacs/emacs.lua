@@ -40,8 +40,16 @@ end
 
 --- This is like setq (see above), but meant for user options. This macro uses the Customize machinery to set the variable(s) (see Defining Customization Variables). In particular, setopt will run the setter function associated with the variable.
 --- Also this automatically interns a new symbol from a string.
-function emacs.setopt_intern(name, form)
-    return emacs.run("setopt", emacs.intern(name), form)
+--- If is passed a table, it will automatically iterate it.
+function emacs.setopt_intern(name_or_table, form)
+    if (type(name_or_table) == "table") then
+        for k, v in pairs(name_or_table) do
+            -- print(k,v)
+            emacs.run_no_return("setopt", emacs.intern(k), v)
+        end
+    else
+        emacs.run_no_return("setopt", emacs.intern(name_or_table), form)
+    end
 end
 
 --- Set a symbols default value
