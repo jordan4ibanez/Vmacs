@@ -44,7 +44,7 @@ end
 -- @param cdr The cdr of the cons
 -- @return A table representing a cons cell
 function emacs.cons(car, cdr)
-    cell = {}
+    local cell = {}
     cell["type"] = "cons"
     cell["car"] = car
     cell["cdr"] = cdr
