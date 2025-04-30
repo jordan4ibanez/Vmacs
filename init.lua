@@ -4,6 +4,7 @@ local em = require("emacs")
 local ui = require("ui")
 local pakage = require("package")
 local com = require("commands")
+local buf = require("buffer")
 
 print("startup time: " .. em.emacs_init_time())
 
@@ -37,4 +38,11 @@ print("startup time: " .. em.emacs_init_time())
 -- com.help_with_tutorial()
 -- em.run(emacs_environment, "help-with-tutorial")
 
-com.help_with_tutorial()
+local function test_interactive()
+    local x = emacs.run("read-number", "a:")
+    local y = emacs.run("read-number", "b:")
+
+    print(x + y)
+end
+
+test_interactive()
