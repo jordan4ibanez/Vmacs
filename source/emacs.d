@@ -87,6 +87,76 @@ static ptrdiff_t emacs_get_string_length(emacs_env* env, emacs_value eval) {
     return str_len;
 }
 
+
+
+// Convert a emacs lisp value to lua and push it onto the stack
+static int emacs_to_lua_val(emacs_env *env, emacs_value eval, lua_State *L) {
+  if (!env->is_not_nil(env, eval)) {
+    lua_pushnil(L);
+    return 0;
+  }
+
+  emacs_value type = env->type_of(env, eval);
+  if (ELISP_IS_TYPE(env, type, "string")) {
+    ptrdiff_t str_len;
+    if ((str_len = emacs_get_string_length(env, eval)) < 0) {
+      LOG("Failed to get string length");
+      return -1;
+    }
+
+    char *str = malloc(str_len);
+    if (!str) {
+      LOG("Failed to allocate str");
+      return -1;
+    }
+
+    if (!env->copy_string_contents(env, eval, str, &str_len)) {
+      LOG("Failed to copy string");
+      return -1;
+    }
+
+    lua_pushstring(L, str);
+    free(str);
+  } else if (ELISP_IS_TYPE(env, type, "integer")) {
+    lua_pushinteger(L, env->extract_integer(env, eval));
+  } else if (ELISP_IS_TYPE(env, type, "float")) {
+    lua_pushnumber(L, env->extract_float(env, eval));
+  } else if (ELISP_IS_TYPE(env, type, "boolean")) {
+    // Redundant?
+    if (env->eq(env, eval, env->intern(env, "nil"))) {
+      lua_pushboolean(L, 0);
+    } else {
+      lua_pushboolean(L, 1);
+    }
+  } else if (ELISP_IS_TYPE(env, type, "symbol")) {
+    emacs_value *l_udata = lua_newuserdata(L, sizeof(emacs_value));
+    memcpy(l_udata, eval, sizeof(emacs_value));
+    return 0;
+  } else if (ELISP_IS_TYPE(env, type, "cons")) {
+    emacs_value args[] = {eval};
+    emacs_value car = env->funcall(env, env->intern(env, "car"), 1, args);
+    emacs_value cdr = env->funcall(env, env->intern(env, "cdr"), 1, args);
+
+    lua_createtable(L, 3, 0);
+
+    lua_pushstring(L, "cons");
+    lua_setfield(L, -2, "type");
+
+    emacs_to_lua_val(env, car, L);
+    lua_setfield(L, -2, "car");
+
+    emacs_to_lua_val(env, cdr, L);
+    lua_setfield(L, -2, "cdr");
+
+    return 0;
+  } else {
+    LOG("Unsupported type returned from emacs");
+    return -1;
+  }
+
+  return 0;
+}
+
 /// Define an elisp function.
 void defun(emacs_env* env, int mm_arity, emacs_function func,
     string docstring, string symbol_name) {
