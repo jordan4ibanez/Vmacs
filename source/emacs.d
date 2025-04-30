@@ -7,6 +7,12 @@ import std.string;
 
 export extern (C) __gshared int plugin_is_GPL_compatible;
 
+/// Return nil to elisp from D.
+pragma(inline, true)
+emacs_value NIL(emacs_env* env) {
+    return env.intern(env, "nil");
+}
+
 void initLua() {
     LuaSupport ret = loadLua();
     if (ret != luaSupport) {
@@ -37,7 +43,7 @@ export extern (C) __gshared emacs_value terminate(emacs_env* env, ptrdiff_t narg
 
     writeln("closing");
 
-    return env.intern(env, "nil");
+    return NIL(env);
 }
 
 export extern (C) __gshared int emacs_module_init(emacs_runtime* runtime) {
