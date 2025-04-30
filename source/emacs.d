@@ -79,6 +79,14 @@ emacs_value lua_to_emacs_val(emacs_env* env, lua_State* L, int stack_index) {
     }
 }
 
+static ptrdiff_t emacs_get_string_length(emacs_env* env, emacs_value eval) {
+    ptrdiff_t str_len = 0;
+    if (!env.copy_string_contents(env, eval, null, &str_len)) {
+        return -1;
+    }
+    return str_len;
+}
+
 /// Define an elisp function.
 void defun(emacs_env* env, int mm_arity, emacs_function func,
     string docstring, string symbol_name) {
