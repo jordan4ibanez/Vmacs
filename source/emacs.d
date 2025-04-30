@@ -16,6 +16,7 @@ emacs_value NIL(emacs_env* env) {
     return env.intern(env, "nil");
 }
 
+/// Define an elisp function.
 void defun(emacs_env* env, int mm_arity, emacs_function func,
     string docstring, string symbol_name) {
 
@@ -43,6 +44,7 @@ void initLua() {
     state = luaL_newstate();
 }
 
+/// Shuts down the lua 5.2 state. (also I like to thank people for using vmacs)
 export extern (C) __gshared emacs_value terminate(emacs_env* env, ptrdiff_t nargs,
     emacs_value* args, void* data) {
     lua_close(state);
@@ -52,6 +54,8 @@ export extern (C) __gshared emacs_value terminate(emacs_env* env, ptrdiff_t narg
 
 export extern (C) __gshared int emacs_module_init(emacs_runtime* runtime) {
     emacs_env* env = runtime.get_environment(runtime);
+
+    writeln("hello from D!");
 
     initLua();
 
