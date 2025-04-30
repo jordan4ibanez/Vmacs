@@ -174,6 +174,11 @@ function emacs.intern_soft(symbol_name)
     return emacs.run("intern-soft", symbol_name)
 end
 
+--- This is just a shorter function name for intern_soft.
+function emacs.get(symbol_name)
+    return emacs.run("intern-soft", symbol_name)
+end
+
 --- This function returns the string that is symbol’s name.
 function emacs.symbol_name(symbol)
     return emacs.run("symbol-name", symbol)
