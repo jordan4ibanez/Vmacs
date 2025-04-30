@@ -21,36 +21,9 @@ expose_function(
     testFunction
 )
 
---! note: if you functioncall into your own function it's gonna blow up.
--- functioncall(emacs_environment, "testing", 1, {"hi"})
-
-
-local function whatTheHeck()
-    em.eval('(print "hello world" #\'external-debugging-output)')
-end
-
-expose_function(
-    emacs_environment,
-    "wtf",
-    "",
-    0,
-    false,
-    whatTheHeck
-)
-
--- function blah()
---     -- functioncall(emacs_environment, "lisp-interaction-mode", 0, {})
 
 
 
-
--- end
-
--- blah()
-
--- emacs.run_no_return("generate-new-buffer", "test*")
-
-ui.blink_cursor_mode(emacs.Mode.DISABLE)
 
 emacs.set(em.intern("inhibit-startup-screen"), 1)
 
