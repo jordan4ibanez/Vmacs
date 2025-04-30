@@ -33,6 +33,17 @@ function emacs.set_intern(name, value)
     return emacs.run("set", emacs.intern(name), value)
 end
 
+--- This is like setq (see above), but meant for user options. This macro uses the Customize machinery to set the variable(s) (see Defining Customization Variables). In particular, setopt will run the setter function associated with the variable.
+function emacs.setopt(symbol, form)
+    return emacs.run("setopt", symbol, form)
+end
+
+--- This is like setq (see above), but meant for user options. This macro uses the Customize machinery to set the variable(s) (see Defining Customization Variables). In particular, setopt will run the setter function associated with the variable.
+--- Also this automatically interns a new symbol from a string.
+function emacs.setopt_intern(name, form)
+    return emacs.run("setopt", emacs.intern(name), form)
+end
+
 --- Set a symbols default value
 -- @param name Symbol to set the value for
 -- @param value Value to set
