@@ -1,3 +1,5 @@
+(setq debug-on-error t)
+
 ;; Can't start the bootstrap without module support.
 (if (not (eq module-file-suffix nil))
     (princ "Has module support. Firing up!\n" #'external-debugging-output)
