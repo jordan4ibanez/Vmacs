@@ -296,13 +296,15 @@ void initializeLuaState() {
 
     // fixme: this is insanely dangerous.
 
-    lua_pushcfunction(state, &functioncall);
+    alias BAD_IDEA = extern (C) int function(lua_State*) nothrow;
+
+    lua_pushcfunction(state, cast(BAD_IDEA)&functioncall);
     lua_setglobal(state, "functioncall");
 
-    lua_pushcfunction(state, &functioncall_no_return);
+    lua_pushcfunction(state, cast(BAD_IDEA)&functioncall_no_return);
     lua_setglobal(state, "functioncall_no_return");
 
-    lua_pushcfunction(state, &expose_function);
+    lua_pushcfunction(state, cast(BAD_IDEA)&expose_function);
     lua_setglobal(state, "expose_function");
 
 }
