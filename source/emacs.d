@@ -283,10 +283,14 @@ void defun(emacs_env* env, int mm_arity, emacs_function func,
     env.funcall(env, env.intern(env, "defalias"), 2, args.ptr);
 }
 
-static void terminateLuaState() {
+void terminateLuaState() {
     lua_close(state);
     state = null;
     writeln("Deinitialized lua state.");
+}
+
+void initializeLuaState() {
+    state = luaL_newstate();
 }
 
 /// Initializes the shared library along with the lua 5.2 state.
@@ -303,7 +307,7 @@ void initLua() {
             // configured to load
         }
     }
-    state = luaL_newstate();
+    initializeLuaState();
 }
 
 /// Shuts down the lua 5.2 state. (also I like to thank people for using vmacs)
