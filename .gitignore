@@ -22,3 +22,4 @@ recentf~
 .vmacs-fonts-installed
 .vmacs-fully-initialized
 luamacs.o
+luamacs.so
