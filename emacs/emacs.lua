@@ -129,4 +129,9 @@ function emacs.run_no_return(functionName, ...)
     return functioncall_no_return(emacs_environment, functionName, #values, values)
 end
 
+--- This function returns t if object is a symbol, nil otherwise.
+function emacs.symbolp(object)
+    return emacs.run("symbolp", object) ~= nil
+end
+
 return emacs
