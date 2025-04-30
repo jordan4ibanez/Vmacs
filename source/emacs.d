@@ -31,6 +31,7 @@ struct LuaFunctionData {
     lua_State* L; // TODO: use after free vulnerability?
 }
 
+/// Convert a lua 5.2 value to an emacs value.
 emacs_value lua_to_emacs_val(emacs_env* env, lua_State* L, int stack_index) {
     switch (lua_type(L, stack_index)) {
     case LUA_TNIL: {
