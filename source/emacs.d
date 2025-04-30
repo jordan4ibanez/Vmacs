@@ -3,6 +3,7 @@ module emacs;
 import bindbc.lua;
 import emacs_module;
 import std.stdio;
+import std.string;
 
 export extern (C) __gshared int plugin_is_GPL_compatible;
 
@@ -22,22 +23,35 @@ void initLua() {
             // configured to load
         }
     }
+
 }
 
 void defun(emacs_env* env, int mm_arity, emacs_function func,
-    const char* docstring, const char* symbol_name) {
+    string docstring, string symbol_name) {
 
     emacs_value efunc =
-        env.make_function(env, mm_arity, mm_arity, func, docstring, NULL);
-    emacs_value symbol = env.intern(env, symbol_name);
+        env.make_function(env, mm_arity, mm_arity, func, docstring.toStringz(), NULL);
+    emacs_value symbol = env.intern(env, symbol_name.toStringz());
     emacs_value[] args = [symbol, efunc];
     env.funcall(env, env.intern(env, "defalias"), 2, args.ptr);
+}
+
+export extern (C) __gshared emacs_value terminate(emacs_env* env, ptrdiff_t nargs,
+    emacs_value* args, void* data) {
+    // todo: fix this.
+    lua_close(null);
+
+    writeln("closing");
+
+    return env.intern(env, "nil");
 }
 
 export extern (C) __gshared int emacs_module_init(emacs_runtime* runtime) {
     emacs_env* env = runtime.get_environment(runtime);
 
     initLua();
+
+    defun(env, 0, &terminate, "Terminate the vmacs lua plugin", "terminate-vmacs");
 
     // defun(env, 0, state_init, "Initialize the lua state", "luamacs-state-init");
     // defun(env, 2, execute_lua_str, "Execute a given string containing lua code",
