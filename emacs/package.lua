@@ -29,7 +29,7 @@ end
 -- @param pkg Symbol representing a package
 -- @return True if the package is installed, false otherwise
 function pakage.is_installed(pkg)
-   if (functioncall(emacs_environment, "package-installed-p", 1, {pkg}) == nil) then
+   if (functioncall(emacs_environment, "package-installed-p", 1, { pkg }) == nil) then
       return false
    else
       return true
@@ -37,7 +37,7 @@ function pakage.is_installed(pkg)
 end
 
 function pakage.install(pkg)
-   functioncall(emacs_environment, "package-install", 1, {pkg})
+   functioncall(emacs_environment, "package-install", 1, { pkg })
 end
 
 function pakage.install_if_not_installed(pkg)
