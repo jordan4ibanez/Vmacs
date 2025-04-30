@@ -195,27 +195,27 @@ static int functioncall(lua_State* L) {
 /// Lua function. (no return)
 /// Call emacs lisp function from lua 5.2.
 static int functioncall_no_return(lua_State* L) {
-    emacs_env* env = lua_touserdata(L, -4);
+    emacs_env* env = cast(emacs_env_29*) lua_touserdata(L, -4);
     const char* func_name = lua_tostring(L, -3);
-    size_t nargs = (size_t) lua_tonumber(L, -2);
+    size_t nargs = cast(size_t) lua_tonumber(L, -2);
 
     if (nargs == 0) {
-        env -  > funcall(env, env -  > intern(env, func_name), 0, NULL);
+        env.funcall(env, env.intern(env, func_name), 0, null);
         return 0;
     }
 
-    emacs_value* evalues = malloc(sizeof(emacs_value) * nargs);
+    emacs_value* evalues = cast(emacs_value_tag**) malloc(emacs_value.sizeof * nargs);
     if (!evalues) {
-        LOG("Failed to allocate evalues");
+        writeln("Failed to allocate evalues");
         return 0;
     }
 
-    for (size_t i = 0; i < nargs; i++) {
+    for (int i = 0; i < nargs; i++) {
         lua_rawgeti(L, -1 - i, i + 1);
         evalues[i] = lua_to_emacs_val(env, L, -1);
     }
 
-    env -  > funcall(env, env -  > intern(env, func_name), nargs, evalues);
+    env.funcall(env, env.intern(env, func_name), nargs, evalues);
     free(evalues);
 
     return 0;
