@@ -1,3 +1,3 @@
 default:
-	dub build
+	dub build --build=debug
 	emacs --debug-init
