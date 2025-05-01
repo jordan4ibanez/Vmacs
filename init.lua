@@ -61,7 +61,7 @@ em.expose_function(deploy, "test-deployment")
 
 --! PHASE 2 DEPLOYMENT AND HOOKING FUNCTION INTO USE-PACKAGE
 
--- em.message("hi")
+
 em.run_string(
     [[
 
