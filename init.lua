@@ -70,9 +70,3 @@ em.run_string(
   :ensure nil
   :hook (prog-mode . test-deployment))
     ]])
-
--- local function test_use_package_hook()
---     print("hi")
--- end
-
--- em.add_hook_intern("test-hook-thing", test_use_package_hook, "test_use_package_hook")
