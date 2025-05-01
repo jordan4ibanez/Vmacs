@@ -141,6 +141,18 @@ function emacs.eval(form)
     return emacs.run("eval", form)
 end
 
+--- Run arbitrary elisp code constructed from lua functions.
+--- This can be useful for macro expansion automatically.
+function emacs.run_string(input_string)
+    -- This is less than idea, but, at least it works.
+    local buffy = emacs.run("get-buffer-create", "compiler-buffer-for-lisp-lua-code")
+    emacs.run("insert", input_string);
+    emacs.run("eval-buffer")
+    if (emacs.run("kill-buffer", buffy) == nil) then
+        print("warning: failed to kill the compiler-buffer-for-lisp-lua-code buffer!")
+    end
+end
+
 --- Evaluate elisp code
 -- @param form Elisp code to evaluate
 -- @return The return value of the evaluated code
