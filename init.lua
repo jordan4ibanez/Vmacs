@@ -11,7 +11,7 @@ local disp = require("display")
 local prelude = require("prelude")
 
 
-print("startup time: " .. em.emacs_init_time())
+-- print("startup time: " .. em.emacs_init_time())
 
 -- I don't feel like looking at the startup screen.
 em.set_intern("inhibit-startup-screen", 1)
@@ -47,7 +47,6 @@ prelude.use_package("package", {
         ["package-vc-register-as-project"] = false,
         -- Let imenu finds use-package definitions
         ["use-package-always-ensure"] = true,
-
     }
 })
 
