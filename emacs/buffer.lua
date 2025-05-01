@@ -14,4 +14,10 @@ end
 function buf.get_buffer_create(buffer_or_name, optional_inhibit_buffer_hooks)
     return em.run("get-buffer-create", buffer_or_name, optional_inhibit_buffer_hooks)
 end
+
+--- Set the current window's buffer.
+function buf.set_window_buffer(window, buffer_or_name, optional_keep_margins)
+    return em.run("set-window-buffer", window, buffer_or_name, optional_keep_margins)
+end
+
 return buf
