@@ -150,10 +150,9 @@ function emacs.run_string(input_string)
     emacs.run("switch-to-buffer", compiler_buffer)
     emacs.run("insert", input_string);
     emacs.run("eval-buffer")
-    if (emacs.run("kill-buffer", compiler_buffer) == nil) then
+    if (emacs.run("kill-buffer", "compiler-buffer-for-lisp-lua-code") == nil) then
         print("warning: failed to kill the compiler-buffer-for-lisp-lua-code buffer!")
     end
-    emacs.run("switch-to-buffer", old_buffer)
 end
 
 --- Evaluate elisp code
