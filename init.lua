@@ -43,6 +43,11 @@ prelude.use_package("emacs", {
             "text-mode",
             "conf-mode",
             "help-mode"
+        },
+        ["display-line-numbers-mode"] = {
+            "prog-mode",
+            "text-mode",
+            "conf-mode"
         }
     }
 })
