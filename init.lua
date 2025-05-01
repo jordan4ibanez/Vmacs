@@ -43,10 +43,12 @@ em.expose_function(deploy, "test-deployment")
 prelude.use_package("package", {
     ensure = false,
     custom = {
-        -- Auto-download package if not exists.
+        
         ["package-vc-register-as-project"] = false,
-        -- Let imenu finds use-package definitions
+        -- Auto-download package if not exists.
         ["use-package-always-ensure"] = true,
+        -- Let imenu finds use-package definitions
+        ["use-package-enable-imenu-support"] = true
     }
 })
 
