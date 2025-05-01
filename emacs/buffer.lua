@@ -20,4 +20,9 @@ function buf.set_window_buffer(window, buffer_or_name, optional_keep_margins)
     return em.run("set-window-buffer", window, buffer_or_name, optional_keep_margins)
 end
 
+--- This command attempts to display buffer-or-name in the selected window and make it the current buffer. It is often used interactively (as the binding of C-x b), as well as in Lisp programs. The return value is the buffer switched to.
+function buf.switch_to_buffer(buffer_or_name, optional_norecord, optional_force_same_window)
+    return em.run("switch-to-buffer", buffer_or_name, optional_norecord, optional_force_same_window)
+end
+
 return buf
