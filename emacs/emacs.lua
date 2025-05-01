@@ -162,6 +162,10 @@ function emacs.eval_expression(form)
     return emacs.run("eval-expression", form)
 end
 
+function emacs.expose_function(func, function_name)
+    expose_function(emacs_environment, function_name, "...", 0, false, func)
+end
+
 --- Your hook will get baked into the elisp machine and automatically executed at the proper time.
 --- It is set up to pass in no variables at all. This is a simplicity choice. (for now)
 function emacs.add_hook_intern(hook, func, func_name)
