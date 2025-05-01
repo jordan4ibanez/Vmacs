@@ -100,15 +100,23 @@ function prelude.use_package(package_name, def)
     --- This part gets a bit complicated.
     --- :custom needs to be modular.
     if (def.custom) then
-        
+        for key, value in pairs(def.custom) do
+            local t = type(value)
+            if (t == "boolean") then
+                
+                
+            end
+        end
     end
 
     -- And then it closes just like that.
     a(")")
 
-    if (true) then
-        print(s)
-    end
+
+    -- print(s)
+
+
+    em.run_string(s)
 end
 
 return prelude;
