@@ -34,23 +34,47 @@ if (not disp.display_graphic_p()) then
     end
 end
 
-prelude.use_package("emacs", {
+local function deploy()
+    print("deploy!")
+end
+
+em.expose_function(deploy, "test-deployment")
+
+prelude.use_package("package", {
     ensure = false,
-    hook = {
-        -- Function name, lists hooks.
-        ["visual-wrap-prefix-mode"] = {
-            "prog-mode",
-            "text-mode",
-            "conf-mode",
-            "help-mode"
-        },
-        ["display-line-numbers-mode"] = {
-            "prog-mode",
-            "text-mode",
-            "conf-mode"
-        }
+    custom = {
+        -- Auto-download package if not exists.
+        ["package-vc-register-as-project"] = false,
+        -- Let imenu finds use-package definitions
+        ["use-package-always-ensure"] = true,
+
     }
 })
+
+
+-- prelude.use_package("emacs", {
+--     ensure = false,
+
+--     hook = {
+--         -- Function name, lists hooks.
+--         ["visual-wrap-prefix-mode"] = {
+--             "prog-mode",
+--             "text-mode",
+--             "conf-mode",
+--             "help-mode"
+--         },
+--         ["display-line-numbers-mode"] = {
+--             "prog-mode",
+--             "text-mode",
+--             "conf-mode"
+--         }
+--     },
+
+--     custom = {
+
+
+--     }
+-- })
 
 -- --! PHASE 1 CREATION OF HOOK FUNCTION
 -- local function deploy()
