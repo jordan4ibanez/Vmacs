@@ -15,7 +15,7 @@ function buf.get_buffer_create(buffer_or_name, optional_inhibit_buffer_hooks)
     return em.run("get-buffer-create", buffer_or_name, optional_inhibit_buffer_hooks)
 end
 
---- Set the current window's buffer.
+--- This function makes window display buffer-or-name. window should be a live window; if nil, it defaults to the selected window. buffer-or-name should be a buffer, or the name of an existing buffer. This function does not change which window is selected, nor does it directly change which buffer is current (see The Current Buffer). Its return value is nil.
 function buf.set_window_buffer(window, buffer_or_name, optional_keep_margins)
     return em.run("set-window-buffer", window, buffer_or_name, optional_keep_margins)
 end
