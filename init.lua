@@ -52,21 +52,20 @@ prelude.use_package("emacs", {
     }
 })
 
---! PHASE 1 CREATION OF HOOK FUNCTION
-local function deploy()
-    print("deploy!")
-end
+-- --! PHASE 1 CREATION OF HOOK FUNCTION
+-- local function deploy()
+--     print("deploy!")
+-- end
 
-em.expose_function(deploy, "test-deployment")
+-- em.expose_function(deploy, "test-deployment")
 
---! PHASE 2 DEPLOYMENT AND HOOKING FUNCTION INTO USE-PACKAGE
+-- --! PHASE 2 DEPLOYMENT AND HOOKING FUNCTION INTO USE-PACKAGE
+
+-- em.run_string(
+--     [[
 
 
-em.run_string(
-    [[
-
-
-(use-package emacs
-  :ensure nil
-  :hook (prog-mode . test-deployment))
-    ]])
+-- (use-package emacs
+--   :ensure nil
+--   :hook (prog-mode . test-deployment))
+--     ]])
