@@ -83,6 +83,8 @@ function prelude.use_package(package_name, def)
     a("(use-package " .. package_name)
     a(":ensure " .. tostring(booleanize(def.ensure)))
 
+    --- In the hook table, hooks must be defined as:
+    --- ["function-name"] = {"hook-1", "hook-2"}
     if (def.hook) then
         --//todo: make this add a :hook for each thing
         a(":hook")
