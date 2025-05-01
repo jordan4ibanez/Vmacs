@@ -86,8 +86,14 @@ function prelude.use_package(package_name, def)
     --- In the hook table, hooks must be defined as:
     --- ["function-name"] = {"hook-1", "hook-2"}
     if (def.hook) then
-        --//todo: make this add a :hook for each thing
-        a(":hook")
+        for func_name, hook_list in pairs(def.hook) do
+            --  a(":hook")
+            print(func_name .. ":")
+
+            for _, hook_name in pairs(hook_list) do
+                print("  " .. hook_name)
+            end
+        end
     end
 
     -- And then it closes just like that.
