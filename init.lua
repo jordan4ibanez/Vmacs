@@ -37,7 +37,7 @@ end
 prelude.use_package("emacs", {
     ensure = false,
     hook = {
-        -- Function name, lists modes.
+        -- Function name, lists hooks.
         ["visual-wrap-prefix-mode"] = {
             "prog-mode",
             "text-mode",
