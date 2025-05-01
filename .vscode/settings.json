@@ -15,5 +15,6 @@
     "functioncall_no_return",
     "emacs",
     "expose_function"
-  ]
+  ],
+  "Lua.runtime.version": "Lua 5.2"
 }
