@@ -100,11 +100,17 @@ function prelude.use_package(package_name, def)
     --- This part gets a bit complicated.
     --- :custom needs to be modular.
     if (def.custom) then
+        -- Plop the custom identifier in.
+        a(":custom")
+
         for key, value in pairs(def.custom) do
             local t = type(value)
+
             if (t == "boolean") then
-                
-                
+                a("(" .. key .. " " .. booleanize(value) .. ")")
+                print(key)
+            else
+                error("type [" .. t .. "] was never added to the :custom section")
             end
         end
     end
@@ -113,7 +119,7 @@ function prelude.use_package(package_name, def)
     a(")")
 
 
-    -- print(s)
+    print(s)
 
 
     em.run_string(s)
