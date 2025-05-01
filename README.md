@@ -13,6 +13,7 @@ This was bootstrapped in vscode. (It was a nightmare)
 This was used as a guide: https://github.com/MAlba124/memacs
 This is built off, translated from: https://github.com/MAlba124/luamacs
 Then I followed this tutorial and translated even more: https://github.com/DevelopmentCool2449/visual-emacs
+This was used to build the use-package api: https://github.com/jwiegley/use-package
 
 For Ubuntu distros:
 
