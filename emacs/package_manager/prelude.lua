@@ -93,7 +93,7 @@ function prelude.use_package(package_name, def)
     -- And then it closes just like that.
     a(")")
 
-    print(s)
+    -- print(s)
 end
 
 return prelude;
