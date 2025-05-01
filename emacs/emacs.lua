@@ -144,13 +144,16 @@ end
 --- Run arbitrary elisp code constructed from lua functions.
 --- This can be useful for macro expansion automatically.
 function emacs.run_string(input_string)
-    -- This is less than idea, but, at least it works.
-    local buffy = emacs.run("get-buffer-create", "compiler-buffer-for-lisp-lua-code")
+    -- This is less than ideal, but, at least it works.
+    local old_buffer = emacs.run("current-buffer")
+    local compiler_buffer = emacs.run("get-buffer-create", "compiler-buffer-for-lisp-lua-code")
+    emacs.run("switch-to-buffer", compiler_buffer)
     emacs.run("insert", input_string);
     emacs.run("eval-buffer")
-    if (emacs.run("kill-buffer", buffy) == nil) then
+    if (emacs.run("kill-buffer", compiler_buffer) == nil) then
         print("warning: failed to kill the compiler-buffer-for-lisp-lua-code buffer!")
     end
+    emacs.run("switch-to-buffer", old_buffer)
 end
 
 --- Evaluate elisp code
