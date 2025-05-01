@@ -2,6 +2,8 @@
 --- Built on top of the standard emacs package system.
 --- It allows you to import packages if you don't feel like
 --- rewriting them in lua.
+--- It's called prelude because it sounds cool and it's literally
+--- the introduction into the entire IDE.
 
 local em = require("emacs")
 local str = require("str")
@@ -42,6 +44,12 @@ function prelude.install_if_not_installed(pkg)
     if not pakage.is_installed(pkg) then
         pakage.install(pkg)
     end
+end
+
+--- Super function.
+--- You might want to read the code to see how to use this.
+function prelude.use_package(super_table)
+
 end
 
 return prelude;
