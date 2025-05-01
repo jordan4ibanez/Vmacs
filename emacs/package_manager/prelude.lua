@@ -80,8 +80,10 @@ function prelude.use_package(package_name, def)
     a("(use-package " .. package_name)
     a(":ensure " .. tostring(booleanize(def.ensure)))
 
-
-
+    if (def.hook) then
+        --//todo: make this add a :hook for each thing
+        a(":hook")
+    end
 
     -- And then it closes just like that.
     a(")")

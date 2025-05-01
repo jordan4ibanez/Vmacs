@@ -35,8 +35,16 @@ if (not disp.display_graphic_p()) then
 end
 
 prelude.use_package("emacs", {
-    ensure = false
-
+    ensure = false,
+    hook = {
+        -- Function name, lists modes.
+        ["visual-wrap-prefix-mode"] = {
+            "prog-mode",
+            "text-mode",
+            "conf-mode",
+            "help-mode"
+        }
+    }
 })
 
 --! PHASE 1 CREATION OF HOOK FUNCTION
