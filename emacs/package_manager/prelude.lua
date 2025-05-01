@@ -46,10 +46,47 @@ function prelude.install_if_not_installed(pkg)
     end
 end
 
+--- Converts lua boolean into emacs boolean. Or whatever it was.
+local function booleanize(input)
+    if (type(input) == "boolean") then
+        if (input) then
+            return "t"
+        else
+            return "nil"
+        end
+    end
+    -- Else, good luck!
+    return input
+end
+
 --- Super function.
 --- You might want to read the code to see how to use this.
-function prelude.use_package(super_table)
+function prelude.use_package(package_name, def)
+    -- If you're having trouble understanding any of this:
+    -- https://github.com/jwiegley/use-package
 
+    -- It all starts with a little string.
+    local s = ""
+    local indent = ""
+    -- Then a little function.
+    local function a(i) -- Wow, AI even made it into emacs.
+        s = s .. indent .. i .. "\n"
+        -- This is just so I can read this.
+        if (indent == "") then
+            indent = "    "
+        end
+    end
+    -- And it's off down the hill.
+    a("(use-package " .. package_name)
+    a(":ensure " .. tostring(booleanize(def.ensure)))
+
+
+
+
+    -- And then it closes just like that.
+    a(")")
+
+    print(s)
 end
 
 return prelude;
