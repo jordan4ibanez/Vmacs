@@ -81,8 +81,11 @@ function prelude.use_package(package_name, def)
     end
     -- And it's off down the hill.
     a("(use-package " .. package_name)
+
+    ---? :ensure
     a(":ensure " .. tostring(booleanize(def.ensure)))
 
+    ---? :hook
     --- In the hook table, hooks must be defined as:
     --- ["function-name"] = {"hook-1", "hook-2"}
     if (def.hook) then
@@ -91,6 +94,13 @@ function prelude.use_package(package_name, def)
                 a(":hook (" .. hook_name .. " . " .. func_name .. ")")
             end
         end
+    end
+
+    ---? :custom
+    --- This part gets a bit complicated.
+    --- :custom needs to be modular.
+    if (def.custom) then
+        
     end
 
     -- And then it closes just like that.
