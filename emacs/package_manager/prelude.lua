@@ -60,6 +60,7 @@ local function booleanize(input)
 end
 
 --- Super function.
+--- This is a lua integration of the standard elisp use-package lambda.
 --- You might want to read the code to see how to use this.
 function prelude.use_package(package_name, def)
     -- If you're having trouble understanding any of this:
