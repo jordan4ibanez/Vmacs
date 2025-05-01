@@ -69,8 +69,8 @@ function prelude.use_package(package_name, def)
     local s = ""
     local indent = ""
     -- Then a little function.
-    local function a(i) -- Wow, AI even made it into emacs.
-        s = s .. indent .. i .. "\n"
+    local function a(input)
+        s = s .. indent .. input .. "\n"
         -- This is just so I can read this.
         if (indent == "") then
             indent = "    "
