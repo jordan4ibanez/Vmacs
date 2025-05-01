@@ -34,21 +34,23 @@ if (not disp.display_graphic_p()) then
     end
 end
 
+prelude.use_package("emacs", {
+    ensure = false
+
+})
+
+--! PHASE 1 CREATION OF HOOK FUNCTION
 local function deploy()
     print("deploy!")
 end
 
-
 em.expose_function(deploy, "test-deployment")
 
-
+--! PHASE 2 DEPLOYMENT AND HOOKING FUNCTION INTO USE-PACKAGE
 
 -- em.message("hi")
 em.run_string(
     [[
-
-  (defvar test-hook-thing nil
-    "Hook called after the custom file is loaded")
 
 
 (use-package emacs
