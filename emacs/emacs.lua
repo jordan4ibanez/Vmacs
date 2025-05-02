@@ -162,8 +162,10 @@ function emacs.eval_expression(form)
     return emacs.run("eval-expression", form)
 end
 
-function emacs.expose_function(func, function_name)
-    expose_function(emacs_environment, function_name, "...", 0, false, func)
+function emacs.expose_function(func, function_name, arguments, does_return)
+    arguments = arguments or 0
+    does_return = does_return or false
+    expose_function(emacs_environment, function_name, "...", arguments, does_return, func)
 end
 
 --- Your hook will get baked into the elisp machine and automatically executed at the proper time.
