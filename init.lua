@@ -54,11 +54,13 @@ prelude.use_package("package", {
         -- This automatically creates an anonymous function exposed to elisp.
         lua_funcs = {
             function()
-                print("wow this actually runs!")
+                -- Packages gpg is buggy on windows (apparently).
+                local system_type = em.get("system-type")
+                local is_windows = em.eq(system_type, em.get("windows-nt"))
+                if (is_windows) then
+                    em.setopt_intern("package-check-signature", nil)
+                end
             end,
-            function()
-                print("also this!")
-            end
         },
     }
 })
