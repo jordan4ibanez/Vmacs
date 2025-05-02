@@ -218,4 +218,10 @@ function emacs.eq(symbol_a, symbol_b)
     return emacs.run("eq", symbol_a, symbol_b) ~= nil
 end
 
+--- Add advice to override things. This is a complicated function so I just kind of
+--- let you do whatever you want with no guidance.
+function emacs.advice_add(...)
+    emacs.run("advice-add", ...)
+end
+
 return emacs
