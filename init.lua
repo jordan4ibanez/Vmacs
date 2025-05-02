@@ -62,7 +62,15 @@ prelude.use_package("package", {
             end
         end,
 
-
+        --- Add MELPA.
+        function()
+            em.add_to_list("package-archives", em.cons("melpa", "https://melpa.org/packages/"))
+            em.advice_add(
+                em.intern("package--save-selected-packages"),
+                em.intern(":override"),
+                em.intern("my-package--save-selected-packages")
+            )
+        end
     }
 })
 
