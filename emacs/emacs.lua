@@ -1,6 +1,6 @@
 --- General emacs functions.
 
-emacs = {}
+local emacs = {}
 
 emacs.Mode = { ENABLE = 1, DISABLE = -1 }
 emacs.Hook = require("hook_defines")
