@@ -110,7 +110,7 @@ function prelude.use_package(package_name, def)
     --- This part gets a bit complicated.
     --- :custom needs to be modular.
     if (def.custom) then
-        -- Plop the custom identifier in.
+        -- Plop the :custom identifier in.
         a(":custom")
 
         for key, value in pairs(def.custom) do
