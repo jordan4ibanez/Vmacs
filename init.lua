@@ -43,12 +43,23 @@ em.expose_function(deploy, "test-deployment")
 prelude.use_package("package", {
     ensure = false,
     custom = {
-        
         ["package-vc-register-as-project"] = false,
         -- Auto-download package if not exists.
         ["use-package-always-ensure"] = true,
         -- Let imenu finds use-package definitions
         ["use-package-enable-imenu-support"] = true
+    },
+
+    config = {
+        -- This automatically creates an anonymous function exposed to elisp.
+        lua_funcs = {
+            function()
+                print("wow this actually runs!")
+            end,
+            function()
+                print("also this!")
+            end
+        },
     }
 })
 
