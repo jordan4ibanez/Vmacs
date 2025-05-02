@@ -105,7 +105,7 @@ function emacs.add_to_list(list_or_name, element, optional_append)
     if (type(list_or_name) == "string") then
         list_or_name = emacs.intern(list_or_name)
     end
-    return emacs.run(list_or_name, element, optional_append)
+    return emacs.run("add-to-list", list_or_name, element, optional_append)
 end
 
 --- Add a value to a list without triggering return value conversion
@@ -116,7 +116,7 @@ function emacs.add_to_list_no_return(list_or_name, element, optional_append)
     if (type(list_or_name) == "string") then
         list_or_name = emacs.intern(list_or_name)
     end
-    emacs.run_no_return(list_or_name, element, optional_append)
+    emacs.run_no_return("add-to-list", list_or_name, element, optional_append)
 end
 
 --- Load a feature
