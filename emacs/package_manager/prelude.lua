@@ -125,6 +125,23 @@ function prelude.use_package(package_name, def)
         end
     end
 
+    if (def.config) then
+        -- Plop the :config identifier in.
+        a(":config")
+
+        for key, value in pairs(def.config) do
+            if (key == "lua_funcs") then
+                for _, fun in pairs(value) do
+                    local anon_fun_name = get_anonymous_id()
+                    em.expose_function(fun, anon_fun_name)
+                    a("(" .. anon_fun_name .. ")")
+                end
+            else
+                error("key [" .. key .. "] was never added to the :config section")
+            end
+        end
+    end
+
     -- And then it closes just like that.
     a(")")
 
