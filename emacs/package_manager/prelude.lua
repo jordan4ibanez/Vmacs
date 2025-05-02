@@ -9,6 +9,16 @@ local em = require("emacs")
 local str = require("str")
 local buf = require("buffer")
 
+-- This is used for automatically creating anonymous lua functions.
+-- Things like :custom use this.
+prelude_current_anonymous_id = prelude_current_anonymous_id or 0
+
+local function get_anonymous_id()
+    local s = "prelude-anonymous-lua-func-" .. tostring(prelude_current_anonymous_id)
+    prelude_current_anonymous_id = prelude_current_anonymous_id + 1
+    return s
+end
+
 em.require(em.intern("package"))
 
 local prelude = {}
