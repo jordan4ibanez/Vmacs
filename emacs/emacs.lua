@@ -149,7 +149,7 @@ end
 --- This can be useful for macro expansion automatically.
 function emacs.run_string(input_string)
     -- This is less than ideal, but, at least it works.
-    local old_buffer = emacs.run("current-buffer")
+    -- local old_buffer = emacs.run("current-buffer")
     local compiler_buffer = emacs.run("get-buffer-create", "compiler-buffer-for-lisp-lua-code")
     emacs.run("switch-to-buffer", compiler_buffer)
     emacs.run("insert", input_string);
