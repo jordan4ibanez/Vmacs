@@ -1,20 +1,21 @@
 {
-  "editor.formatOnType": true,
-  "[lisp]": {
-    "editor.wordSeparators": "`|;:'\",()"
-  },
-  "files.associations": {
-    "lualib.h": "c",
-    "emacs-module.h": "c",
-    "stddef.h": "c",
-    "stdint.h": "c"
-  },
-  "Lua.diagnostics.globals": [
-    "functioncall",
-    "emacs_environment",
-    "functioncall_no_return",
-    "emacs",
-    "expose_function"
-  ],
-  "Lua.runtime.version": "Lua 5.2"
+    "editor.formatOnType": true,
+    "[lisp]": {
+        "editor.wordSeparators": "`|;:'\",()"
+    },
+    "files.associations": {
+        "lualib.h": "c",
+        "emacs-module.h": "c",
+        "stddef.h": "c",
+        "stdint.h": "c"
+    },
+    "Lua.diagnostics.globals": [
+        "functioncall",
+        "emacs_environment",
+        "functioncall_no_return",
+        "emacs",
+        "expose_function",
+        "prelude_current_anonymous_id"
+    ],
+    "Lua.runtime.version": "Lua 5.2"
 }
