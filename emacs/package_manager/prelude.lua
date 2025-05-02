@@ -118,7 +118,7 @@ function prelude.use_package(package_name, def)
 
             if (t == "boolean") then
                 a("(" .. key .. " " .. booleanize(value) .. ")")
-                print(key)
+                -- print(key)
             else
                 error("type [" .. t .. "] was never added to the :custom section")
             end
