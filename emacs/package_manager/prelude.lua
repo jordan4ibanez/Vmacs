@@ -107,8 +107,6 @@ function prelude.use_package(package_name, def)
     end
 
     ---? :custom
-    --- This part gets a bit complicated.
-    --- :custom needs to be modular.
     if (def.custom) then
         -- Plop the :custom identifier in.
         a(":custom")
@@ -125,6 +123,7 @@ function prelude.use_package(package_name, def)
         end
     end
 
+    ---? :config
     if (def.config) then
         -- Plop the :config identifier in.
         a(":config")
