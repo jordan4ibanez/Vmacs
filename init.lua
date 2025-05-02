@@ -50,11 +50,11 @@ prelude.use_package("package", {
         ["use-package-enable-imenu-support"] = true
     },
 
+    -- This automatically creates anonymous functions exposed to elisp.
     config = {
-        -- This automatically creates an anonymous function exposed to elisp.
 
+        -- Packages gpg is buggy on windows (apparently).
         function()
-            -- Packages gpg is buggy on windows (apparently).
             local system_type = em.get("system-type")
             local is_windows = em.eq(system_type, em.get("windows-nt"))
             if (is_windows) then
