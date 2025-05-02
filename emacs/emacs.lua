@@ -100,11 +100,12 @@ function emacs.car(list)
     emacs.run("car", list)
 end
 
---- Append a value to a list
--- @param name Interned symbol of the list to append to
--- @param value The value to append
-function emacs.add_to_list(list, value)
-    emacs.run("add-to-list", list, value)
+--- Add to a list symbol or a list name which will be interned into a symbol.
+function emacs.add_to_list(list_or_name, element, optional_append)
+    if (type(list_or_name) == "string") then
+        list_or_name = emacs.intern(list_or_name)
+    end
+    emacs.run(list_or_name, element, optional_append)
 end
 
 --- Add a value to a list without triggering return value conversion
