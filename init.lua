@@ -29,7 +29,7 @@ em.add_hook_intern(em.Hook.emacs_startup_hook, startup_hook, "startup_hook")
 if (not disp.display_graphic_p()) then
     print("running in terminal")
     em.run("xterm-mouse-mode", 1)
-    if (em.eq(em.get("system-type"), em.get("window-nt"))) then
+    if (em.eq(em.get("system-type"), em.get("windows-nt"))) then
         ui.disable_theme(em.car(em.get("custom-enabled-themes")))
     end
 end
