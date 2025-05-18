@@ -41,13 +41,7 @@ export extern (C) __gshared int emacs_module_init(emacs_runtime* runtime) {
 
     writeln("hello from D!");
 
-    // initLua();
-
     defun(env, 0, &terminate, "Terminate the Vmacs lua plugin", "terminate-vmacs");
-
-    // defun(env, 1, &executeLuaFile, "Execute a lua file", "run-lua-file");
-
-    // executeLuaFile(env, "./init.lua");
 
     return 0;
 }
