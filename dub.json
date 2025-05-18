@@ -4,14 +4,13 @@
 	],
 	"copyright": "Copyright © 2025, jordan4ibanez",
 	"dependencies": {
-		"bindbc-lua": "~>0.6.1"
+		
 	},
 	"description": "The driving engine for vmacs.",
 	"dflags-ldc": [
 		"--link-defaultlib-shared"
 	],
 	"license": "GPL-3.0-or-later",
-	"name": "lua_mode",
-	"targetType": "dynamicLibrary",
-	"versions": ["LUA_52"]
+	"name": "vmacs",
+	"targetType": "dynamicLibrary"
 }
