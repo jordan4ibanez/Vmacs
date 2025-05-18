@@ -43,3 +43,4 @@ lua_mode-test-*
 *.obj
 *.lst
 liblua_mode.so
+libvmacs.so
