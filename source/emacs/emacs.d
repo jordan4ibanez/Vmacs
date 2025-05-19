@@ -1,10 +1,12 @@
 module emacs.emacs;
 
-import emacs_module;
+import emacs.emacs_module;
 import main;
 import std.string;
 
-pragma(msg, "hello from compiler");
+emacs_env* env;
+
+// pragma(msg, "hello from compiler");
 
 /// Emacs has this thing where it needs to have this defined or it explodes.
 export extern (C) __gshared int plugin_is_GPL_compatible;
@@ -16,8 +18,7 @@ emacs_value NIL(emacs_env* env) {
 }
 
 /// Define an elisp function.
-void defun(emacs_env* env, int mm_arity, emacs_function func,
-    string docstring, string symbol_name) {
+void defun(int mm_arity, emacs_function func, string docstring, string symbol_name) {
 
     emacs_value efunc =
         env.make_function(env, mm_arity, mm_arity, func, docstring.toStringz(), NULL);
@@ -29,8 +30,8 @@ void defun(emacs_env* env, int mm_arity, emacs_function func,
 /// This is the main module initialization.
 /// This is automatically called by Emacs.
 export extern (C) __gshared int emacs_module_init(emacs_runtime* runtime) {
-    emacs_env* env = runtime.get_environment(runtime);
-    defun(env, 0, &terminate, "Terminate the Vmacs lua plugin", "terminate-vmacs");
+    env = runtime.get_environment(runtime);
+    defun(0, &terminate, "Terminate the Vmacs lua plugin", "terminate-vmacs");
     dMain();
     return 0;
 }
