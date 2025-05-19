@@ -1,7 +1,7 @@
-module emacs;
+module emacs.emacs;
 
 import emacs_module;
-import std.stdio;
+import main;
 import std.string;
 
 pragma(msg, "hello from compiler");
@@ -13,14 +13,6 @@ export extern (C) __gshared int plugin_is_GPL_compatible;
 pragma(inline, true)
 emacs_value NIL(emacs_env* env) {
     return env.intern(env, "nil");
-}
-
-/// Shuts down the lua 5.2 state. (also I like to thank people for using vmacs)
-export extern (C) __gshared emacs_value terminate(emacs_env* env, ptrdiff_t nargs,
-    emacs_value* args, void* data) {
-    // terminateLuaState();
-    writeln("Thank you for using VMACS! :)");
-    return NIL(env);
 }
 
 /// Define an elisp function.
@@ -38,10 +30,15 @@ void defun(emacs_env* env, int mm_arity, emacs_function func,
 /// This is automatically called by Emacs.
 export extern (C) __gshared int emacs_module_init(emacs_runtime* runtime) {
     emacs_env* env = runtime.get_environment(runtime);
-
-    writeln("hello from D!");
-
     defun(env, 0, &terminate, "Terminate the Vmacs lua plugin", "terminate-vmacs");
-
+    dMain();
     return 0;
+}
+
+/// Terminate.
+export extern (C) __gshared emacs_value terminate(emacs_env* env, ptrdiff_t nargs,
+    emacs_value* args, void* data) {
+
+    dTerminate();
+    return NIL(env);
 }
